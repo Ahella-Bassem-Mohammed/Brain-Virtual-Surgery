@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar{
+  width: 1px;
+}
+
+html::-webkit-scrollbar-track{
+  background-color: rgb(17, 33, 105);
+}
+
+html::-webkit-scrollbar-thumb{
+  background-color: var(--dark-color);
+  border-radius: 1px;
+}
+

@@ -1,0 +1,66 @@
+.features{
+    height: 150vh;
+    padding-top: 110px;
+}
+
+.top{
+    height: 300px;
+    padding-top: 20px;
+    text-align: left;
+    margin-left: 190px;
+    background-image: url('chemistry.gif');
+    background-size:  450px;
+    background-position:70%;
+    background-repeat: no-repeat;
+}
+
+.top h2{
+    padding-top: 50px;
+    font-weight: 600;
+    color: #234ca4;
+    font-size: 40px;
+    margin-bottom: 5px;
+    margin-left: 90px;
+}
+
+.top hr{
+    border: none;
+    width: 150px;
+    height: 8px;
+    background-color: #234ca4;
+    border-radius: 10px;
+    margin-left: 140px;
+}
+
+.conten{
+    gap: 2rem;
+    display: grid;
+    padding-left: 150px;
+    padding-top: 20px;
+    grid-template-columns: 1fr 2fr;
+}
+.compo{
+    background: linear-gradient(120deg, #234ca4, #adadff);
+    color: #fff;
+    padding: 10px;
+    border-radius: 1rem;
+    width: 500px;
+    padding-left: 30px;
+    height: 150px;
+}
+
+.compo p{
+    font-weight: 500;
+    font-size: large;
+    letter-spacing: 1.2px;
+}
+
+.compo h3{
+    display: block;
+    font-weight:bolder;
+}
+
+
+
+
+
