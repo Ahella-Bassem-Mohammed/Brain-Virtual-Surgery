@@ -20,7 +20,7 @@ export const Login = () => {
     if (password.trim() === "") return toast.error("Password is required");
 
     dispatch(loginUser({ Email: email, Password: password }));
-    navigate("/")
+    if (toast.error("invalid Email or Password")) return navigate("/login");
   };
 
   const SetCookie = () => {

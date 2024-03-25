@@ -53,7 +53,7 @@ export const Signup = () => {
     );
   };
 
-  if (registerMessage) {
+ /* if (registerMessage) {
     swal({
       title: registerMessage,
       icon: "success",
@@ -62,7 +62,7 @@ export const Signup = () => {
         navigate("/login");
       }
     });
-  }
+  }*/
   return (
     <div className="signup">
       <div className="pik">

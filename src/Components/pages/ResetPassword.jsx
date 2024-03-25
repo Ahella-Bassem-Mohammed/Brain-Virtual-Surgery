@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 const ResetPassword = () => {
 
   const dispatch = useDispatch();
-  const { isError } = useSelector((state) => state.Password);
+  const { isError } = useSelector((state) => state.password);
   const [password, setPassword] = useState("");
   const { userId, token } = useParams();
   
@@ -32,7 +32,38 @@ const ResetPassword = () => {
   return (
     <div className="login">
       <div className="container">
-        {isError ? (
+       
+        
+          <>
+            <div className="header">
+              <div className="text">Reset Password</div>
+              <div className="underline"></div>
+            </div>
+            <form onSubmit={formSubmitHandler}>
+              <div className="inputs">
+                <div className="input">
+                  <input
+                    type="password"
+                    placeholder="New Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                  />
+                  <FaLock className="icon" />
+                </div>
+
+                <div className="submit-container">
+                  <center>
+                    <button type="submit" className="submit">
+                      {" "}
+                      Submit{" "}
+                    </button>
+                  </center>
+                </div>
+              </div>
+            </form>
+          </>
+        
+        {/*{isError ? (
           <>
             <div className="text">Not-Found</div>
             <div className="underline"></div>
@@ -66,7 +97,7 @@ const ResetPassword = () => {
               </div>
             </form>
           </>
-        )}
+        )}*/}
       </div>
     </div>
   );
