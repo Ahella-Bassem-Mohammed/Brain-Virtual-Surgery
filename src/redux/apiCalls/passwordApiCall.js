@@ -34,7 +34,7 @@ export function getResetPassword(userId, token) {
 
 //Reset The Password
 
-export function resetPassword({Password:newPassword}, user) {
+export function resetPassword(newPassword, user) {
   return async () => {
     try {
       const { data } = await request.post(

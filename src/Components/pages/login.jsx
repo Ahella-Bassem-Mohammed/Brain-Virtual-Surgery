@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./LoginSignup/LoginSignup.css";
 import { FaLock, FaUser } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/apiCalls/authApiCall";
 import { toast } from "react-toastify";
@@ -12,6 +12,10 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
+
+    
+
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
@@ -20,8 +24,16 @@ export const Login = () => {
     if (password.trim() === "") return toast.error("Password is required");
 
     dispatch(loginUser({ Email: email, Password: password }));
-    if (toast.error("invalid Email or Password")) return navigate("/login");
+    
+    if (toast.error === "invalid Email or Password") {
+      
+      navigate("/login");
+    } else {
+      
+      navigate("/");
+    }
   };
+
 
   const SetCookie = () => {
     Cookies.set("email", document.getElementById("email").value, {
