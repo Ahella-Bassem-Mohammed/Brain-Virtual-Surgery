@@ -53,16 +53,16 @@ export const Signup = () => {
     );
   };
 
- /* if (registerMessage) {
+  if (registerMessage) {
     swal({
       title: registerMessage,
       icon: "success",
     }).then((isOK) => {
       if (isOK) {
-        navigate("/login");
+        navigate("/signup");
       }
     });
-  }*/
+  }
   return (
     <div className="signup">
       <div className="pik">
