@@ -1,0 +1,187 @@
+.forgot-reset-field{
+    height: 100vh;
+    padding-top: 66px;
+    position: absolute;
+    background: white;
+    background-size: 300% 300%;
+}
+
+.forgot-reset-container{
+    margin: auto;
+    width: 670px;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, .2);
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+}
+.text{
+    color:#234ca4;
+    font-size: 48px;
+    font-weight:700px;
+}
+.underline{
+    width:61px;
+    height: 6px;
+    background: #234ca4;
+    border-radius: 9px;
+}
+
+.inputs{
+    margin-top: 50px;
+    margin-left: 750px;
+    flex-direction: column;
+}
+
+.input{
+    width: 400px;
+    height: 80px;
+    background: transparent;
+    outline: none;
+    border: 2px solid #234ca4;
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 10px 20px 20px 0.2rem;
+    margin: 20px 2rem;
+}
+
+.input::placeholder{
+    padding-left: 30px;
+}
+
+.input input{
+    height:30px;
+    width: 320px;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:#234ca4;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.icon {
+    color: #234ca4;
+    font-size: larger;
+    margin-top: 15px;
+}
+.submit-container{
+    display: flex;
+    gap: 30px;
+    margin: 30px auto;
+    padding-left: 120px;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width:220px;
+    height: 59px;
+    color: #fff;
+    background:#234ca4;
+    border-radius: 50px;
+    font-size:20px;
+    font-weight: 70px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 50px;
+}
+.submit:hover{
+    background: #676767;
+    color: #EAEAEA;
+}
+
+
+
+
+/* -------------------Not Found Page----------------- */
+
+
+
+
+.not-found{
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.not-found-title{
+    padding-top: 8%;
+    font-size: 70px;
+    font-weight: bold;
+    color: red;
+  }
+
+.not-found-text{
+    font-size: 30px;
+    color: #234ca4;
+    margin-bottom: 30px;
+  }
+
+.not-found-link{
+    display: block;
+    color: #234ca4;
+    font-size: 21px;
+    font-weight: 500;
+    padding: 5px 2rem;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 12px;
+  }
+
+.not-found-link:hover{
+    background-color: #ad44af;
+}
+
+
+
+
+/* -------------------Verify Email Page----------------- */
+
+
+
+
+.verify-email{
+    height:calc(100vh-130px);
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction:column;
+}
+.verify-email-icon{
+    font-size: 80px;
+    color:var(--green-color);
+}
+.verify-email-title{
+    font-size: 32px;
+    margin-bottom: 20px;
+    color:var(--green-color);
+}
+.verify-email-link{
+    font-size: 24px;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    padding: 5px;
+    border-radius: 5px;
+    color:var(--white-color);
+
+}
+.verify-email-not-found{
+    font-size: 40px;
+    color: var(--red-color);
+
+}
