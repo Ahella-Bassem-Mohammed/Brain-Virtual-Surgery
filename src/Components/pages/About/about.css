@@ -1,0 +1,73 @@
+.about{
+    margin-top: 60px;
+}
+.problem{
+    height: 90vh;
+    min-width: 200vh;
+    padding-left: 50px;
+    padding-top: 130px;
+    position: absolute;
+    background-image: url('../../Assets/brain.gif');
+    background-size:  550px;
+    background-position:right;
+    background-repeat: no-repeat;
+}
+
+.right h2{
+    margin: 10px 10px;
+    font-weight: 600;
+    color: #234ca4;
+    font-size: 40px;
+    padding-left: 50px;
+}
+
+.right hr{
+    border: none;
+    width: 100px;
+    height: 8px;
+    background-color: #234ca4;
+    border-radius: 10px;
+    margin-left: 90px;
+}
+
+.right p{
+    font-size:x-large;
+    color:#263238;
+    letter-spacing: 1.5px;
+    line-height: 45px;
+}
+.solution{
+    margin-top: 250px;
+    height: 100vh;
+    margin-right: 2rem;
+    background-image: url('../../Assets/solution.gif');
+    background-size:  550px;
+    background-position:left;
+    background-repeat: no-repeat;
+}
+
+.solution h2{
+    padding-top: 100px;
+    margin: 10px 10px;
+    font-weight: 600;
+    color: #234ca4;
+    font-size: 40px;
+    margin-left: 830px;
+}
+.solution hr{
+    border: none;
+    width: 100px;
+    height: 8px;
+    background-color: #234ca4;
+    border-radius: 10px;
+    margin-left: 860px;
+}
+.solution p{
+    display: inline-block;
+    padding-top: 20px;
+    font-size:x-large;
+    color:#263238;
+    letter-spacing: 1.5px;
+    margin-left: 650px;
+    line-height: 45px;
+}

@@ -1,0 +1,55 @@
+.home {
+    width: 100%;
+    padding-top: 100px;
+    min-height: 120vh;
+    text-align: left;
+    position: absolute;
+    background-image: url('../../Assets/hoom.gif');
+    background-size:  530px;
+    background-position:90%;
+    background-repeat: no-repeat;
+}
+.content{
+    padding-top: 90px;
+    padding-left: 100px;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 70px;
+}
+.content h1{
+    font-family: 'Open Sans', sans-serif;
+    color: #234ca4;
+    letter-spacing: 0.5px;
+    margin: 0 auto;
+}
+
+.details{
+    font-size:x-large;
+    color:#263238;
+}
+
+.header-btns{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 0.25%;
+}
+.header-btn{
+	width:180px;
+	height: 45px;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    background-color: #234ca4;
+    box-shadow: 5px 10px 30px rgba(99, 67, 173, 0.336);
+    border-radius: 30px;
+	color:#ffffff;
+}
+.header-btn:hover{
+	background-color: transparent;
+    transition: all ease 0.3s;
+    color: #ffffff;
+    border: 2px solid #234ca4;
+    cursor: pointer;
+}
