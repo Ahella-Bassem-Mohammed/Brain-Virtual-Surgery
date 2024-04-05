@@ -26,66 +26,69 @@ export const Navbar = () => {
   return (
     <nav className={nav ? "nav active" : "nav"}>
       <Link to="/" className="title">
-        Virtual Surgery
+        BVS
       </Link>
 
-      <label className="menu-icon" htmlFor="menu-btn"></label>
+      <label className="menu-icon"></label>
       <span className="nav-icon"></span>
 
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/about">About</NavLink>
-      </li>
-      <li>
-        <NavLink to="/services">Features</NavLink>
-      </li>
-      <li>
-        <NavLink to="/contact">Contact</NavLink>
-      </li>
-      {user ? (
-        <>
-          <div className="user-info">
-            <li>
-              <Link
-                className="username"
-                onClick={() => setDropdown((prev) => !prev)}
-              >
-                {user?.UserName}
-                {/*<img src={user?.ProfilePhoto.url} alt="user photo"/>*/}
-              </Link>
-            </li>
-            {dropdown && (
-              <div className="dropdown">
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/about">About</NavLink>
+        </li>
+        <li>
+          <NavLink to="/services">Features</NavLink>
+        </li>
+        <li>
+          <NavLink to="/contact">Contact</NavLink>
+        </li>
+
+        {user ? (
+          <>
+            <div className="user-info">
+              <li>
                 <Link
-                  to="/profile" /////////////// undo comment for the below line when finishing linking profile with id
-                  /*to={`/profile/${user?._id}`}*/
-                  className="dropdown-item"
-                  onClick={() => setDropdown(false)}
+                  className="username"
+                  onClick={() => setDropdown((prev) => !prev)}
                 >
-                  <i className="bi bi-file-person"></i>
-                  <span>Profile</span>
+                  {user?.UserName}
+                  {/*<img src={user?.ProfilePhoto.url} alt="user photo"/>*/}
                 </Link>
-                <div className="dropdown-item">
-                  <i className="bi bi-box-arrow-in-left"></i>
-                  <Link onClick={logoutHandler}>Logout </Link>
+              </li>
+              {dropdown && (
+                <div className="dropdown">
+                  <Link
+                    to="/profile" /////////////// undo comment for the below line when finishing linking profile with id
+                    /*to={`/profile/${user?._id}`}*/
+                    className="dropdown-item"
+                    onClick={() => setDropdown(false)}
+                  >
+                    <i className="bi bi-file-person"></i>
+                    <span>Profile</span>
+                  </Link>
+                  <div className="dropdown-item">
+                    <i className="bi bi-box-arrow-in-left"></i>
+                    <Link onClick={logoutHandler}>Logout </Link>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </>
-      ) : (
-        <>
-          {" "}
-          <li>
-            <NavLink to="/signup">Signup</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
-        </>
-      )}
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            {" "}
+            <li>
+              <NavLink to="/signup">Signup</NavLink>
+            </li>
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+          </>
+        )}
+      </ul>
     </nav>
   );
 };

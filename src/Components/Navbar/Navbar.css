@@ -4,7 +4,7 @@
 }
 nav {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     position:  fixed;
     top: 0;
@@ -16,6 +16,11 @@ nav {
     background-color: transparent;
     transition: 0.6s ease-in-out;
 }
+nav ul{
+    display: flex;
+    gap: 0.5rem;
+    font-size: 15px;
+}
 
 nav.active{
     box-shadow: 5px 10px 30px rgba(142, 105, 201, 0.157);
@@ -23,7 +28,7 @@ nav.active{
     border-bottom: #fff;
 }
 nav .title {
-    padding-left: 2px;
+    padding-left: 40px;
     font-size: 1.8rem;
     margin: 1rem;
     font-weight: bolder;
@@ -34,11 +39,10 @@ nav .title {
 
 nav li {
     display: flex;
-}
-
-nav  li {
     list-style: none;
 }
+
+
 
 nav li a {
     font-size: large;
@@ -76,20 +80,12 @@ nav .menu span {
 }
 
 .user-info{
-    display: flex;
-    align-items:center;
     position:relative;
     font-size: large;
     font-family:Arial, Helvetica, sans-serif;
-    /*display: block;*/
-    text-decoration: none;
+    text-decoration:dashed;
     color: #234ca4;
-    padding: 0.5rem;
-    margin: 0 0.5rem;
-    
-
 }
-
 
 .dropdown{
     position: absolute;
