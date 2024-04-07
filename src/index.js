@@ -15,7 +15,7 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <App />
-        <ToastContainer />
+        <ToastContainer position="top-center" autoClose={2000}/>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
