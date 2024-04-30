@@ -1,4 +1,5 @@
 .profile {
+  margin-top: 300px;
   padding: 30;
   
 }
@@ -85,6 +86,7 @@
     margin: 20px auto;
 }
 .profile-patient-list-title{
+    margin-top: 100px;
     margin-bottom: 20px;
     padding: 5px 0;
     font-size:40px;

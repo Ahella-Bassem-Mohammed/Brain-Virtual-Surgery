@@ -55,14 +55,14 @@ export const Navbar = () => {
                   onClick={() => setDropdown((prev) => !prev)}
                 >
                   {user?.UserName}
-                  {/*<img src={user?.ProfilePhoto.url} alt="user photo"/>*/}
+                  <img src={user?.ProfilePhoto.url} alt="user"/>
                 </Link>
               </li>
               {dropdown && (
                 <div className="dropdown">
                   <Link
-                    to="/profile" /////////////// undo comment for the below line when finishing linking profile with id
-                    /*to={`/profile/${user?._id}`}*/
+
+                    to={`/profile/${user?._id}`}
                     className="dropdown-item"
                     onClick={() => setDropdown(false)}
                   >

@@ -13,6 +13,9 @@ import { About } from "./Components/pages/About/About";
 import { Contact } from "./Components/pages/Contact/Contact";
 import { Services } from "./Components/pages/Services/Services";
 import { Login } from "./Components/pages/Authentication/login";
+import {PatientDetails} from "./Components/pages/Patient-Details/PatientDetails";
+import { AddPatient } from "./Components/pages/Add-Patient/AddPatient";
+import {MRIRoom } from "./Components/pages/MRI-Room/MRI-Room";
 
 function App() {
   return (
@@ -22,10 +25,12 @@ function App() {
         <Routes>
           <Route element={<PrivateComponent />}>
             {/* -----------Routes user cannot access unless logging in --------------- */}
-        
-            <Route path="/profile" element={<Profile />} />
-            {/*<Route path="/profile/:id" element={<Profile />} />*/}
-          
+
+            
+            <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/addpatient" element={<AddPatient />} />
+            <Route path="/patientdetails/:id" element={<PatientDetails />} />
+            <Route path="/patientdetails/mriroom/:id" element={<MRIRoom/>} />
           </Route>
           {/* -------------Public Routes--------------------------------------- */}
           <Route path="/" element={<Home />} />

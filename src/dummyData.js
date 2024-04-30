@@ -1,108 +1,216 @@
-export const posts = [
-    {
-        _id: 1,
-        title: "BMW",
-        description: "About BMW",
-        category: "cars",
-        image: "/images/bmw.jpg",
-        likes: [1,2],
-        createdAt: "Fri Nov 04 2022",
-        user: {
-            username: "Youssef Abbas",
-            image: "/images/user-avatar.png"
-        },
+export const patients = [
+  {
+    _id: 1,
+    Surgeon: {
+      UserName: "Ahella Bassem",
+      Email: "ahellabassem12@gmail.com",
     },
-    {
-        _id: 2,
-        title: "JavaScript",
-        description: "About JavaScript",
-        category: "programming",
-        image: "/images/javascript.jpeg",
-        likes: [1,2,3,4],
-        createdAt: "Sun Oct 06 2021",
-        user: {
-            username: "Hasan",
-            image: "/images/user-avatar.png"
-        }
+    First_Name: "Ahmed",
+    Last_Name: "Mohammed",
+    Gender: "Male",
+    Age: "35",
+    createdAt: "Tue Oct 01 2002",
+    Risk_Factors_And_Life_Style: "Risk_Factors_And_Life_Style",
+    Family_History: "Fri Nov 04 2022",
+    Neurological_Examination: "Neurological_Examination",
+    Symptoms: "Symptoms:",
+    Treatment_History: "Treatment_History",
+    Allergies: "Allergies:",
+    Duration_And_Progression_Of_Symptoms:
+      "Duration_And_Progression_Of_Symptoms:",
+    Diagnosis: "Diagnosis",
+    Medical_History: "Medical_History:",
+    Notes: " Notes:",
+    Biopsy_Or_Pathology_Results: " Biopsy_Or_Pathology_Results:",
+    Lab_Test_Result: "Lab_Test_Result:",
+    Current_Medications: "Current_Medications:",
+  },
+  {
+    _id: 2,
+    Surgeon: {
+      UserName: "mohammed ali",
+      Email: "ahellabassem20@gmail.com",
     },
-    {
-        _id: 3,
-        title: "good destination for summer",
-        description: "About Travelling",
-        category: "travelling",
-        image: "/images/istanbul.jpg",
-        likes: [],
-        createdAt: "Fri Oct 08 2021",
-        user: {
-            username: "Ali",
-            image: "/images/user-avatar.png"
-        }
+    First_Name: "Ali",
+    Last_Name: "gasser",
+    Gender: "Male",
+    Age: "30",
+    createdAt: "Sat Jan 07 2019",
+    Risk_Factors_And_Life_Style: "Risk_Factors_And_Life_Style",
+    Family_History: "Fri Nov 04 2022",
+    Neurological_Examination: "Neurological_Examination",
+    Symptoms: "Symptoms:",
+    Treatment_History: "Treatment_History",
+    Allergies: "Allergies:",
+    Duration_And_Progression_Of_Symptoms:
+      "Duration_And_Progression_Of_Symptoms:",
+    Diagnosis: "Diagnosis",
+    Medical_History: "Medical_History:",
+    Notes: " Notes:",
+    Biopsy_Or_Pathology_Results: " Biopsy_Or_Pathology_Results:",
+    Lab_Test_Result: "Lab_Test_Result:",
+    Current_Medications: "Current_Medications:",
+  },
+  {
+    _id: 3,
+    Surgeon: {
+      UserName: "nada omar",
+      Email: "ahellabassem8@gmail.com",
     },
-    {
-        _id: 4,
-        title: "Nanga Parbat",
-        description: "About Nanga Parbat",
-        category: "nature",
-        image: "/images/nangaparbat.jpg",
-        likes: [1,2,3,4,5],
-        createdAt: "Mon Jul 06 2022",
-        user: {
-            username: "Youssef Abbas",
-            image: "/images/user-avatar.png"
-        },
+    First_Name: "mohammed",
+    Last_Name: "Mohammed",
+    Gender: "Male",
+    Age: "40",
+    createdAt: "Sun Feb 12 2020",
+    Risk_Factors_And_Life_Style: "Risk_Factors_And_Life_Style",
+    Family_History: "Fri Nov 04 2022",
+    Neurological_Examination: "Neurological_Examination",
+    Symptoms: "Symptoms:",
+    Treatment_History: "Treatment_History",
+    Allergies: "Allergies:",
+    Duration_And_Progression_Of_Symptoms:
+      "Duration_And_Progression_Of_Symptoms:",
+    Diagnosis: "Diagnosis",
+    Medical_History: "Medical_History:",
+    Notes: " Notes:",
+    Biopsy_Or_Pathology_Results: " Biopsy_Or_Pathology_Results:",
+    Lab_Test_Result: "Lab_Test_Result:",
+    Current_Medications: "Current_Medications:",
+  },
+  {
+    _id: 4,
+    Surgeon: {
+      UserName: "Ahella Bassem",
+      Email: "ahellabassem12@gmail.com",
     },
-    {
-        _id: 5,
-        title: "Baghdad",
-        description: "About Baghdad",
-        category: "travelling",
-        image: "/images/baghdad.jpg",
-        likes: [1,2,3],
-        createdAt: "Fri Oct 12 2022",
-        user: {
-            username: "Hasan",
-            image: "/images/user-avatar.png"
-        }
+    First_Name: "alaa",
+    Last_Name: "nady",
+    Gender: "female",
+    Age: "42",
+    createdAt: "Mon Aug 08 2024",
+    Risk_Factors_And_Life_Style: "Risk_Factors_And_Life_Style",
+    Family_History: "Fri Nov 04 2022",
+    Neurological_Examination: "Neurological_Examination",
+    Symptoms: "Symptoms:",
+    Treatment_History: "Treatment_History",
+    Allergies: "Allergies:",
+    Duration_And_Progression_Of_Symptoms:
+      "Duration_And_Progression_Of_Symptoms:",
+    Diagnosis: "Diagnosis",
+    Medical_History: "Medical_History:",
+    Notes: " Notes:",
+    Biopsy_Or_Pathology_Results: " Biopsy_Or_Pathology_Results:",
+    Lab_Test_Result: "Lab_Test_Result:",
+    Current_Medications: "Current_Medications:",
+  },
+  {
+    _id: 5,
+    Surgeon: {
+      UserName: "Ahella Bassem",
+      Email: "ahellabassem12@gmail.com",
     },
-    {
-        _id: 6,
-        title: "Turkish Coffee",
-        description: "About Turkish Coffee",
-        category: "coffee & tea",
-        image: "/images/coffee.jpg",
-        likes: [1],
-        createdAt: "Fri Oct 21 20222",
-        user: {
-            username: "Ali",
-            image: "/images/user-avatar.png"
-        }
+    First_Name: "asmaa",
+    Last_Name: "owaiss",
+    Gender: "female",
+    Age: "55",
+    createdAt: "Wed May 25 2015",
+    Risk_Factors_And_Life_Style: "Risk_Factors_And_Life_Style",
+    Family_History: "Fri Nov 04 2022",
+    Neurological_Examination: "Neurological_Examination",
+    Symptoms: "Symptoms:",
+    Treatment_History: "Treatment_History",
+    Allergies: "Allergies:",
+    Duration_And_Progression_Of_Symptoms:
+      "Duration_And_Progression_Of_Symptoms:",
+    Diagnosis: "Diagnosis",
+    Medical_History: "Medical_History:",
+    Notes: " Notes:",
+    Biopsy_Or_Pathology_Results: " Biopsy_Or_Pathology_Results:",
+    Lab_Test_Result: "Lab_Test_Result:",
+    Current_Medications: "Current_Medications:",
+  },
+  {
+    _id: 6,
+    Surgeon: {
+      UserName: "Ahella Bassem",
+      Email: "ahellabassem12@gmail.com",
     },
+    First_Name: "marwa",
+    Last_Name: "bassem",
+    Gender: "female",
+    Age: "25",
+    createdAt: "Thu Dec 20 2012",
+    Risk_Factors_And_Life_Style: "Risk_Factors_And_Life_Style",
+    Family_History: "Fri Nov 04 2022",
+    Neurological_Examination: "Neurological_Examination",
+    Symptoms: "Symptoms:",
+    Treatment_History: "Treatment_History",
+    Allergies: "Allergies:",
+    Duration_And_Progression_Of_Symptoms:
+      "Duration_And_Progression_Of_Symptoms:",
+    Diagnosis: "Diagnosis",
+    Medical_History: "Medical_History:",
+    Notes: " Notes:",
+    Biopsy_Or_Pathology_Results: " Biopsy_Or_Pathology_Results:",
+    Lab_Test_Result: "Lab_Test_Result:",
+    Current_Medications: "Current_Medications:",
+  },
 ];
 
 
-export const categories = [
-    {
-        _id: 1,
-        title: 'travelling',
+export const MRIscans = [
+  {
+    _id: 1,
+    Patient: {
+      First_Name: "ahmed",
+      Gender: "Male",
     },
-    {
-        _id: 2,
-        title: 'music',
+    ScanDetails: "ScanDetails",
+    Image: "Image",
+  },
+  {
+    _id: 2,
+    Patient: {
+      First_Name: "ali",
+      Gender: "Male",
     },
-    {
-        _id: 3,
-        title: 'programming',
+    ScanDetails: "ScanDetails",
+    Image: "Image",
+  },
+  {
+    _id: 3,
+    Patient: {
+      First_Name: "mohammed",
+      Gender: "Male",
     },
-    {
-        _id: 4,
-        title: 'cars',
+    ScanDetails: "ScanDetails",
+    Image: "Image",
+  },
+  {
+    _id: 4,
+    Patient: {
+      First_Name: "alaa",
+      Gender: "female",
     },
-    {
-        _id: 5,
-        title: 'nature',
+    ScanDetails: "ScanDetails",
+    Image: "Image",
+  },
+  {
+    _id: 5,
+    Patient: {
+      First_Name: "asmaa",
+      Gender: "female",
     },
-    {
-        _id: 6,
-        title: 'coffee & tea',
+    ScanDetails: "ScanDetails",
+    Image: "Image",
+  },
+  {
+    _id: 6,
+    Patient: {
+      First_Name: "marwa",
+      Gender: "female",
     },
-]
+    ScanDetails: "ScanDetails",
+    Image: "Image",
+  },
+];

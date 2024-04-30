@@ -10,19 +10,24 @@ const authSlice = createSlice({
     isEmailVerified: false,
   },
   reducers: {
-  
     login(state, action) {
       state.user = action.payload;
     },
     logout(state) {
       state.user = null;
     },
-    register(state, action){
-      state.registerMessage=action.payload;
+    register(state, action) {
+      state.registerMessage = action.payload;
+    },
+    setUserPhoto(state, action) {
+      state.user.profilePhoto = action.payload;
+    },
+    setUsername(state, action) {
+      state.user.username = action.payload;
     },
     setIsEmailVerified(state) {
       state.isEmailVerified = true;
-      state.registerMessage=null;
+      state.registerMessage = null;
     },
   },
 });
