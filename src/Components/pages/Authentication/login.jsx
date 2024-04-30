@@ -18,12 +18,12 @@ export const Login = () => {
   const formSubmitHandler = async (e) => {
     e.preventDefault();
 
-    if (email.trim() === "") return toast.error("E-mail is required ");
-    if (password.trim() === "") return toast.error("Password is required");
+    if(email.trim() === "") return toast.error("E-mail is required ");
+    if(password.trim() === "") return toast.error("Password is required");
 
     dispatch(loginUser({ Email: email, Password: password }));
 
-    if (toast.error === "invalid Email or Password") {
+    if(toast.error === "invalid Email or Password") {
       navigate("/login");
     } else {
       navigate("/");

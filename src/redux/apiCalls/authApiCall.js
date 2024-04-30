@@ -14,7 +14,7 @@ export function loginUser(user) {
       toast.error(error.response.data.message);
     }
   };
-}
+};
 
 //Logout User
 
@@ -48,3 +48,28 @@ export function verifyEmail(userId, token) {
     }
   };
 }
+
+/*/ Verify Email
+export function verifyEmail(userId, token) {
+  return async (dispatch) => {
+    try {
+      const response = await request.get(`/api/auth/${userId}/verify/${token}`);
+      const { message, redirectTo } = response.data;
+
+      
+      dispatch(authActions.setIsEmailVerified());
+
+      
+      if (redirectTo) {
+        window.location.href = redirectTo;
+      }
+
+      
+      dispatch(authActions.showSuccessMessage(message));
+    } catch (error) {
+      console.error(error);
+      // Handle error
+      dispatch(authActions.showErrorMessage(error.response.data.message));
+    }
+  };
+}*/

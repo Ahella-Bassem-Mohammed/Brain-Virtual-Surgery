@@ -160,7 +160,7 @@ export const Signup = () => {
                 <FaLock className="icon" />
               </div>
 
-              <div >
+              <div>
                 <center>
                   {" "}
                   <button type="submit" className="signup-submit">

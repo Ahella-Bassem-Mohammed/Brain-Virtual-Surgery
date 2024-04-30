@@ -22,7 +22,10 @@ function App() {
         <Routes>
           <Route element={<PrivateComponent />}>
             {/* -----------Routes user cannot access unless logging in --------------- */}
-            <Route path="/Profile" element={<Profile />} />
+        
+            <Route path="/profile" element={<Profile />} />
+            {/*<Route path="/profile/:id" element={<Profile />} />*/}
+          
           </Route>
           {/* -------------Public Routes--------------------------------------- */}
           <Route path="/" element={<Home />} />
