@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import "./update-profile-model.css";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../../../redux/apiCalls/profileApiCall";
-
-
-
-
 export const UpdateProfileModel = ({ setUpdateProfile,profile }) => {
   const [fname, setFname] = useState(profile.FirstName);
   const [lname, setLname] = useState(profile.LastName);

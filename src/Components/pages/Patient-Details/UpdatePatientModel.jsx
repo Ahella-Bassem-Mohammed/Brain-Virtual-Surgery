@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import "./update-patient-model.css";
 import { toast } from "react-toastify";
 
-export const UpdatePatientModel = ({ setUpdatePatient, patient, mri }) => {
+import { useDispatch/*,useSelector*/ } from "react-redux";
+import { updatePatientDetails } from "../../../redux/apiCalls/patientApiCall";
+
+export const UpdatePatientModel = ({ setUpdatePatient, patient}) => {
   const [fname, setFname] = useState(patient.First_Name);
   const [lname, setLname] = useState(patient.Last_Name);
   const [gender, setGender] = useState(patient.Gender);
@@ -18,9 +21,7 @@ export const UpdatePatientModel = ({ setUpdatePatient, patient, mri }) => {
   const [duration, setDuration] = useState(
     patient.Duration_And_Progression_Of_Symptoms
   );
-  const [diagnosis, setDiagnosis] = useState(
-    patient.Diagnosis
-  );
+  const [diagnosis, setDiagnosis] = useState(patient.Diagnosis);
   const [medicalhistory, setMedicalhistory] = useState(patient.Medical_History);
   const [biopsy, setBiopsy] = useState(patient.Biopsy_Or_Pathology_Results);
   const [labtestresult, setLabtestresult] = useState(patient.Lab_Test_Result);
@@ -28,22 +29,48 @@ export const UpdatePatientModel = ({ setUpdatePatient, patient, mri }) => {
     patient.Current_Medications
   );
   const [notes, setNotes] = useState(patient.Notes);
-  const [file, setFile] = useState(mri.Image);
+  const dispatch = useDispatch();
+
 
   // Update Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    if(fname.trim() === "") return toast.error("First name is required !!");
-    if(lname.trim() === "") return toast.error("Last name is required !!");
-    if(gender.trim() === "") return toast.error("Gender is required !!");
-    if(age.trim() === "") return toast.error("Age is required !!");
-    if(file) return console.log("Image uploaded");
+    if (fname.trim() === "") return toast.error("First name is required !!");
+    if (lname.trim() === "") return toast.error("Last name is required !!");
+    if (gender.trim() === "") return toast.error("Gender is required !!");
+    if (age.trim() === "") return toast.error("Age is required !!");
+
+    dispatch(
+      updatePatientDetails({
+        First_Name: fname,
+        Last_Name: lname,
+        Age: age,
+        Gender: gender,
+        Risk_Factors_And_Life_Style: risk,
+        Family_History:familyhistory,
+        Neurological_Examination:neuro,
+        Symptoms:symptoms,
+        Treatment_History:treatmenthistory,
+        Allergies:allergies,
+        Duration_And_Progression_Of_Symptoms:duration,
+        Diagnosis:diagnosis,
+        Medical_History:medicalhistory,
+        Biopsy_Or_Pathology_Results:biopsy,
+        Lab_Test_Result:labtestresult,
+        Current_Medications:currentmedications,
+        Notes:notes,
+      },patient?._id)
+    );
+    setUpdatePatient(false)
+
   };
+  
+
 
   return (
     <div className="update-patient">
-      <form onClick={formSubmitHandler} className="update-patient-form">
+      <form onSubmit={formSubmitHandler} className="update-patient-form">
         <abbr title="close">
           <i
             onClick={() => setUpdatePatient(false)}
@@ -154,12 +181,8 @@ export const UpdatePatientModel = ({ setUpdatePatient, patient, mri }) => {
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
         ></input>
-        <input
-          type="file"
-          name="file"
-          id="file"
-          onChange={(e) => setFile(e.target.files[0])}
-        ></input>
+        
+
         <button type="submit"> Update</button>
       </form>
     </div>

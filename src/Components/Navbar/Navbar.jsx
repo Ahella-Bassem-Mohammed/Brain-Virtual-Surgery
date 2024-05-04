@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink,useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/apiCalls/authApiCall";
 
 export const Navbar = () => {
   const [nav, setnav] = useState(false);
+  const navigate=useNavigate()
   const changeBackgorund = () => {
     if (window.scrollY >= 50) {
       setnav(true);
@@ -16,6 +17,7 @@ export const Navbar = () => {
   const logoutHandler = () => {
     setDropdown(false);
     dispatch(logoutUser());
+    navigate("/")
   };
   window.addEventListener("scroll", changeBackgorund);
 

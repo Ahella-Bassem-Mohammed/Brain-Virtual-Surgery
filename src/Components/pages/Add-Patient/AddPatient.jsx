@@ -1,7 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addPatient } from "../../../redux/apiCalls/patientApiCall";
+import { RotatingLines } from "react-loader-spinner";
+
 
 export const AddPatient = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, isPatientAdded } = useSelector((state) => state.patient);
+/*  const { user } = useSelector((state) => state.auth);*/
+
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [gender, setGender] = useState("");
@@ -19,8 +29,13 @@ export const AddPatient = () => {
   const [labtestresult, setLabtestresult] = useState("");
   const [currentmedications, setCurrentmedications] = useState("");
   const [notes, setNotes] = useState("");
-  const [file, setFile] = useState(null);
+ 
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, []);
 
+  
+  // Add Patient Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
@@ -28,7 +43,9 @@ export const AddPatient = () => {
     if (lname.trim() === "") return toast.error("Last name is required !!");
     if (gender.trim() === "") return toast.error("Gender is required !!");
     if (age.trim() === "") return toast.error("Age is required !!");
-    if (!file) return toast.error("MRI scan is required !!");
+    
+
+    
 
     const formData = new FormData();
     formData.append("First name", fname);
@@ -48,11 +65,20 @@ export const AddPatient = () => {
     formData.append("Lab_Test_Result", labtestresult);
     formData.append("Current_Medications", currentmedications);
     formData.append("Notes", notes);
-    formData.append("MRI scan", file);
+
+    
+    
+    dispatch(addPatient(formData));
   };
 
+  useEffect(() => {
+    if(isPatientAdded) {
+    navigate(/*`/profile/${user?._id}`*/"/");
+    }
+  }, [isPatientAdded, navigate/*,user*/]);
+
   return (
-    <div>
+    <div className="margin">
       <h1>Add New Patient</h1>
       <form onSubmit={formSubmitHandler}>
         <input
@@ -133,7 +159,6 @@ export const AddPatient = () => {
           value={medicalhistory}
           onChange={(e) => setMedicalhistory(e.target.value)}
         ></input>
-
         <input
           type="text"
           placeholder="Biopsy_Or_Pathology_Results"
@@ -158,13 +183,54 @@ export const AddPatient = () => {
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
         ></input>
-        <input
+        {/*<input
           type="file"
           name="file"
           id="file"
           onChange={(e) => setFile(e.target.files[0])}
-        ></input>
-        <button type="submit"> Add Patient</button>
+  ></input>*/}
+       {/* <img
+          src={
+            file
+              ? URL.createObjectURL(file)
+              : mri?.Image?.url ||
+                "C:React appsVirtualSurgeryBrainVR-mainsrcComponentsAssetsperson.png"
+          }
+          alt="MRI Scan"
+          className="profile-image"
+        />
+        <form onSubmit={mriFormSubmitHandler}>
+          <abbr title="choose profile photo">
+            <label
+              htmlFor="file"
+              className="bi bi-camera-fill upload-profile-photo-icon"
+            ></label>
+          </abbr>
+          <input
+            style={{ display: "none" }}
+            type="file"
+            name="file"
+            id="file"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+          <button className="upload-profile-photo-btn" type="submit">
+            Upload
+          </button>
+        </form>*/}
+        <button type="submit">
+          {" "}
+          {loading ? (
+            <RotatingLines
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="40"
+              visible={true}
+            />
+          ) : (
+            "Add Patient"
+          )}
+        </button>
       </form>
     </div>
   );

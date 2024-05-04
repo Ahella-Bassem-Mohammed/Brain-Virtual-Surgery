@@ -2,26 +2,38 @@ import { toast } from "react-toastify";
 import "./profile.css";
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
-import PatientList from "../../Patient-Component/PatientList";
-import {patients} from "../../../dummyData"
+//import PatientList from "../../Patient-Component/PatientList";
+import { PatientItem } from "../../Patient-Component/PatientItem";
+//import {patients} from "../../../dummyData"
+
 import { UpdateProfileModel } from "../Profile/UpdateProfileModel";
 import {useDispatch,useSelector} from "react-redux";
-import {useParams} from "react-router-dom"
-import { getUserProfile, uploadProfilePhoto } from "../../../redux/apiCalls/profileApiCall";
-
+import {useParams,useNavigate} from "react-router-dom"
+import { deleteProfile, getUserProfile, uploadProfilePhoto } from "../../../redux/apiCalls/profileApiCall";
+import { Link } from "react-router-dom";
+import {Oval} from "react-loader-spinner";
+import{logoutUser} from "../../../redux/apiCalls/authApiCall";
 
 export const Profile = () => {
 
   const [file, setFile] = useState(null);
   const [updateProfile,setUpdateProfile]=useState(false);
   const dispatch=useDispatch();
-  const{ profile }=useSelector( state => state.profile )
+  const{ profile,loading,isProfileDeleted }=useSelector( state => state.profile )
   const {id} = useParams();
-
+  const {user}=useSelector((state)=>state.auth)
+  const navigate=useNavigate();
+  const patients = useSelector((state) => state.patient.patients);
   useEffect(() => {
     dispatch(getUserProfile(id))
     window.scrollTo(0, 0);
   }, [dispatch,id]);
+
+  useEffect(() => {
+     if(isProfileDeleted){
+      navigate("/")
+     }
+   }, [navigate, isProfileDeleted]);
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
@@ -42,17 +54,32 @@ export const Profile = () => {
       icon:"warning",
       buttons:true,
       dangerMode:true,
-    }).then((willDelete)=>{
-      if(willDelete){
-        swal("account has been deleted",{
-          icon:"success",
-        });
-      }else{
-        swal("something went wrong !!")
+    }).then((isOk)=>{
+      if(isOk){
+        dispatch(deleteProfile(user?._id))
+        dispatch(logoutUser());
+      
+
       }
     });
   };
-
+  if(loading){
+    return(
+    <div>
+        <Oval 
+          height={120}
+          width={120}
+          color="#000"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel="oval-loading"
+          secondaryColor="grey"
+          strokeWidth={3}
+          strokeWidthSecondary={3}
+          />
+    </div>)
+  }
   return (
     <section className="profile">
       <div className="profile-header">
@@ -109,7 +136,16 @@ export const Profile = () => {
           {" "}
           {profile?.UserName}'s patients
         </h2>
-        <PatientList patients={patients} />
+        {patients && patients.length > 0 ? 
+        (profile?.patients?.map((patient) => (
+          <PatientItem
+            key={patient._id}
+            patient={patient}
+            username={profile?.UserName}
+            userId={profile?._id}
+          />
+        ))):( <div className="no-items-message">No patients available</div>)}
+        
       </div>
       <button onClick={deleteProfileHandler} className="delete-account-btn">
         Delete Account
@@ -120,6 +156,7 @@ export const Profile = () => {
           setUpdateProfile={setUpdateProfile}
         />
       )}
+      <Link to="/addpatient"> Add Patient</Link>
     </section>
   );
 };

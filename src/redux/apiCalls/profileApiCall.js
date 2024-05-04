@@ -4,7 +4,6 @@ import request from "../../utils/request";
 import { toast } from "react-toastify";
 
 // Get User Profile
-
 export function getUserProfile(userId) {
   return async (dispatch,getState) => {
     try {
@@ -26,8 +25,8 @@ export function getUserProfile(userId) {
   };
 }
 
-// Upload Profile Photo
 
+// Upload Profile Photo
 export function uploadProfilePhoto(newPhoto) {
   return async (dispatch,getState) => {
     try {
@@ -52,9 +51,8 @@ export function uploadProfilePhoto(newPhoto) {
   };
 }
 
+
 // Update User Profile
-
-
 export function updateProfile(userId,profile) {
   return async (dispatch, getState) => {
     try {
@@ -78,6 +76,30 @@ export function updateProfile(userId,profile) {
       localStorage.setItem("userInfo", JSON.stringify(user));
     } catch (error) {
       toast.error(error.response.data.message);
+    }
+  };
+}
+
+
+// Delete User Profile (Account)
+export function deleteProfile(userId) {
+  return async (dispatch, getState) => {
+    try {
+      dispatch(profileActions.setLoading());
+      const { data } = await request.delete(
+        `/api/users/${userId}`,
+        {
+          headers: {
+            token: getState().auth.user.token,
+          },
+        }
+      );
+      dispatch(profileActions.setIsProfileDeleted(data));
+      toast.success(data?.message)
+      setTimeout(()=>dispatch(profileActions.clearIsProfileDeleted()),2000);
+    } catch (error) {
+      toast.error(error.response.data.message);
+      dispatch(profileActions.clearLoading());
     }
   };
 }
