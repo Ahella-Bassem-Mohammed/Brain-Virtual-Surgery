@@ -2,7 +2,6 @@ import { toast } from "react-toastify";
 import "./profile.css";
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
-//import PatientList from "../../Patient-Component/PatientList";
 import { PatientItem } from "../../Patient-Component/PatientItem";
 //import {patients} from "../../../dummyData"
 
