@@ -1,24 +1,29 @@
 import "./verification.css";
 import React, { useEffect, useState } from "react";
-
-import { FaLock } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import {
   getResetPassword,
   resetPassword,
 } from "../../../redux/apiCalls/passwordApiCall";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import { FaLock } from "react-icons/fa";
 
-const ResetPassword = () => {
+
+
+
+export const ResetPassword = () => {
   const dispatch = useDispatch();
+
   const [password, setPassword] = useState("");
+
   const { userId, token } = useParams();
 
   useEffect(() => {
     dispatch(getResetPassword(userId, token));
   }, [dispatch, userId, token]);
 
+  // Reset Password (Enter a new password) Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
     if (password.trim() === "") return toast.error("Password is required !!");
@@ -62,4 +67,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+

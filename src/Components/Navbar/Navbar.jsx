@@ -1,12 +1,19 @@
-import React, { useState } from "react";
-import { Link, NavLink,useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/apiCalls/authApiCall";
 
 export const Navbar = () => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [nav, setnav] = useState(false);
-  const navigate=useNavigate()
+  const [dropdown, setDropdown] = useState(false);
+
+  const { user } = useSelector((state) => state.auth);
+    
   const changeBackgorund = () => {
     if (window.scrollY >= 50) {
       setnav(true);
@@ -14,16 +21,18 @@ export const Navbar = () => {
       setnav(false);
     }
   };
+
+
+  // Logout Function
   const logoutHandler = () => {
     setDropdown(false);
     dispatch(logoutUser());
-    navigate("/")
+    navigate("/");
   };
+
   window.addEventListener("scroll", changeBackgorund);
 
-  const { user } = useSelector((state) => state.auth);
-  const [dropdown, setDropdown] = useState(false);
-  const dispatch = useDispatch();
+  
 
   return (
     <nav className={nav ? "nav active" : "nav"}>
@@ -57,13 +66,12 @@ export const Navbar = () => {
                   onClick={() => setDropdown((prev) => !prev)}
                 >
                   {user?.UserName}
-                  <img src={user?.ProfilePhoto.url} alt="user"/>
+                  <img src={user?.ProfilePhoto.url} alt="user" />
                 </Link>
               </li>
               {dropdown && (
                 <div className="dropdown">
                   <Link
-
                     to={`/profile/${user?._id}`}
                     className="dropdown-item"
                     onClick={() => setDropdown(false)}

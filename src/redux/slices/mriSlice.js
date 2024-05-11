@@ -3,15 +3,28 @@ import { createSlice } from "@reduxjs/toolkit";
 const mriSlice = createSlice({
   name: "mri",
   initialState: {
-    mris: [],
-    mri: null,
+    mri:[],
+    loading: false,
+    isMriScanUploaded:false,
+    
   },
   reducers: {
-    setMriScans(state, action) {
-      state.mris = action.payload;
+    setLoading(state) {
+      state.loading = true;
     },
+    clearLoading(state) {
+      state.loading = false;
+    },
+    setIsMriScanUploaded(state){
+      state.isMriScanUploaded=true;
+      state.loading=false;
+    },
+    clearIsMriScanUploaded(state){
+      state.isMriScanUploaded=false;
+    }
+    ,
     setMriScan(state, action) {
-      state.mri.Image.url = action.payload;
+      state.mri.Image = action.payload;
     },
   },
 });

@@ -1,71 +1,81 @@
-import { toast } from "react-toastify";
 import "./profile.css";
 import React, { useEffect, useState } from "react";
-import swal from "sweetalert";
-import { PatientItem } from "../../Patient-Component/PatientItem";
-//import {patients} from "../../../dummyData"
-
+import { useParams, useNavigate,Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import {
+  deleteProfile,
+  getUserProfile,
+  uploadProfilePhoto,
+} from "../../../redux/apiCalls/profileApiCall";
+import { getAllPatients } from "../../../redux/apiCalls/patientApiCall";
+import { logoutUser } from "../../../redux/apiCalls/authApiCall";
+//import { PatientItem } from "../../Patient-Component/Patient-Item-Cards/PatientItem";
+import {PatientList} from "../../Patient-Component/Patient-Item-Cards/PatientList"
 import { UpdateProfileModel } from "../Profile/UpdateProfileModel";
-import {useDispatch,useSelector} from "react-redux";
-import {useParams,useNavigate} from "react-router-dom"
-import { deleteProfile, getUserProfile, uploadProfilePhoto } from "../../../redux/apiCalls/profileApiCall";
-import { Link } from "react-router-dom";
-import {Oval} from "react-loader-spinner";
-import{logoutUser} from "../../../redux/apiCalls/authApiCall";
+import swal from "sweetalert";
+import { Oval } from "react-loader-spinner";
+
+
 
 export const Profile = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [file, setFile] = useState(null);
-  const [updateProfile,setUpdateProfile]=useState(false);
-  const dispatch=useDispatch();
-  const{ profile,loading,isProfileDeleted }=useSelector( state => state.profile )
-  const {id} = useParams();
-  const {user}=useSelector((state)=>state.auth)
-  const navigate=useNavigate();
-  const patients = useSelector((state) => state.patient.patients);
+  const [updateProfile, setUpdateProfile] = useState(false);
+
+  const { profile, loading, isProfileDeleted } = useSelector(
+    (state) => state.profile
+  );
+  const { user } = useSelector((state) => state.auth);
+  const patients = useSelector((state) => state.patient.patients || []);
+
+  const { id } = useParams();
+
   useEffect(() => {
-    dispatch(getUserProfile(id))
+    dispatch(getUserProfile(id));
+    dispatch(getAllPatients())
     window.scrollTo(0, 0);
-  }, [dispatch,id]);
+  }, [dispatch, id]);
 
   useEffect(() => {
-     if(isProfileDeleted){
-      navigate("/")
-     }
-   }, [navigate, isProfileDeleted]);
+    if (isProfileDeleted) {
+      navigate("/");
+    }
+  }, [navigate, isProfileDeleted]);
 
+  // Upload profile photo Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    if(!file) return toast.warning("there is no file !!");
-    
-    const formData=new FormData();
-    formData.append("image",file)
+    if (!file) return toast.warning("there is no file !!");
+
+    const formData = new FormData();
+    formData.append("image", file);
 
     dispatch(uploadProfilePhoto(formData));
-
-   
   };
 
-  const deleteProfileHandler=()=>{
+  // Delete Profile (Account) Form Submit Handler
+  const deleteProfileHandler = () => {
     swal({
-      title:"Are you sure?",
-      text:"you will not be able to recover your profile",
-      icon:"warning",
-      buttons:true,
-      dangerMode:true,
-    }).then((isOk)=>{
-      if(isOk){
-        dispatch(deleteProfile(user?._id))
+      title: "Are you sure?",
+      text: "you will not be able to recover your profile",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((isOk) => {
+      if (isOk) {
+        dispatch(deleteProfile(user?._id));
         dispatch(logoutUser());
-      
-
       }
     });
   };
-  if(loading){
-    return(
-    <div>
-        <Oval 
+  
+  if (loading) {
+    return (
+      <div >
+        <Oval
           height={120}
           width={120}
           color="#000"
@@ -76,8 +86,9 @@ export const Profile = () => {
           secondaryColor="grey"
           strokeWidth={3}
           strokeWidthSecondary={3}
-          />
-    </div>)
+        />
+      </div>
+    );
   }
   return (
     <section className="profile">
@@ -135,16 +146,24 @@ export const Profile = () => {
           {" "}
           {profile?.UserName}'s patients
         </h2>
-        {patients && patients.length > 0 ? 
-        (profile?.patients?.map((patient) => (
-          <PatientItem
-            key={patient._id}
-            patient={patient}
-            username={profile?.UserName}
-            userId={profile?._id}
-          />
-        ))):( <div className="no-items-message">No patients available</div>)}
-        
+        {patients && patients.length > 0 ? (
+          <PatientList patients={patients} />
+        ) : (
+          <div className="no-items-message">No patients available</div>
+        )}
+
+        {/*{patients && patients.length > 0 ? (
+          profile?.patients?.map((patient) => (
+            <PatientItem
+              key={patient._id}
+              patient={patient}
+              //username={profile?.UserName}
+              //userId={profile?._id}
+            />
+          ))
+        ) : (
+          <div className="no-items-message">No patients available</div>
+        )}*/}
       </div>
       <button onClick={deleteProfileHandler} className="delete-account-btn">
         Delete Account
@@ -155,7 +174,7 @@ export const Profile = () => {
           setUpdateProfile={setUpdateProfile}
         />
       )}
-      <Link to="/addpatient"> Add Patient</Link>
+      <Link to={/*`/addpatient/${user?._id}`*/"/addpatient"}> Add Patient</Link>
     </section>
   );
 };

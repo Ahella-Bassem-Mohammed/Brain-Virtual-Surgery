@@ -1,23 +1,25 @@
 import "./App.css";
-import { Navbar } from "./Components/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
+import { Navbar } from "./Components/Navbar/Navbar";
 import { Signup } from "./Components/pages/Authentication/signup";
-import ForgotPassword from "./Components/pages/Verification/ForgotPassword";
-import ResetPassword from "./Components/pages/Verification/ResetPassword";
-import NotFound from "./Components/pages/Verification/NotFound";
-import { Profile } from "./Components/pages/Profile/Profile";
-import PrivateComponent from "./Components/PrivateComponent";
+import { Login } from "./Components/pages/Authentication/login";
 import { VerifyEmail } from "./Components/pages/Verification/VerifyEmail";
+import {ForgotPassword} from "./Components/pages/Verification/ForgotPassword";
+import {ResetPassword} from "./Components/pages/Verification/ResetPassword";
+import {NotFound} from "./Components/pages/Verification/NotFound";
+import { Profile } from "./Components/pages/Profile/Profile";
 import { Home } from "./Components/pages/Home/Home";
 import { About } from "./Components/pages/About/About";
 import { Contact } from "./Components/pages/Contact/Contact";
 import { Services } from "./Components/pages/Services/Services";
-import { Login } from "./Components/pages/Authentication/login";
-import {PatientDetails} from "./Components/pages/Patient-Details/PatientDetails";
-import { AddPatient } from "./Components/pages/Add-Patient/AddPatient";
-import {MRIRoom } from "./Components/pages/MRI-Room/MRI-Room";
+import {PatientDetails} from "./Components/Patient-Component/Patient-Details/PatientDetails";
+import { AddPatient } from "./Components/Patient-Component/Add-Patient/AddPatient";
+import {MRIRoom } from "./Components/MRI-Component/MRI-Room/MRIRoom";
+import {PrivateComponent} from "./Components/PrivateComponent";
+
 
 function App() {
+
   return (
     <>
       <div className="App">
@@ -31,8 +33,10 @@ function App() {
             <Route path="/addpatient" element={<AddPatient />} />
             <Route path="/patientdetails/:id" element={<PatientDetails />} />
             <Route path="/patientdetails/mriroom/:id" element={<MRIRoom/>} />
+
           </Route>
           {/* -------------Public Routes--------------------------------------- */}
+          
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
@@ -49,6 +53,7 @@ function App() {
             element={<ResetPassword />}
           />
           <Route path="*" element={<NotFound />} />
+        
         </Routes>
       </div>
     </>

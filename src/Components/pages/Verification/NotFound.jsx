@@ -1,7 +1,7 @@
 import "./verification.css";
 import { Link } from "react-router-dom";
 
-const NotFound = () => {
+export const NotFound = () => {
   return (
     <section className="not-found">
       <div className="not-found-title">404</div>
@@ -13,4 +13,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+

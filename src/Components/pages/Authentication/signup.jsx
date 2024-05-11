@@ -1,16 +1,17 @@
 import "./authentication.css";
 import "../Verification/verification.css";
-import React from "react";
-import { useState } from "react";
+import React,{useState} from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { registerUser } from "../../../redux/apiCalls/authApiCall";
 import { BiMessageRoundedDetail, BiMessageSquareDots } from "react-icons/bi";
 import { FaUser, FaLock, FaTransgender } from "react-icons/fa";
 import { MdEmail, MdSubtitles } from "react-icons/md";
 
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { registerUser } from "../../../redux/apiCalls/authApiCall";
+
 
 export const Signup = () => {
+
   const dispatch = useDispatch();
 
   const [fname, setFName] = useState("");
@@ -23,6 +24,7 @@ export const Signup = () => {
   const [specialist, setSpecialist] = useState("");
   const [password, setPassword] = useState("");
 
+  // Sign up Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
 

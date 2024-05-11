@@ -1,14 +1,19 @@
 import "./verification.css";
 import React, { useState } from "react";
-import { FaUser } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { forgotPassword } from "../../../redux/apiCalls/passwordApiCall";
+import { FaUser } from "react-icons/fa";
 
-const ForgotPassword = () => {
+
+
+export const ForgotPassword = () => {
+  
   const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
 
+  // Forgot Password (Enter an email) Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
@@ -51,4 +56,3 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;

@@ -1,18 +1,24 @@
 import "./contact.css";
-import contact from "../../Assets/contact.png";
 import React, { useState, useEffect } from "react";
+import contact from "../../Assets/contact.png";
+
 
 
 
 export const Contact = () => {
+
   const [result, setResult] = React.useState("Submit");
   const [showImage, setShowImage] = useState(false);
+  
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowImage(true);
     }, 0.0000000001);
     return () => clearTimeout(timeout);
   }, []);
+  
+
+  // Sending a Message to contact us Handler
   const sendMessage = async (event) => {
     event.preventDefault();
     setResult("Sending....");

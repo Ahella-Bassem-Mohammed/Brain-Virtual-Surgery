@@ -1,5 +1,8 @@
 import React,{useEffect} from 'react'
 
+
+// How the MRI is manipulated with our model
+
 export const MRIRoom = () => {
 
 

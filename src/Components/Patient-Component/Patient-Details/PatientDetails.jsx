@@ -1,16 +1,19 @@
-import "./patientdetails.css"
+import "./patientDetails.css"
 import React,{useEffect, useState} from 'react'
-import { MRIscans/*,patients*/ } from "../../../dummyData";
-import{useParams,Link,useNavigate} from "react-router-dom";
-import { UpdatePatientModel } from "./UpdatePatientModel";
-import swal from "sweetalert";
-import { useDispatch,useSelector } from "react-redux";
-import {  fetchSinglePatient } from "../../../redux/apiCalls/patientApiCall";
-//import{fetchSingleMRI} from "../../../redux/apiCalls/mriApiCall";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+//import { toast } from "react-toastify";
+
+
+import { UpdatePatientModel } from "../Update-Patient-Model/UpdatePatientModel";
+import { getSinglePatient } from "../../../redux/apiCalls/patientApiCall";
 import { deletePatient } from "../../../redux/apiCalls/patientApiCall";
-/*import { toast } from "react-toastify";
-import { updateMriScan } from "../../../redux/apiCalls/mriApiCall";
-*/
+//import { updateMriScan } from "../../../redux/apiCalls/mriApiCall";
+//import{fetchSingleMRI} from "../../../redux/apiCalls/mriApiCall";
+
+import { MRIItem } from "../../MRI-Component/MRI-Item/MRIItem";
+import swal from "sweetalert";
+//import { MRIscans /*,patients*/ } from "../../../dummyData";
  
 
 
@@ -19,21 +22,26 @@ import { updateMriScan } from "../../../redux/apiCalls/mriApiCall";
 export const PatientDetails = () => {
   const dispatch = useDispatch();
   const navigate=useNavigate();
+
   const { patient } = useSelector((state) => state.patient);
   //const { mri } = useSelector((state) => state.mri);
+   const { mri } = useSelector((state) => ({
+     mri: state.mri || [], // Providing a default value if loadingg is undefined
+   }));
   const {user}=useSelector((state)=>state.auth)
   
   //const [file, setFile] = useState(mri.Image);
+  const [updatePatient, setUpdatePatient] = useState(false);
 
   const { id } = useParams();
-  const mri =MRIscans.find((m) => m._id === parseInt(id))
+  //const mri =MRIscans.find((m) => m._id === parseInt(id))
   //const patient = patients.find((p) => p._id === parseInt(id));
 
-  const [updatePatient, setUpdatePatient] = useState(false);
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(fetchSinglePatient(id));
+    dispatch(getSinglePatient(id));
     //dispatch(fetchSingleMRI(id));
   }, [dispatch, id]);
 
@@ -66,8 +74,8 @@ export const PatientDetails = () => {
 
   return (
     <div className="margin">
-      <div>{mri?.Patient.First_Name}</div>
-      <div>{mri?.Patient.Gender}</div>
+      <div>{patient?.First_Name}</div>
+      <div>{patient?.Gender}</div>
 
       <strong>Image :</strong>
       <p>{mri?.Image}</p>
@@ -89,6 +97,7 @@ export const PatientDetails = () => {
           setUpdatePatient={setUpdatePatient}
         />
       )}
+      <MRIItem/>
       {/*<form onSubmit={updateMriHandler}>
         <abbr title="choose profile photo">
           <label

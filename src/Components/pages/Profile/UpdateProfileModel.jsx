@@ -1,8 +1,13 @@
+import "./updateProfileModel.css";
 import React, { useState } from "react";
-import "./update-profile-model.css";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../../../redux/apiCalls/profileApiCall";
-export const UpdateProfileModel = ({ setUpdateProfile,profile }) => {
+
+
+export const UpdateProfileModel = ({ setUpdateProfile, profile }) => {
+
+  const dispatch = useDispatch();
+
   const [fname, setFname] = useState(profile.FirstName);
   const [lname, setLname] = useState(profile.LastName);
   const [username, setUsername] = useState(profile.UserName);
@@ -13,29 +18,30 @@ export const UpdateProfileModel = ({ setUpdateProfile,profile }) => {
   const [title, setTitle] = useState(profile.Title);
   const [password, setPassword] = useState("");
 
-  const dispatch=useDispatch();
   
-  // Update Form Submit Handler
+
+  // Update Profile Form Submit Handler
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    const updatedUser={
-      FirstName:fname,
-      LastName:lname,
-      UserName:username,
-      Email:email,
-      Age:age,
-      Gender:gender,
-      Specialist:specialist,
-      Title:title
+    const updatedUser = {
+      FirstName: fname,
+      LastName: lname,
+      UserName: username,
+      Email: email,
+      Age: age,
+      Gender: gender,
+      Specialist: specialist,
+      Title: title,
+    };
+
+    if (password.trim() !== "") {
+      updatedUser.password = password;
     }
 
-    if(password.trim() !==""){updatedUser.password=password;}
-
-    dispatch(updateProfile(profile?._id,updatedUser));
+    dispatch(updateProfile(profile?._id, updatedUser));
     setUpdateProfile(false);
-
   };
 
   return (

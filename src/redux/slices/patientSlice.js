@@ -13,9 +13,9 @@ const patientSlice = createSlice({
     setPatients(state, action) {
       state.patients = action.payload;
     },
-    setPatientsCount(state, action) {
+    /*setPatientsCount(state, action) {
       state.patientsCount = action.payload;
-    },
+    },*/
     setLoading(state) {
       state.loading = true;
     },

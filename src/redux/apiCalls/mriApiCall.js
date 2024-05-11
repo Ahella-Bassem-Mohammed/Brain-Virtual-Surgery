@@ -8,23 +8,21 @@ import { toast } from "react-toastify";
 export function uploadMriScan(newScan) {
   return async (dispatch,getState) => {
     try {
+      dispatch(mriActions.setLoading());
       
-      const { data } = await request.post(`/api/mriscan/`,newScan,{
-        headers:{token:getState().auth.user.token,
-    "Content-Type":"multipart/form-data"}
+      const{data}=await request.post(`/api/mriscan`,{MRIScan: newScan}, {
+        headers: {
+          token: getState().auth.user.token,
+          "Content-Type": "multipart/form-data",
+        },
       });
-      dispatch(mriActions.setMriScan(data.Image));
-      
+      //dispatch(mriActions.setMriScan(data.Image))
+      dispatch(mriActions.setIsMriScanUploaded());
+      setTimeout(() => dispatch(mriActions.clearIsMriScanUploaded()), 2000);
       toast.success(data.message);
-
-      // modify the user in local storage with new photo
-     /* const user=JSON.parse(localStorage.getItem("userInfo"));
-      user.ProfilePhoto=data?.ProfilePhoto;
-      localStorage.setItem("userInfo",JSON.stringify(user));*/
-
-     
     } catch (error) {
       toast.error(error.response.data.message);
+      dispatch(mriActions.clearLoading());
     }
   };
 }

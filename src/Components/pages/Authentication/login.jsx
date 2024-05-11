@@ -1,20 +1,22 @@
 import "./authentication.css";
 import"../Verification/verification.css"
 import React, { useState } from "react";
-
-import { FaLock, FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../../redux/apiCalls/authApiCall";
 import { toast } from "react-toastify";
+import { loginUser } from "../../../redux/apiCalls/authApiCall";
+import { FaLock, FaUser } from "react-icons/fa";
 import Cookies from "js-cookie";
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  // Login Form Submit Handler
   const formSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -30,6 +32,7 @@ export const Login = () => {
     }
   };
 
+  // Setting a Cookie
   const SetCookie = () => {
     Cookies.set("email", document.getElementById("email").value, {
       expires: 1,

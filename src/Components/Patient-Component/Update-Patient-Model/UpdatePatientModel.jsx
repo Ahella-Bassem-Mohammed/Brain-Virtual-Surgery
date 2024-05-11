@@ -1,11 +1,12 @@
+import "./updatePatientModel.css";
 import React, { useState } from "react";
-import "./update-patient-model.css";
+import { useDispatch /*,useSelector*/ } from "react-redux";
 import { toast } from "react-toastify";
-
-import { useDispatch/*,useSelector*/ } from "react-redux";
 import { updatePatientDetails } from "../../../redux/apiCalls/patientApiCall";
 
-export const UpdatePatientModel = ({ setUpdatePatient, patient}) => {
+
+export const UpdatePatientModel = ({ setUpdatePatient, patient }) => {
+
   const [fname, setFname] = useState(patient.First_Name);
   const [lname, setLname] = useState(patient.Last_Name);
   const [gender, setGender] = useState(patient.Gender);
@@ -31,8 +32,7 @@ export const UpdatePatientModel = ({ setUpdatePatient, patient}) => {
   const [notes, setNotes] = useState(patient.Notes);
   const dispatch = useDispatch();
 
-
-  // Update Form Submit Handler
+  // Update Patient Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
@@ -42,31 +42,31 @@ export const UpdatePatientModel = ({ setUpdatePatient, patient}) => {
     if (age.trim() === "") return toast.error("Age is required !!");
 
     dispatch(
-      updatePatientDetails({
-        First_Name: fname,
-        Last_Name: lname,
-        Age: age,
-        Gender: gender,
-        Risk_Factors_And_Life_Style: risk,
-        Family_History:familyhistory,
-        Neurological_Examination:neuro,
-        Symptoms:symptoms,
-        Treatment_History:treatmenthistory,
-        Allergies:allergies,
-        Duration_And_Progression_Of_Symptoms:duration,
-        Diagnosis:diagnosis,
-        Medical_History:medicalhistory,
-        Biopsy_Or_Pathology_Results:biopsy,
-        Lab_Test_Result:labtestresult,
-        Current_Medications:currentmedications,
-        Notes:notes,
-      },patient?._id)
+      updatePatientDetails(
+        {
+          First_Name: fname,
+          Last_Name: lname,
+          Age: age,
+          Gender: gender,
+          Risk_Factors_And_Life_Style: risk,
+          Family_History: familyhistory,
+          Neurological_Examination: neuro,
+          Symptoms: symptoms,
+          Treatment_History: treatmenthistory,
+          Allergies: allergies,
+          Duration_And_Progression_Of_Symptoms: duration,
+          Diagnosis: diagnosis,
+          Medical_History: medicalhistory,
+          Biopsy_Or_Pathology_Results: biopsy,
+          Lab_Test_Result: labtestresult,
+          Current_Medications: currentmedications,
+          Notes: notes,
+        },
+        patient?._id
+      )
     );
-    setUpdatePatient(false)
-
+    setUpdatePatient(false);
   };
-  
-
 
   return (
     <div className="update-patient">
@@ -181,7 +181,6 @@ export const UpdatePatientModel = ({ setUpdatePatient, patient}) => {
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
         ></input>
-        
 
         <button type="submit"> Update</button>
       </form>

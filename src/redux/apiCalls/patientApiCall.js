@@ -3,11 +3,15 @@ import request from "../../utils/request";
 import { toast } from "react-toastify";
 
 
-// Fetch Patients Based on Page Number 
-export function fetchPatients(pageNumber) {
-  return async (dispatch) => {
+// Get All Patients
+export function getAllPatients() {
+  return async (dispatch,getState) => {
     try {
-      const { data } = await request.get(`/api/patients?pageNumber=${pageNumber}`);
+      const { data } = await request.get(`/api/patients/`,{
+        headers: {
+          token: getState().auth.user.token,
+          
+        },});
 
       dispatch(patientActions.setPatients(data));
     } catch (error) {
@@ -20,9 +24,8 @@ export function fetchPatients(pageNumber) {
   };
 }
 
-
-// Get Patient Count
-export function getPatientsCount(){
+// Get Patient Count // NOT USED AT ALL
+/*export function getPatientsCount(){
   return async (dispatch)=>{
     try{
       const { data}=await request.get(`/api/patients/count`);
@@ -31,22 +34,25 @@ export function getPatientsCount(){
       toast.error(error.response.data.message);
     }
   }
-}
-
+}*/
 
 // Add Patient
-export function addPatient(newPatient){
+export function addPatient({Patient:newPatient}){
   return async (dispatch,getState)=>{
 
     try{
-      dispatch(patientActions.setLoading());
 
-      await request.post(`/api/patients`, newPatient, {
-        headers: {
-          token: getState().auth.user.token,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      dispatch(patientActions.setLoading());
+      await request.post(
+        "/api/patients",
+        { Patient: newPatient },
+        {
+          headers: {
+            token: getState().auth.user.token,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       dispatch(patientActions.setIsPatientAdded());
       setTimeout(()=>dispatch(patientActions.clearIsPatientAdded()),2000)
     }catch(error){
@@ -56,9 +62,8 @@ export function addPatient(newPatient){
   }
 }
 
-
-// Fetch Single Patient Details
-export function fetchSinglePatient(patientId) {
+// Get Single Patient Details
+export function getSinglePatient(patientId) {
   return async (dispatch) => {
     try {
       const { data } = await request.get(
@@ -76,7 +81,6 @@ export function fetchSinglePatient(patientId) {
   };
 }
 
-
 // Update Patient Details
 export function updatePatientDetails(newPatient,patientId){
     return async (dispatch,getState)=>{
@@ -93,8 +97,7 @@ export function updatePatientDetails(newPatient,patientId){
     }
 }
 
-
-// Delete Patient 
+// Delete Patient
 export function deletePatient(patientId){
     return async (dispatch,getState)=>{
         try{
@@ -109,6 +112,4 @@ export function deletePatient(patientId){
             toast.error(error.response.data.message);
         }
     }
-}
-
-
+  }
