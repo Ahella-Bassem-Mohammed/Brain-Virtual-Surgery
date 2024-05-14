@@ -1,7 +1,10 @@
 import "./patientDetails.css"
 import React,{useEffect, useState} from 'react'
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams/*, Link*/, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
+//import { AddMRI } from "../../MRI-Component/Add-MRI/AddMRI";
+//import { MRIItem } from "../../MRI-Component/MRI-Item/MRIItem";
 //import { toast } from "react-toastify";
 
 
@@ -11,9 +14,9 @@ import { deletePatient } from "../../../redux/apiCalls/patientApiCall";
 //import { updateMriScan } from "../../../redux/apiCalls/mriApiCall";
 //import{fetchSingleMRI} from "../../../redux/apiCalls/mriApiCall";
 
-import { MRIItem } from "../../MRI-Component/MRI-Item/MRIItem";
+
 import swal from "sweetalert";
-//import { MRIscans /*,patients*/ } from "../../../dummyData";
+
  
 
 
@@ -25,9 +28,9 @@ export const PatientDetails = () => {
 
   const { patient } = useSelector((state) => state.patient);
   //const { mri } = useSelector((state) => state.mri);
-   const { mri } = useSelector((state) => ({
-     mri: state.mri || [], // Providing a default value if loadingg is undefined
-   }));
+   //const { mri } = useSelector((state) => ({
+     //mri: state.mri || [], // Providing a default value if loadingg is undefined
+   //}));
   const {user}=useSelector((state)=>state.auth)
   
   //const [file, setFile] = useState(mri.Image);
@@ -35,7 +38,7 @@ export const PatientDetails = () => {
 
   const { id } = useParams();
   //const mri =MRIscans.find((m) => m._id === parseInt(id))
-  //const patient = patients.find((p) => p._id === parseInt(id));
+ 
 
   
 
@@ -77,11 +80,9 @@ export const PatientDetails = () => {
       <div>{patient?.First_Name}</div>
       <div>{patient?.Gender}</div>
 
-      <strong>Image :</strong>
+      {/*<strong>Image :</strong>
       <p>{mri?.Image}</p>
-      <Link to={`/patientdetails/mriroom/${mri?._id}`}>
-        {mri?.ScanDetails}
-      </Link>
+      <Link to={`/patientdetails/mriroom/${mri?.patient?._id}`}>{mri?.patient?.ScanDetails}</Link>*/}
       <span>{new Date(patient?.createdAt).toDateString()}</span>
 
       <div>
@@ -91,13 +92,22 @@ export const PatientDetails = () => {
         ></i>
         <i onClick={deletePatientHandler} className="bi bi-trash-fill"></i>
       </div>
-      {updatePatient && (
+       {updatePatient && (
         <UpdatePatientModel
           patient={patient}
           setUpdatePatient={setUpdatePatient}
         />
       )}
-      <MRIItem/>
+
+
+      {/* <MRIItem />
+      <AddMRI />*/}
+
+
+
+
+
+
       {/*<form onSubmit={updateMriHandler}>
         <abbr title="choose profile photo">
           <label

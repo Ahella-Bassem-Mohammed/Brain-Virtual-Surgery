@@ -5,12 +5,12 @@ import { toast } from "react-toastify";
 
 // Upload MRI Scan
 
-export function uploadMriScan(newScan) {
+export function uploadMriScan(MRIScan) {
   return async (dispatch,getState) => {
     try {
       dispatch(mriActions.setLoading());
       
-      const{data}=await request.post(`/api/mriscan`,{MRIScan: newScan}, {
+      const{data}=await request.post(`/api/mriscan`,MRIScan, {
         headers: {
           token: getState().auth.user.token,
           "Content-Type": "multipart/form-data",
@@ -29,11 +29,13 @@ export function uploadMriScan(newScan) {
 
 // Fetch Single MRI Scan
 export function fetchSingleMRI(mriId) {
-  return async (dispatch) => {
+  return async (dispatch,getState) => {
     try {
-      const { data } = await request.get(`/api/mriscan/${mriId}`);
+      const { data } = await request.get(`/api/mriscan/${mriId}`,
+        {headers:{token:getState().auth.user.token}}
+      );
 
-      dispatch(mriActions.setMriScans(data));
+      dispatch(mriActions.setMriScan(data));
     } catch (error) {
       if (error.response && error.response.data) {
         toast.error(error.response.data.message);
@@ -46,9 +48,9 @@ export function fetchSingleMRI(mriId) {
 
 // Update MRI Scan 
 export function updateMriScan(newScan,mriId){
-    return async (dispatch,getState)=>{
+    return async (getState)=>{
         try{
-            await request.put(`/api/mriscan/upload-image/${mriId}`,newScan,{
+            await request.put(`/api/mriscan/update-image/${mriId}`,newScan,{
                 headers: {token:getState().auth.user.token,
                 "Content-Type":"multipart/form-data",
             }

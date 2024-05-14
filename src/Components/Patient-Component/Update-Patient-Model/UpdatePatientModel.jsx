@@ -1,6 +1,6 @@
 import "./updatePatientModel.css";
 import React, { useState } from "react";
-import { useDispatch /*,useSelector*/ } from "react-redux";
+import { useDispatch ,useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { updatePatientDetails } from "../../../redux/apiCalls/patientApiCall";
 
@@ -41,27 +41,28 @@ export const UpdatePatientModel = ({ setUpdatePatient, patient }) => {
     if (gender.trim() === "") return toast.error("Gender is required !!");
     if (age.trim() === "") return toast.error("Age is required !!");
 
+    const updatedPatient = {
+      First_Name: fname,
+      Last_Name: lname,
+      Age: age,
+      Gender: gender,
+      Risk_Factors_And_Life_Style: risk,
+      Family_History: familyhistory,
+      Neurological_Examination: neuro,
+      Symptoms: symptoms,
+      Treatment_History: treatmenthistory,
+      Allergies: allergies,
+      Duration_And_Progression_Of_Symptoms: duration,
+      Diagnosis: diagnosis,
+      Medical_History: medicalhistory,
+      Biopsy_Or_Pathology_Results: biopsy,
+      Lab_Test_Result: labtestresult,
+      Current_Medications: currentmedications,
+      Notes: notes,
+    };
+
     dispatch(
-      updatePatientDetails(
-        {
-          First_Name: fname,
-          Last_Name: lname,
-          Age: age,
-          Gender: gender,
-          Risk_Factors_And_Life_Style: risk,
-          Family_History: familyhistory,
-          Neurological_Examination: neuro,
-          Symptoms: symptoms,
-          Treatment_History: treatmenthistory,
-          Allergies: allergies,
-          Duration_And_Progression_Of_Symptoms: duration,
-          Diagnosis: diagnosis,
-          Medical_History: medicalhistory,
-          Biopsy_Or_Pathology_Results: biopsy,
-          Lab_Test_Result: labtestresult,
-          Current_Medications: currentmedications,
-          Notes: notes,
-        },
+      updatePatientDetails(updatedPatient,
         patient?._id
       )
     );

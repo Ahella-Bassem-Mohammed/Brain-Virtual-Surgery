@@ -20,6 +20,7 @@ export const AddMRI = () => {
   const { isMriScanUploaded } = useSelector((state) => ({
   isMriScanUploaded: state.isMriScanUploaded || false, // Providing a default value if loadingg is undefined
   }));
+  const [scanD,setScanD]=useState('');
   const [file, setFile] = useState(null);
 
   // Upload MRI Form Submit Handler
@@ -27,7 +28,9 @@ export const AddMRI = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("Image", {Image:file});
+    formData.append("ScanDetalies",scanD)
+    formData.append("Image", file);
+    
     dispatch(uploadMriScan(formData));
   };
 
@@ -46,6 +49,12 @@ export const AddMRI = () => {
         className="MRI-image"
       />*/}
       <form onSubmit={formSubmitHandler}>
+        <input
+          type="text"
+          placeholder="Scan Details"
+          value={scanD}
+          onChange={(e) => setScanD(e.target.value)}
+        ></input>
         <input
           type="file"
           name="file"

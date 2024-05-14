@@ -1,21 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const patientSlice = createSlice({
   name: "patient",
   initialState: {
-    patients:[],
+    patients: [],
     patientsCount: null,
     loading: false,
     isPatientAdded: false,
-    patient:null,
+    patient: null,
   },
   reducers: {
     setPatients(state, action) {
       state.patients = action.payload;
     },
-    /*setPatientsCount(state, action) {
-      state.patientsCount = action.payload;
-    },*/
     setLoading(state) {
       state.loading = true;
     },
@@ -28,15 +24,13 @@ const patientSlice = createSlice({
     },
     clearIsPatientAdded(state) {
       state.isPatientAdded = false;
-      
     },
-    setPatient(state, action){
-      state.patient=action.payload;
+    setPatient(state, action) {
+      state.patient = action.payload;
     },
-    deletePatient(state, action){
-      state.patients=state.patients.filter(p=>p._id !== action.payload);
-
-    }
+    deletePatient(state, action) {
+      state.patients = state.patients.filter(p => p._id !== action.payload);
+    },
   },
 });
 

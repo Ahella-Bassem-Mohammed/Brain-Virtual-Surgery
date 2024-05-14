@@ -2,16 +2,15 @@ import { patientActions } from "../slices/patientSlice";
 import request from "../../utils/request";
 import { toast } from "react-toastify";
 
-
 // Get All Patients
 export function getAllPatients() {
-  return async (dispatch,getState) => {
+  return async (dispatch, getState) => {
     try {
-      const { data } = await request.get(`/api/patients/`,{
+      const { data } = await request.get(`/api/patients`, {
         headers: {
           token: getState().auth.user.token,
-          
-        },});
+        },
+      });
 
       dispatch(patientActions.setPatients(data));
     } catch (error) {
@@ -37,37 +36,37 @@ export function getAllPatients() {
 }*/
 
 // Add Patient
-export function addPatient({Patient:newPatient}){
-  return async (dispatch,getState)=>{
-
-    try{
-
+export function addPatient(Patient) {
+  return async (dispatch, getState) => {
+    try {
       dispatch(patientActions.setLoading());
-      await request.post(
-        "/api/patients",
-        { Patient: newPatient },
-        {
-          headers: {
-            token: getState().auth.user.token,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      // console.log(Patient)
+      await request.post(`/api/patients`, Patient, {
+        headers: {
+          token: getState().auth.user.token,
+          //"Content-Type": "multipart/form-data"
+        },
+      });
       dispatch(patientActions.setIsPatientAdded());
-      setTimeout(()=>dispatch(patientActions.clearIsPatientAdded()),2000)
-    }catch(error){
-      toast.error(error.response.data.message)
+      setTimeout(() => dispatch(patientActions.clearIsPatientAdded()), 2000);
+    } catch (error) {
+      toast.error(error.response?.data.message);
       dispatch(patientActions.clearLoading());
     }
-  }
+  };
 }
 
 // Get Single Patient Details
 export function getSinglePatient(patientId) {
-  return async (dispatch) => {
+  return async (dispatch ,getState) => {
     try {
       const { data } = await request.get(
-        `/api/patients/${patientId}`
+        `/api/patients/${patientId}` ,{
+          headers:
+          {
+            token:getState().auth.user.token
+          }
+        }
       );
 
       dispatch(patientActions.setPatient(data));
@@ -82,34 +81,34 @@ export function getSinglePatient(patientId) {
 }
 
 // Update Patient Details
-export function updatePatientDetails(newPatient,patientId){
-    return async (dispatch,getState)=>{
-        try{
-            const {data}=await request.put(`/api/patients/${patientId}`,newPatient,{
-                headers: {token:getState().auth.user.token,
-                
-            }
-            });
-            dispatch(patientActions.setPatient(data))
-        }catch(error){
-            toast.error(error.response.data.message);
+export function updatePatientDetails(Patient, patientId) {
+  return async (dispatch, getState) => {
+    try {
+      const { data } = await request.put(
+        `/api/patients/${patientId}`,
+        Patient,
+        {
+          headers: { token: getState().auth.user.token },
         }
+      );
+      dispatch(patientActions.setPatient(data));
+    } catch (error) {
+      toast.error(error.response.data.message);
     }
+  };
 }
 
 // Delete Patient
-export function deletePatient(patientId){
-    return async (dispatch,getState)=>{
-        try{
-            const {data}=await request.delete(`/api/patients/${patientId}`,{
-                headers: {token:getState().auth.user.token,
-                
-            }
-            });
-            dispatch(patientActions.deletePatient(data.patientId));
-            toast.success(data.message);
-        }catch(error){
-            toast.error(error.response.data.message);
-        }
+export function deletePatient(patientId) {
+  return async (dispatch, getState) => {
+    try {
+      const { data } = await request.delete(`/api/patients/${patientId}`, {
+        headers: { token: getState().auth.user.token },
+      });
+      dispatch(patientActions.deletePatient(data.patientId));
+      toast.success(data.message);
+    } catch (error) {
+      toast.error(error.response.data.message);
     }
-  }
+  };
+}

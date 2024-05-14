@@ -1,6 +1,6 @@
 import React from 'react'
 
-//How the MRI is displyed in the patient ditails page 
+//How the MRI is displyed in the MRI Room page 
 
 
 export const MRIItem = () => {
