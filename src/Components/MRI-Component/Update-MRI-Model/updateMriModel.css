@@ -1,7 +1,4 @@
-.main{
-    margin: 100px;
-}
-.update-patient{
+.update-MRI{
     position:fixed;
     top:0;
     left:0;
@@ -14,7 +11,7 @@
     justify-content:center;
 
 }
-.update-patient-form{
+.update-MRI-form{
     width:700px;
     background-color:white;
     padding: 15px;
@@ -24,18 +21,11 @@
     border-radius: 10px;
     height:400px;
 }
-.update-patient-form-close{
+.update-MRI-form-close{
     position:absolute;
     top: 5px;
     right:5px;
     color: red;
     cursor: pointer;
     font-size: 30px;
-}
-.mri-image{
-    width:200px;
-    height:200px;
-}
-strong{
-    margin-top: 50px;
 }

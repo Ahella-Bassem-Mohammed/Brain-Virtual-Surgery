@@ -81,10 +81,8 @@ export const AddPatient = () => {
   return (
     <div className="margin">
       <h1>Add New Patient</h1>
-     
 
       <form onSubmit={formSubmitHandler}>
-       
         <input
           type="text"
           placeholder="First Name"
@@ -187,10 +185,10 @@ export const AddPatient = () => {
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
         ></input>
-        
+
         <button type="submit">
           {" "}
-          {loading  ? (
+          {loading ? (
             <RotatingLines
               strokeColor="grey"
               strokeWidth="5"

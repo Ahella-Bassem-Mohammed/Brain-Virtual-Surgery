@@ -1,9 +1,9 @@
 import "./addMri.css"
 import React, { useState, useEffect } from "react";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
 import { uploadMriScan } from "../../../redux/apiCalls/mriApiCall";
+import { toast } from "react-toastify";
 import { RotatingLines } from "react-loader-spinner";
 
 // Separeted addtion of MRI from the Add Patient page 
@@ -11,35 +11,44 @@ import { RotatingLines } from "react-loader-spinner";
 
 export const AddMRI = () => {
   const dispatch = useDispatch();
-  //const navigate = useNavigate();
-
-  //const { loading, isMriScanUploaded } = useSelector((state) => state.mri);
-  const { loading } = useSelector((state) => ({
-    loading: state.loadingg || false, // Providing a default value if loadingg is undefined
+  const navigate=useNavigate();
+  
+  const { loading } = useSelector((state) => 
+  ({
+        loading: state.loading|| false, // Providing a default value if loadingg is undefined
   }));
-  const { isMriScanUploaded } = useSelector((state) => ({
-  isMriScanUploaded: state.isMriScanUploaded || false, // Providing a default value if loadingg is undefined
+  const { isMriScanUploaded } = useSelector((state) =>
+  ({
+        isMriScanUploaded: state.isMriScanUploaded || false, // Providing a default value if loadingg is undefined
   }));
-  const [scanD,setScanD]=useState('');
+  
+  
+  const [scanD,setScanD]=useState("");
   const [file, setFile] = useState(null);
+  const{id}=useParams();
+
 
   // Upload MRI Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
+
+    formData.append("Patient",id)
     formData.append("ScanDetalies",scanD)
-    formData.append("Image", file);
+    formData.append("image", file);
     
     dispatch(uploadMriScan(formData));
+
+   
   };
 
   useEffect(() => {
     if (isMriScanUploaded) {
       toast.success("MRI uploaded successfully ");
-      //navigate("/addpatient");
+     // navigate("/");
     }
-  }, [isMriScanUploaded /*, navigate*/]);
+  }, [isMriScanUploaded ,navigate]);
 
   return (
     <div>

@@ -10,7 +10,6 @@ import {
 } from "../../../redux/apiCalls/profileApiCall";
 import { getAllPatients } from "../../../redux/apiCalls/patientApiCall";
 import { logoutUser } from "../../../redux/apiCalls/authApiCall";
-//import { PatientItem } from "../../Patient-Component/Patient-Item-Cards/PatientItem";
 import {PatientList} from "../../Patient-Component/Patient-Item-Cards/PatientList"
 import { UpdateProfileModel } from "../Profile/UpdateProfileModel";
 import swal from "sweetalert";
@@ -152,18 +151,7 @@ export const Profile = () => {
           <div className="no-items-message">No patients available</div>
         )}
 
-        {/*{patients && patients.length > 0 ? (
-          profile?.patients?.map((patient) => (
-            <PatientItem
-              key={patient._id}
-              patient={patient}
-              //username={profile?.UserName}
-              //userId={profile?._id}
-            />
-          ))
-        ) : (
-          <div className="no-items-message">No patients available</div>
-        )}*/}
+        
       </div>
       <button onClick={deleteProfileHandler} className="delete-account-btn">
         Delete Account
@@ -174,7 +162,7 @@ export const Profile = () => {
           setUpdateProfile={setUpdateProfile}
         />
       )}
-      <Link to={/*`/addpatient/${user?._id}`*/"/addpatient"}> Add Patient</Link>
+      <Link to={"/addpatient"}> Add Patient</Link>
     </section>
   );
 };

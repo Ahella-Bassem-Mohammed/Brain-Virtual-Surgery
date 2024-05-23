@@ -1,19 +1,17 @@
 import "./patientDetails.css"
 import React,{useEffect, useState} from 'react'
-import { useParams/*, Link*/, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-//import { AddMRI } from "../../MRI-Component/Add-MRI/AddMRI";
-//import { MRIItem } from "../../MRI-Component/MRI-Item/MRIItem";
-//import { toast } from "react-toastify";
 
-
+import { MRIList } from "../../MRI-Component/MRI-Item/MRIList";
+import { AddMRI } from "../../MRI-Component/Add-MRI/AddMRI";
 import { UpdatePatientModel } from "../Update-Patient-Model/UpdatePatientModel";
+import {
+  getAllMRI,
+} from "../../../redux/apiCalls/mriApiCall";
 import { getSinglePatient } from "../../../redux/apiCalls/patientApiCall";
 import { deletePatient } from "../../../redux/apiCalls/patientApiCall";
-//import { updateMriScan } from "../../../redux/apiCalls/mriApiCall";
-//import{fetchSingleMRI} from "../../../redux/apiCalls/mriApiCall";
-
 
 import swal from "sweetalert";
 
@@ -26,37 +24,25 @@ export const PatientDetails = () => {
   const dispatch = useDispatch();
   const navigate=useNavigate();
 
-  const { patient } = useSelector((state) => state.patient);
-  //const { mri } = useSelector((state) => state.mri);
-   //const { mri } = useSelector((state) => ({
-     //mri: state.mri || [], // Providing a default value if loadingg is undefined
-   //}));
-  const {user}=useSelector((state)=>state.auth)
-  
-  //const [file, setFile] = useState(mri.Image);
-  const [updatePatient, setUpdatePatient] = useState(false);
-
+  const { patient } = useSelector(state => state.patient);
+  const {user}=useSelector(state=>state.auth)
+  const {mris} = useSelector((state) => state.mri || []);
+  /*const { mris } = useSelector((state) => ({
+    mris: state.mri.mris || [], // Providing a default value if loadingg is undefined
+  }));*/
   const { id } = useParams();
-  //const mri =MRIscans.find((m) => m._id === parseInt(id))
- 
+  
 
+  const [updatePatient, setUpdatePatient] = useState(false);
   
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getSinglePatient(id));
-    //dispatch(fetchSingleMRI(id));
+    dispatch(getAllMRI(id))
   }, [dispatch, id]);
 
-  // Update mri Handler
-  /*const updateMriHandler = (e) => {
-    e.preventDefault();
-    if (!file) return toast.warning("there is no file");
-
-    const formData = new FormData();
-    formData.append("image", file);
-    dispatch(updateMriScan(formData, mri?._id));
-  };*/
+ 
 
   // Delete patient Handler
   const deletePatientHandler = () => {
@@ -76,56 +62,57 @@ export const PatientDetails = () => {
   };
 
   return (
-    <div className="margin">
+    <div className="patient-details-body"> 
+    {/* --------------------------------------patient details--------------------------------------- */}
       <div>{patient?.First_Name}</div>
+      <div>{patient?.Last_Name}</div>
       <div>{patient?.Gender}</div>
+      <div> {patient?.Age} </div>
+      <div> {patient?.Risk_Factors_And_Life_Style} </div>
+      <div> {patient?.Family_History} </div>
+      <div> {patient?.Neurological_Examination} </div>
+      <div> {patient?.Symptoms} </div>
+      <div> {patient?.Treatment_History} </div>
+      <div> {patient?.Allergies} </div>
+      <div> {patient?.Duration_And_Progression_Of_Symptoms} </div>
+      <div> {patient?.Diagnosis} </div>
+      <div> {patient?.Medical_History} </div>
+      <div> {patient?.Biopsy_Or_Pathology_Results} </div>
+      <div> {patient?.Lab_Test_Result} </div>
+      <div> {patient?.Current_Medications} </div>
+      <div> {patient?.Notes} </div>
 
-      {/*<strong>Image :</strong>
-      <p>{mri?.Image}</p>
-      <Link to={`/patientdetails/mriroom/${mri?.patient?._id}`}>{mri?.patient?.ScanDetails}</Link>*/}
       <span>{new Date(patient?.createdAt).toDateString()}</span>
+    {/* -------------------------------------------------------------------------------------- */}
 
-      <div>
+    {/* -----------------update patient icons---------------------------------- */}
+
+      <div className="update-patient-icons">
         <i
           onClick={() => setUpdatePatient(true)}
           className="bi bi-pencil-square"
         ></i>
+        
         <i onClick={deletePatientHandler} className="bi bi-trash-fill"></i>
       </div>
-       {updatePatient && (
+
+    {/*------------------------------------------------------------------------- */}
+
+    {/*------------------- update patient component , add MRI component and MRI list for this patient included */}
+      {updatePatient && (
         <UpdatePatientModel
           patient={patient}
           setUpdatePatient={setUpdatePatient}
         />
       )}
 
-
-      {/* <MRIItem />
-      <AddMRI />*/}
-
-
-
-
-
-
-      {/*<form onSubmit={updateMriHandler}>
-        <abbr title="choose profile photo">
-          <label
-            htmlFor="file"
-            className="bi bi-camera-fill upload-profile-photo-icon"
-          ></label>
-        </abbr>
-        <input
-          style={{ display: "none" }}
-          type="file"
-          name="file"
-          id="file"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-        <button className="upload-profile-photo-btn" type="submit">
-          Upload
-        </button>
-      </form>*/}
+      {mris && mris.length > 0 ? (
+        <MRIList mris={mris} />
+      ) : (
+        <div className="no-items-message">No MRI Scans available</div>
+      )}
+      
+      <AddMRI />
     </div>
   );
 }

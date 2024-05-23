@@ -23,39 +23,6 @@ export function getAllPatients() {
   };
 }
 
-// Get Patient Count // NOT USED AT ALL
-/*export function getPatientsCount(){
-  return async (dispatch)=>{
-    try{
-      const { data}=await request.get(`/api/patients/count`);
-      dispatch(patientActions.setPatientsCount(data));
-    }catch(error){
-      toast.error(error.response.data.message);
-    }
-  }
-}*/
-
-// Add Patient
-export function addPatient(Patient) {
-  return async (dispatch, getState) => {
-    try {
-      dispatch(patientActions.setLoading());
-      // console.log(Patient)
-      await request.post(`/api/patients`, Patient, {
-        headers: {
-          token: getState().auth.user.token,
-          //"Content-Type": "multipart/form-data"
-        },
-      });
-      dispatch(patientActions.setIsPatientAdded());
-      setTimeout(() => dispatch(patientActions.clearIsPatientAdded()), 2000);
-    } catch (error) {
-      toast.error(error.response?.data.message);
-      dispatch(patientActions.clearLoading());
-    }
-  };
-}
-
 // Get Single Patient Details
 export function getSinglePatient(patientId) {
   return async (dispatch ,getState) => {
@@ -79,6 +46,41 @@ export function getSinglePatient(patientId) {
     }
   };
 }
+
+// Get Patient Count // NOT USED AT ALL
+/*export function getPatientsCount(){
+  return async (dispatch)=>{
+    try{
+      const { data}=await request.get(`/api/patients/count`);
+      dispatch(patientActions.setPatientsCount(data));
+    }catch(error){
+      toast.error(error.response.data.message);
+    }
+  }
+}*/
+
+// Add Patient
+export function addPatient(Patient) {
+  return async (dispatch, getState) => {
+    try {
+      dispatch(patientActions.setLoading());
+      
+      await request.post(`/api/patients`, Patient, {
+        headers: {
+          token: getState().auth.user.token,
+          
+        },
+      });
+      dispatch(patientActions.setIsPatientAdded());
+      setTimeout(() => dispatch(patientActions.clearIsPatientAdded()), 2000);
+    } catch (error) {
+      toast.error(error.response?.data.message);
+      dispatch(patientActions.clearLoading());
+    }
+  };
+}
+
+
 
 // Update Patient Details
 export function updatePatientDetails(Patient, patientId) {
