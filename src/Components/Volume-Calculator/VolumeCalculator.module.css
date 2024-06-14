@@ -1,0 +1,64 @@
+.container {
+  z-index: 1;
+  position: absolute;
+  border-radius: 10px;
+  color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: black;
+}
+
+.closeContainerBtn {
+  position: absolute;
+  right: 10px;
+}
+
+.calcVolumeContainer {
+  top: 290px;
+}
+
+.openedCalcVolumeContainer {
+  left: 20px;
+  padding: 20px;
+  width: 300px;
+}
+
+.closedCalcVolumeContainer {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  padding: 50px 5px;
+  cursor: pointer;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  margin: 10px 0;
+}
+
+.input {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.volumeResultContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.volumeResultHistoryList {
+  height: 145px;
+  overflow-y: auto;
+  scrollbar-color: white black;
+  scrollbar-width: thin;
+}
+
+
+
+.volumeHistoryLoadingContianer {
+  display: flex;
+  justify-content: center;
+}

@@ -171,6 +171,15 @@ export const Signup = () => {
                   </button>
                 </center>
               </div>
+              {/*<div className="left">
+          <h3>One of us ?</h3>
+          <p>
+            Welcome Back to our website. <br></br>If you already have an account, please log in.
+          </p>
+          <button class="btn transparent" id="sign-in-btn" onClick={() => window.location="/login"}>
+            Sign in
+          </button>
+        </div> */}
             </div>
           </div>
         </form>

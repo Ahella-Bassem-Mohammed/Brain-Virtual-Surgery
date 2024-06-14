@@ -8,12 +8,13 @@ import {
   getUserProfile,
   uploadProfilePhoto,
 } from "../../../redux/apiCalls/profileApiCall";
-import { getAllPatients } from "../../../redux/apiCalls/patientApiCall";
+import { getAllPatients, getPatientsCount } from "../../../redux/apiCalls/patientApiCall";
 import { logoutUser } from "../../../redux/apiCalls/authApiCall";
 import {PatientList} from "../../Patient-Component/Patient-Item-Cards/PatientList"
 import { UpdateProfileModel } from "../Profile/UpdateProfileModel";
 import swal from "sweetalert";
 import { Oval } from "react-loader-spinner";
+
 
 
 
@@ -23,12 +24,14 @@ export const Profile = () => {
 
   const [file, setFile] = useState(null);
   const [updateProfile, setUpdateProfile] = useState(false);
+  
 
   const { profile, loading, isProfileDeleted } = useSelector(
     (state) => state.profile
   );
   const { user } = useSelector((state) => state.auth);
   const patients = useSelector((state) => state.patient.patients || []);
+  const { patientsCount } = useSelector((state) => state.patient);
 
   const { id } = useParams();
 
@@ -37,6 +40,11 @@ export const Profile = () => {
     dispatch(getAllPatients())
     window.scrollTo(0, 0);
   }, [dispatch, id]);
+  
+  useEffect(()=>{
+    dispatch(getPatientsCount())
+
+  },[dispatch])
 
   useEffect(() => {
     if (isProfileDeleted) {
@@ -145,6 +153,7 @@ export const Profile = () => {
           {" "}
           {profile?.UserName}'s patients
         </h2>
+        <h3> You have {patientsCount} Patients </h3>
         {patients && patients.length > 0 ? (
           <PatientList patients={patients} />
         ) : (

@@ -1,0 +1,31 @@
+.mainColorContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  justify-content: center;
+}
+
+.minMaxColorContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.colorContainer {
+  border: 1px solid white;
+  height: 15px;
+  width: 15px;
+}
+
+.mainSketchContainer {
+  position: absolute;
+  z-index: 2;
+}
+
+.sketchContainer {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}

@@ -8,7 +8,7 @@ export const PatientItem = ({ patient }) => {
   return (
     <div className="patient-item">
       <div className="patient-item-image-wrapper">
-        <span>{patient?.First_Name}</span> <span>{patient?.Last_Name}</span>
+        <h1>{patient?.First_Name}</h1> <span>{patient?.Last_Name}</span>
         <div className="patient-item-date">
           {new Date(patient?.createdAt).toDateString()}
         </div>

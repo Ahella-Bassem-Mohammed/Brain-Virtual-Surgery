@@ -59,6 +59,9 @@ export const Navbar = () => {
 
         {user ? (
           <>
+            <li>
+              <Link to="/addpatient"> Add Patient </Link>
+            </li>
             <div className="user-info">
               <li>
                 <Link
@@ -66,9 +69,10 @@ export const Navbar = () => {
                   onClick={() => setDropdown((prev) => !prev)}
                 >
                   {user?.UserName}
-                  <img src={user?.ProfilePhoto.url} alt="user" />
+                  <img src={user?.ProfilePhoto?.url} alt="user" />
                 </Link>
               </li>
+
               {dropdown && (
                 <div className="dropdown">
                   <Link

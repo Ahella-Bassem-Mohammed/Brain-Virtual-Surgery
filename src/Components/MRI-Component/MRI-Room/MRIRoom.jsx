@@ -3,6 +3,7 @@ import React,{useEffect,useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import { getSingleMRI } from '../../../redux/apiCalls/mriApiCall';
 import { useParams } from 'react-router-dom';
+import BrainViewer from "../../Brain-Viewer/BrianViewer";
 
 
 // How the MRI is manipulated with our model
@@ -34,6 +35,8 @@ console.log(id)
         alt="MRI Scan"
         className="imge"
       />
+      <BrainViewer/>
     </div>
+
   );
 }

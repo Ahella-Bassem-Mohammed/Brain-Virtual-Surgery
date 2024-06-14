@@ -18,25 +18,28 @@ import {MRIRoom } from "./Components/MRI-Component/MRI-Room/MRIRoom";
 import {PrivateComponent} from "./Components/PrivateComponent";
 
 
+
+
 function App() {
 
+ 
   return (
     <>
       <div className="App">
+       
         <Navbar />
         <Routes>
           <Route element={<PrivateComponent />}>
             {/* -----------Routes user cannot access unless logging in --------------- */}
 
-            
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/addpatient" element={<AddPatient />} />
             <Route path="/patientdetails/:id" element={<PatientDetails />} />
-            <Route path="/patientdetails/mriroom/:id" element={<MRIRoom/>} />
-
+            <Route path="/patientdetails/mriroom" element={<MRIRoom />} /> 
           </Route>
           {/* -------------Public Routes--------------------------------------- */}
           
+
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
@@ -53,7 +56,6 @@ function App() {
             element={<ResetPassword />}
           />
           <Route path="*" element={<NotFound />} />
-        
         </Routes>
       </div>
     </>

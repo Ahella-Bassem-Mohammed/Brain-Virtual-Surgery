@@ -48,16 +48,20 @@ export function getSinglePatient(patientId) {
 }
 
 // Get Patient Count // NOT USED AT ALL
-/*export function getPatientsCount(){
-  return async (dispatch)=>{
+export function getPatientsCount(){
+  return async (dispatch,getState)=>{
     try{
-      const { data}=await request.get(`/api/patients/count`);
+      const { data } = await request.get(`/api/patients/count`, {
+        headers: {
+          token: getState().auth.user.token,
+        },
+      });
       dispatch(patientActions.setPatientsCount(data));
     }catch(error){
       toast.error(error.response.data.message);
     }
   }
-}*/
+}
 
 // Add Patient
 export function addPatient(Patient) {

@@ -1,0 +1,16 @@
+.slicesContainer {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sliceContainer {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.sliceContainer:not(:last-child) {
+  border-bottom: 1px solid black;
+}

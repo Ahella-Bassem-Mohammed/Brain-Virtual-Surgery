@@ -1,0 +1,37 @@
+.container {
+  z-index: 2;
+  position: absolute;
+  border-radius: 10px;
+  color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: black;
+}
+
+.volumeContainer {
+  top: 20px;
+}
+
+.openedVolumeContainer {
+  left: 20px;
+  padding: 20px;
+  width: 300px;
+}
+
+.closeContainerBtn {
+  position: absolute;
+  right: 10px;
+}
+
+.closedVolumeContainer {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  padding: 50px 5px;
+  cursor: pointer;
+}
+
+.thresholdContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+  }
+  
