@@ -1,0 +1,120 @@
+[{
+  "_id": {
+    "$oid": "6658a627e57bf4f44b64668a"
+  },
+  "displayedNII": {
+    "public_id": "oub69jomrego1mbbogex.nii.gz",
+    "secure_url": "https://res.cloudinary.com/dkzwhfcm6/raw/upload/v1717085685/oub69jomrego1mbbogex.nii.gz"
+  },
+  "patientId": {
+    "$oid": "66155039ee0289de71c42832"
+  },
+  "results": [
+    {
+      "public_id": "iipmuxp9s8gi48gcwjzw",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717085730/iipmuxp9s8gi48gcwjzw.png",
+      "_id": {
+        "$oid": "6658a627e57bf4f44b64668b"
+      }
+    },
+    {
+      "public_id": "pf7q4sb9gdsrro1o5vie",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717085732/pf7q4sb9gdsrro1o5vie.png",
+      "_id": {
+        "$oid": "6658a627e57bf4f44b64668c"
+      }
+    },
+    {
+      "public_id": "paph7jpz81u1uilobqdr",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717085733/paph7jpz81u1uilobqdr.png",
+      "_id": {
+        "$oid": "6658a627e57bf4f44b64668d"
+      }
+    },
+    {
+      "public_id": "ddquryqvgmquxvd5ffth",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717085734/ddquryqvgmquxvd5ffth.png",
+      "_id": {
+        "$oid": "6658a627e57bf4f44b64668e"
+      }
+    },
+    {
+      "public_id": "sgiclsfagklhvytikuso",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717085735/sgiclsfagklhvytikuso.png",
+      "_id": {
+        "$oid": "6658a627e57bf4f44b64668f"
+      }
+    },
+    {
+      "public_id": "k4gwueystxqjxaq6uy84",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717085735/k4gwueystxqjxaq6uy84.png",
+      "_id": {
+        "$oid": "6658a627e57bf4f44b646690"
+      }
+    }
+  ],
+  "name": {
+    "$date": "2024-05-30T16:15:35.847Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "665913de6b6df8ca96b1b456"
+  },
+  "displayedNII": {
+    "public_id": "bql2lkemdp7nmseskidn.nii.gz",
+    "secure_url": "https://res.cloudinary.com/dkzwhfcm6/raw/upload/v1717113760/bql2lkemdp7nmseskidn.nii.gz"
+  },
+  "patientId": {
+    "$oid": "66155039ee0289de71c42832"
+  },
+  "results": [
+    {
+      "public_id": "yro5wxrdyocpawoyx8zt",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717113818/yro5wxrdyocpawoyx8zt.png",
+      "_id": {
+        "$oid": "665913de6b6df8ca96b1b457"
+      }
+    },
+    {
+      "public_id": "crndr0d2pvznmbh4p4eb",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717113819/crndr0d2pvznmbh4p4eb.png",
+      "_id": {
+        "$oid": "665913de6b6df8ca96b1b458"
+      }
+    },
+    {
+      "public_id": "ihzgdgjvqbwyziuyho0o",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717113820/ihzgdgjvqbwyziuyho0o.png",
+      "_id": {
+        "$oid": "665913de6b6df8ca96b1b459"
+      }
+    },
+    {
+      "public_id": "a6gueykpzkvimkrrwxf1",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717113821/a6gueykpzkvimkrrwxf1.png",
+      "_id": {
+        "$oid": "665913de6b6df8ca96b1b45a"
+      }
+    },
+    {
+      "public_id": "ion7muskyd1jwncewbk5",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717113822/ion7muskyd1jwncewbk5.png",
+      "_id": {
+        "$oid": "665913de6b6df8ca96b1b45b"
+      }
+    },
+    {
+      "public_id": "hpjepmgpexes1a2bz7w3",
+      "secure_url": "https://res.cloudinary.com/dkzwhfcm6/image/upload/v1717113823/hpjepmgpexes1a2bz7w3.png",
+      "_id": {
+        "$oid": "665913de6b6df8ca96b1b45c"
+      }
+    }
+  ],
+  "name": {
+    "$date": "2024-05-31T00:03:42.924Z"
+  },
+  "__v": 0
+}]
