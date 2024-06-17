@@ -1,6 +1,7 @@
 .forgot-reset-field{
     height: 100vh;
-    padding-top: 66px;
+    padding-top: 130px;
+    padding-left: 366px;
     position: absolute;
     background: white;
     background-size: 300% 300%;
@@ -30,7 +31,7 @@
     font-weight:700px;
 }
 .underline{
-    width:61px;
+    width:81px;
     height: 6px;
     background: #234ca4;
     border-radius: 9px;
@@ -38,7 +39,13 @@
 
 .inputs{
     margin-top: 50px;
-    margin-left: 750px;
+    margin-left: 800px;
+    flex-direction: column;
+}
+
+.inputs_forget{
+    margin-top: 50px;
+    margin-left: 60px;
     flex-direction: column;
 }
 
@@ -94,12 +101,12 @@
     font-size:20px;
     font-weight: 70px;
     cursor: pointer;
-    border: 2px solid #fff;
+    border: 2px solid #234ca4;
     border-radius: 50px;
 }
 .submit:hover{
-    background: #676767;
-    color: #EAEAEA;
+    background: transparent;
+    color: #234ca4;
 }
 
 

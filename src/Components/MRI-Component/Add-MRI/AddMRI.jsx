@@ -36,7 +36,7 @@ export const AddMRI = () => {
 
     formData.append("Patient",id)
     formData.append("ScanDetalies",scanD)
-    formData.append("image", file();
+    formData.append("image", file());
     
     dispatch(uploadMriScan(formData));
 

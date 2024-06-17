@@ -16,35 +16,33 @@
 }
 
 body{
-    font-family: 'Poppins',sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow:scroll;
-    background-color:white;
+  font-family: 'Poppins',sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow:scroll;
+  background-color:white;
 }
 
 html::-webkit-scrollbar {
-  width: 10px;
-  height:10px;
+  width: 1px;
+  height:1px;
 }
 
 html::-webkit-scrollbar-track {
   background: white;
   border-radius: 100vw;
-  margin-block:10px ;
-  
+  margin-block:1px ;
 }
 
 html::-webkit-scrollbar-thumb {
-  background:#0e1d3f28;
+  background:#1e3f0e28;
   border-radius: 100vw;
   
 }
 html::-webkit-scrollbar-thumb:hover {
-  
-  border: 2px solid #234ca4;
+  border: 0.5px solid #d4d8e0;
 }
 

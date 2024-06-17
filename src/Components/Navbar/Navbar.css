@@ -18,7 +18,7 @@ nav {
 }
 nav ul{
     display: flex;
-    gap: 0.5rem;
+    gap: rem;
     font-size: 15px;
 }
 
@@ -28,21 +28,18 @@ nav.active{
     border-bottom: #fff;
 }
 nav .title {
-    padding-left: 40px;
+    padding-left: 20px;
     font-size: 1.8rem;
-    margin: 1rem;
+    margin: 0.3rem;
     font-weight: bolder;
     text-decoration: none;
     color: #234ca4;
 }
 
-
 nav li {
     display: flex;
     list-style: none;
 }
-
-
 
 nav li a {
     font-size: large;
@@ -53,8 +50,6 @@ nav li a {
     padding: 0.5rem;
     margin: 0 0.5rem;
     text-transform: capitalize;
-    
-
 }
 
 nav li a:hover{
@@ -92,7 +87,7 @@ nav .menu span {
     right: 50%;
     top: 100%;
     background-color: var(--main-color);
-   /* border: 1px solid var(--white-color);*/
+    border: 1px solid var(--white-color);
     border-radius: 5px;
     padding: 5px;
     width: 150px;
@@ -107,8 +102,13 @@ nav .menu span {
 
 }
 
-img{
+.navimg{
     width: 25px;
     height: 25px;
-    border-radius: 5px;
+    border-radius: 14px;
+}
+
+.username{
+    display: flex;
+    list-style: none;
 }
