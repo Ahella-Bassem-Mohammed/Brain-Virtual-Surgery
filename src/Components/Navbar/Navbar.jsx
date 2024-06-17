@@ -69,7 +69,7 @@ export const Navbar = () => {
                   onClick={() => setDropdown((prev) => !prev)}
                 >
                   {user?.UserName}
-                  <img src={user?.ProfilePhoto?.url} alt="user" />
+                  <img src={user?.ProfilePhoto?.url} alt="user" className="navimg" />
                 </Link>
               </li>
 

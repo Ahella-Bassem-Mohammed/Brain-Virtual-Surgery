@@ -1,3 +1,50 @@
 .patient-item{
-    margin-top: 100px;
+    margin-bottom: 15px;
+    margin-left: -30px;
+    width: 250px;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, .8);
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    color: #234ca4;
+    border-radius: 10px;
+    padding: 15px 30px;
+    
+}
+
+.patient-item-image-wrapper span{
+    font-size: larger;
+    font-weight: 600;
+}
+
+.patient-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px; /* Adjust the gap as needed */
+}
+
+.info-field {
+    display: flex;
+    flex-direction: row;
+}
+
+.info-field strong {
+    margin-bottom: -5px; /* Adjust the margin as needed */
+}
+
+.info-field p {
+    margin: 0;
+}
+
+.patient_profile{
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 300;
+    width: 180px;
+    color: white;
+    background-color: #234ca4;
+    border-radius: 50vw;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 }

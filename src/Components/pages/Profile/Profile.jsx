@@ -17,7 +17,6 @@ import { Oval } from "react-loader-spinner";
 
 
 
-
 export const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -130,15 +129,41 @@ export const Profile = () => {
             </button>
           </form>
         </div>
-        <h1 className="profile-username"> {profile?.FirstName}</h1>
-        <p className="profile-bio">{profile?.LastName}</p>
-        <p className="profile-bio">{profile?.UserName}</p>
-        <p className="profile-bio">{profile?.Email}</p>
-        <p className="profile-bio">{profile?.Age}</p>
-        <p className="profile-bio">{profile?.Gender}</p>
-        <p className="profile-bio">{profile?.Title}</p>
-        <p className="profile-bio">{profile?.Specialist}</p>
-        <span>{new Date(profile?.createdAt).toDateString()}</span>
+        <div className="patient-infoo">
+          <div className="infoo-field">
+              <strong>First Name:</strong>
+              <p className="profile-username"> {profile?.FirstName}</p>
+          </div>
+          <div className="infoo-field">
+              <strong>Last Name:</strong>
+              <p className="profile-bio">{profile?.LastName}</p>
+          </div>
+          <div className="infoo-field">
+              <strong>User Name:</strong>
+              <p className="profile-bio">{profile?.UserName}</p>
+          </div>
+          <div className="infoo-field">
+              <strong>Age:</strong>
+              <p className="profile-bio">{profile?.Age}</p>
+          </div>
+          <div className="infoo-field">
+              <strong>Gender:</strong>
+              <p className="profile-bio">{profile?.Gender}</p>
+          </div>
+          <div className="infoo-field">
+              <strong>Title:</strong>
+              <p className="profile-bio">{profile?.Title}</p>
+          </div>
+          <div className="infoo-field">
+              <strong>Specialist:</strong>
+              <p className="profile-bio">{profile?.Specialist}</p>
+          </div>
+          <div className="infoo-field">
+              <strong>Email:</strong>
+              <p className="profile-bio">{profile?.Email}</p>
+          </div>
+        </div>
+        <span className="user-date-joined">{new Date(profile?.createdAt).toDateString()}</span>
 
         <button
           onClick={() => setUpdateProfile(true)}
@@ -147,31 +172,32 @@ export const Profile = () => {
           <i className="bi bi-file-person-fill"></i>
           Update Profile
         </button>
+        <Link to={"/addpatient"} className="add_patient"> Add Patient</Link>
+        <button onClick={deleteProfileHandler} className="delete-account-btn">
+          Delete Account
+        </button>
       </div>
       <div className="profile-patient-list">
-        <h2 className="profile-patient-list-title">
+        <h6 className="profile-patient-list-title">
           {" "}
           {profile?.UserName}'s patients
-        </h2>
-        <h3> You have {patientsCount} Patients </h3>
+        </h6>
+        <h3 className="patient"> You have {patientsCount} Patients </h3>
         {patients && patients.length > 0 ? (
           <PatientList patients={patients} />
         ) : (
           <div className="no-items-message">No patients available</div>
         )}
 
-        
       </div>
-      <button onClick={deleteProfileHandler} className="delete-account-btn">
-        Delete Account
-      </button>
+
       {updateProfile && (
         <UpdateProfileModel
           profile={profile}
           setUpdateProfile={setUpdateProfile}
         />
       )}
-      <Link to={"/addpatient"}> Add Patient</Link>
+      
     </section>
   );
 };
