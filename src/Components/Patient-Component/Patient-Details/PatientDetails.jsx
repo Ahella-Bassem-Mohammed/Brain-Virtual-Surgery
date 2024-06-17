@@ -13,6 +13,8 @@ import {
 import { getSinglePatient } from "../../../redux/apiCalls/patientApiCall";
 import { deletePatient } from "../../../redux/apiCalls/patientApiCall";
 
+
+
 import swal from "sweetalert";
 
  
