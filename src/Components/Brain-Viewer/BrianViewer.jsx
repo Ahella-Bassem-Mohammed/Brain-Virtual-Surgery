@@ -1,4 +1,4 @@
-import { CircularProgress, Divider, Slider } from "@mui/material";
+//import { CircularProgress, Divider, Slider } from "@mui/material";
 import useBrainRender from "../../Hooks/useBrainRender";
 import { useState } from "react";
 import classes from "./BrainViewer.module.css";

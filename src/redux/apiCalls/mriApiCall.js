@@ -2,7 +2,7 @@ import { mriActions } from "../slices/mriSlice";
 import request from "../../utils/request";
 import { toast } from "react-toastify";
 
-import axios from "axios";
+
 
 
 // Get All MRI Scans
@@ -18,7 +18,7 @@ export function getAllMRI(patientId) {
           },
         }
       );
-      //const filteredMri =data.filter(mri=>mri.Patient._id===patientId)
+     
       dispatch(mriActions.setMris(data));
     } catch (error) {
       if (error.response && error.response.data) {
@@ -29,31 +29,12 @@ export function getAllMRI(patientId) {
     }
   };
 }
-/*export function getAllMRI(patientId) {
-  return async (dispatch, getState) => {
-    try {
-      const { data } = await axios(`http://localhost:3000/dummydata.json`, {
-        headers: {
-          token: getState().auth.user.token,
-        },
-      });
-      //console.log(data)
-      //const filteredMri = data.filter((mri) => mri.Patient._id === patientId);
-      dispatch(mriActions.setMris(data));
-    } catch (error) {
-      if (error.response && error.response.data) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error("Failed to fetch MRIs");
-      }
-    }
-  };
-}*/
+
 // Get Single MRI Scan Details
 export function getSingleMRI(mriId) {
   return async (dispatch, getState) => {
     try {
-      //console.log(mriId)
+      
       const { data } = await request.get(
         `/api/files/${mriId}`,
         {
