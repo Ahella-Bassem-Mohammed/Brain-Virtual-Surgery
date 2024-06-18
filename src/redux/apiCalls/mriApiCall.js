@@ -6,17 +6,20 @@ import axios from "axios";
 
 
 // Get All MRI Scans
-/*export function getAllMRI(patientId) {
+export function getAllMRI(patientId) {
   return async (dispatch, getState) => {
     
     try {
-      const { data } = await request.get(`/api/mriscan`, {
-        headers: {
-          token: getState().auth.user.token,
-        },
-      });
-      const filteredMri =data.filter(mri=>mri.Patient._id===patientId)
-      dispatch(mriActions.setMris(filteredMri));
+      const { data } = await request.get(
+        `api/files/patient/${patientId}`,
+        {
+          headers: {
+            token: getState().auth.user.token,
+          },
+        }
+      );
+      //const filteredMri =data.filter(mri=>mri.Patient._id===patientId)
+      dispatch(mriActions.setMris(data));
     } catch (error) {
       if (error.response && error.response.data) {
         toast.error(error.response.data.message);
@@ -25,8 +28,8 @@ import axios from "axios";
       }
     }
   };
-}*/
-export function getAllMRI(patientId) {
+}
+/*export function getAllMRI(patientId) {
   return async (dispatch, getState) => {
     try {
       const { data } = await axios(`http://localhost:3000/dummydata.json`, {
@@ -45,18 +48,20 @@ export function getAllMRI(patientId) {
       }
     }
   };
-}
+}*/
 // Get Single MRI Scan Details
 export function getSingleMRI(mriId) {
   return async (dispatch, getState) => {
     try {
       //console.log(mriId)
-      const { data } = await request.get(`/api/mriscan/${mriId}`, {
-        headers: {
-          token: getState().auth.user.token,
-          
-        },
-      });
+      const { data } = await request.get(
+        `/api/files/${mriId}`,
+        {
+          headers: {
+            token: getState().auth.user.token,
+          },
+        }
+      );
 
       dispatch(mriActions.setMriScan(data));
     } catch (error) {
@@ -76,7 +81,7 @@ export function uploadMriScan(MRIScan) {
     try {
       dispatch(mriActions.setLoading());
 
-      await request.post(`/api/mriscan/`, MRIScan, {
+      await request.post(`/api/files/`, MRIScan, {
         headers: {
           token: getState().auth.user.token,
           "Content-Type": "multipart/form-data",

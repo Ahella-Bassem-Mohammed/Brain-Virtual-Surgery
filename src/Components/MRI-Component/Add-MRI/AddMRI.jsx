@@ -23,22 +23,28 @@ export const AddMRI = () => {
   }));
   
   
-  const [scanD,setScanD]=useState("");
-  const [file, setFile] = useState(null);
+  
+  const [files, setFiles] = useState([]);
   const{id}=useParams();
 
-
+  // Creating an Array of Files 
+   const handleFileChange = (e) => {
+     const fileList = e.target.files;
+     const newFiles = Array.from(fileList);
+     setFiles([...files, ...newFiles]);
+   };
+   
   // Upload MRI Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-
-    formData.append("Patient",id)
-    formData.append("ScanDetalies",scanD)
-    formData.append("image", file());
-    
+    files.forEach((file) => {
+      formData.append(`file`, file);
+    });
+    formData.append("patientId",id)
     dispatch(uploadMriScan(formData));
+    
 
    
   };
@@ -46,31 +52,21 @@ export const AddMRI = () => {
   useEffect(() => {
     if (isMriScanUploaded) {
       toast.success("MRI uploaded successfully ");
-     // navigate("/");
     }
   }, [isMriScanUploaded ,navigate]);
 
   return (
     <div>
-      {/*<img
-        src={file ? URL.createObjectURL(file) : mri?.Image?.url || ""}
-        alt="MRI "
-        className="MRI-image"
-      />*/}
       <form onSubmit={formSubmitHandler}>
-        <input
-          type="text"
-          placeholder="Scan Details"
-          value={scanD}
-          onChange={(e) => setScanD(e.target.value)}
-        ></input>
+        
         <input
           type="file"
+          multiple
           name="file"
           id="file"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-
+          onChange={handleFileChange}
+        />{" "}
+        
         <button type="submit">
           {" "}
           {loading ? (

@@ -12,7 +12,7 @@ export const MRIRoom = () => {
 
   const dispatch=useDispatch();
   const [file] = useState(null);
-  const { mri } = useSelector((state) => state.mri || []);
+  const { mri } = useSelector((state) => state.mri || null);
   const {id}=useParams();
   
 
@@ -23,20 +23,28 @@ console.log(id)
     dispatch(getSingleMRI(id));
   }, [dispatch,id]);
 
+   if(!mri) return <div> ERROR </div>
 
 
   return (
     <div className="margin">
       MRI-Room
-
-      <strong>Image :</strong>
-      <img
-        src={file ? URL.createObjectURL(file) : mri?.Image?.url}
-        alt="MRI Scan"
-        className="imge"
-      />
-      <BrainViewer/>
+      <div>
+        {" "}
+        <div style={{display: "flex", rowGap: "10px", columnGap: "10px"}}>
+          {mri?.results?.map((result, index) => (
+            
+             
+              <img
+                style={{ width: "200px", height: "200px" }}
+                src={result.secure_url}
+                key={index}
+              />
+            
+          ))}{" "}
+        </div>
+      </div>
+      <BrainViewer renderFile={mri.displayedNII.secure_url} />
     </div>
-
   );
 }

@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import * as xtk from "xtk";
 
-const useBrainRender = () => {
+const useBrainRender = ({renderFile}) => {
   const [renderer3D, setRenderer3D] = useState(null);
   const [volume, setVolume] = useState(null);
   const [volumeColor, setVolumeColor] = useState({
@@ -138,12 +138,12 @@ const useBrainRender = () => {
       updateIndexZScroll,
     ]
   );
-
-  /*
+  //----------------------------------------------------------------------------
+  
     useEffect(() => {
-        if(!renderer3D) InitializeRender("https://res.cloudinary.com/dkzwhfcm6/raw/upload/v1716894564/brain.nii.gz")
-    }, [InitializeRender, renderer3D])
-*/
+        if(!renderer3D && renderFile) InitializeRender(renderFile)
+    }, [InitializeRender, renderer3D, renderFile])
+
 
   function volumerenderingOnOff(bool) {
     if (!volume) {

@@ -35,7 +35,7 @@ function App() {
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/addpatient" element={<AddPatient />} />
             <Route path="/patientdetails/:id" element={<PatientDetails />} />
-            <Route path="/patientdetails/mriroom" element={<MRIRoom />} /> 
+            <Route path="/patientdetails/mriroom/:id" element={<MRIRoom />} /> 
           </Route>
           {/* -------------Public Routes--------------------------------------- */}
           

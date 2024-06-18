@@ -6,7 +6,7 @@ import VolumeController from "../Volume-Controller/VolumeController";
 import VolumeCalculator from "../Volume-Calculator/VolumeCalculator";
 import SlicesSection from "../Slices-Section/SlicesSection";
 
-const BrainViewer = () => {
+const BrainViewer = ({renderFile}) => {
   const {
     display3D,
     display2D,
@@ -27,7 +27,7 @@ const BrainViewer = () => {
     minColorVolumePicker,
     maxColorVolumePicker,
     volumeColor,
-  } = useBrainRender();
+  } = useBrainRender({renderFile});
   const [thresholdVolume, setThresholdVolume] = useState({
     volume: null,
     threshold: null,
