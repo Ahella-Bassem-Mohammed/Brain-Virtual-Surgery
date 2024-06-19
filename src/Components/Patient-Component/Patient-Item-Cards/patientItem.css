@@ -1,7 +1,6 @@
-.patient-item{
-    margin-bottom: 15px;
-    margin-left: -30px;
+.patient-item{   
     width: 250px;
+    position: relative;
     background: transparent;
     border:2px solid rgba(255, 255, 255, .8);
     background-color: white;
@@ -10,6 +9,10 @@
     border-radius: 10px;
     padding: 15px 30px;
     
+}
+
+.patient-item:hover{
+top: -10px;
 }
 
 .patient-item-image-wrapper span{
@@ -23,17 +26,13 @@
     gap: 1px; /* Adjust the gap as needed */
 }
 
-.info-field {
-    display: flex;
-    flex-direction: row;
-}
-
 .info-field strong {
     margin-bottom: -5px; /* Adjust the margin as needed */
 }
 
 .info-field p {
     margin: 0;
+    display: inline;
 }
 
 .patient_profile{
@@ -47,4 +46,17 @@
     text-align: center;
     text-decoration: none;
     cursor: pointer;
+}
+
+.patient_profile:hover{
+    color: #234ca4;
+    border: 2px solid #234ca4;
+    background-color: transparent;
+}
+
+.patient-list{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 15px;
 }

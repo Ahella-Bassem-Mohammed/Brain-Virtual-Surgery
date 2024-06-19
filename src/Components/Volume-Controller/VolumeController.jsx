@@ -38,12 +38,12 @@ const VolumeController = ({
             onClick={displaySection("volume", false)}
             className={classes.closeContainerBtn}
           >
-            close
+            X
           </button>
-          <button onClick={display3D} type="button">
+          <button onClick={display3D} type="button" className="view">
             view 3D
           </button>
-          <button onClick={display2D} type="button">
+          <button onClick={display2D} type="button" className="view">
             view 2D
           </button>
           {volumeRender === "3D" && (

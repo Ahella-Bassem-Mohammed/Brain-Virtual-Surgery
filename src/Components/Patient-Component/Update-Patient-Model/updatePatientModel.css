@@ -9,8 +9,8 @@
     display:flex;
     align-items:center;
     justify-content:center;
-
 }
+
 .update-patient-form{
     width:700px;
     background-color:white;
@@ -21,6 +21,7 @@
     border-radius: 10px;
     height:400px;
 }
+
 .update-patient-form-close{
     position:absolute;
     top: 5px;
@@ -28,4 +29,64 @@
     color: red;
     cursor: pointer;
     font-size: 30px;
+}
+
+.update-patient-form{
+    height: 550px;
+}
+
+.update-patient-title{
+    color: #234ca4;
+    font-size: x-large;
+    margin-left: 230px;
+}
+
+.undln{
+    margin-top: 5px;
+    margin-left: 270px;
+    width:110px;
+    height: 4px;
+    background: #234ca4;
+    border-radius: 15px;
+}
+
+.elemnts{
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.elemnts input{
+    margin-left: 10px;
+}
+
+.pu{
+    margin: 5px;
+    height: 37px;
+    color: #0b2968;
+    font-size: large;
+    border-radius: 20px;
+    border: 1px solid #234ca4;
+}
+
+input.pu{
+    width: 300px;
+    padding-left: 7px;
+}
+
+button.su{
+    margin-top: 8px;
+    margin-left: 15px; 
+    height: 32px;
+    width: 300px;
+}
+
+.su{
+    width:185px;
+    height: 50px;
+    color: #fff;
+    background:#234ca4;
+    border-radius: 20px;
+    font-size:17px;
+    cursor: pointer;
+    border: 2px solid #234ca4;
 }

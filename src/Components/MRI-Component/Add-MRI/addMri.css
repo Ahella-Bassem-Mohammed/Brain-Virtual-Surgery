@@ -1,0 +1,40 @@
+.ch-file{
+    margin-top: 20px;
+    margin-bottom: 70px;
+}
+
+.ch-file input{
+    width:270px;
+    height: 40px;
+    color: #fff;
+    padding-top: 4px;
+    padding-left: 15px;
+    background:#234ca4;
+    border-radius: 20px;
+    font-size:17px;
+    cursor: pointer;
+    border: 2px solid #234ca4;
+}
+
+.ch-file input:hover{
+    color: #234ca4;
+    font-weight: 600;
+    background: transparent;
+}
+
+.button-file{
+    width:100px;
+    height: 40px;
+    color: #fff;
+    background:#234ca4;
+    border-radius: 20px;
+    font-size:17px;
+    cursor: pointer;
+    border: 2px solid #234ca4;
+}
+
+.button-file:hover{
+    color: #234ca4;
+    font-weight: 600;
+    background: transparent;
+}

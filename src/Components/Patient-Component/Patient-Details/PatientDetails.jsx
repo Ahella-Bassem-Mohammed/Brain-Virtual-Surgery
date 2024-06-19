@@ -65,56 +65,147 @@ export const PatientDetails = () => {
 
   return (
     <div className="patient-details-body"> 
+
+    <div className="head-mri">
+    <h1>Patient Information</h1>
+    <div className="underln"></div>
+    </div>
     {/* --------------------------------------patient details--------------------------------------- */}
-      <div>{patient?.First_Name}</div>
-      <div>{patient?.Last_Name}</div>
-      <div>{patient?.Gender}</div>
-      <div> {patient?.Age} </div>
-      <div> {patient?.Risk_Factors_And_Life_Style} </div>
-      <div> {patient?.Family_History} </div>
-      <div> {patient?.Neurological_Examination} </div>
-      <div> {patient?.Symptoms} </div>
-      <div> {patient?.Treatment_History} </div>
-      <div> {patient?.Allergies} </div>
-      <div> {patient?.Duration_And_Progression_Of_Symptoms} </div>
-      <div> {patient?.Diagnosis} </div>
-      <div> {patient?.Medical_History} </div>
-      <div> {patient?.Biopsy_Or_Pathology_Results} </div>
-      <div> {patient?.Lab_Test_Result} </div>
-      <div> {patient?.Current_Medications} </div>
-      <div> {patient?.Notes} </div>
+      <div className="wrappin">
+        <div className="patient_details">
+          <div className="info-field">
+            <strong>First Name:</strong>
+            <p>{patient?.First_Name}</p>
+          </div>
 
-      <span>{new Date(patient?.createdAt).toDateString()}</span>
-    {/* -------------------------------------------------------------------------------------- */}
+          <div className="info-field">
+            <strong>Last Name:</strong>
+            <p>{patient?.Last_Name}</p>
+          </div>
 
-    {/* -----------------update patient icons---------------------------------- */}
+          <div className="info-field">
+            <strong>Gender:</strong>
+            <p>{patient?.Gender}</p>
+          </div>
 
-      <div className="update-patient-icons">
-        <i
-          onClick={() => setUpdatePatient(true)}
-          className="bi bi-pencil-square"
-        ></i>
+          <div className="info-field">
+            <strong>Age:</strong>
+            <p>{patient?.Age}</p>
+          </div>
+        </div>
         
-        <i onClick={deletePatientHandler} className="bi bi-trash-fill"></i>
+        <div className="patient_detailss">
+          <div className="info-field">
+            <strong>Allergies:</strong>
+            <p>{patient?.Allergies}</p>
+          </div>
+
+          <div className="info-field">
+            <strong>Diagnosis:</strong>
+            <p>{patient?.Diagnosis}</p>
+          </div>
+
+          <div className="info-field">
+            <strong>Symptoms:</strong>
+            <p>{patient?.Symptoms} </p>
+          </div>
+
+          <div className="info-field">
+            <strong>Risk Factors:</strong>
+            <p>{patient?.Risk_Factors_And_Life_Style}</p>
+          </div>
+
+                 
+        </div>
       </div>
 
-    {/*------------------------------------------------------------------------- */}
+      <div className="patient_detailsss">
+
+      <div className="info-field">
+            <strong>Family History:</strong>
+            <p>{patient?.Family_History}</p>
+      </div> 
+
+      <div className="info-field">
+          <strong>Lab Test Result:</strong>
+          <p>{patient?.Lab_Test_Result} </p>
+        </div>
+
+        <div className="info-field">
+          <strong>Medical History:</strong>
+          <p>{patient?.Medical_History} </p>
+        </div>
+
+        <div className="info-field">
+          <strong>Pathology Results:</strong>
+          <p>{patient?.Biopsy_Or_Pathology_Results} </p>
+        </div>
+
+        <div className="info-field">
+          <strong>Treatment History:</strong>
+          <p>{patient?.Treatment_History}</p>
+        </div>
+
+        <div className="info-field">
+          <strong>Current Medications:</strong>
+          <p>{patient?.Current_Medications}</p>
+        </div>
+        
+        <div className="info-field">
+          <strong>Duration Of Symptoms:</strong>
+          <p>{patient?.Duration_And_Progression_Of_Symptoms}</p>
+        </div>
+
+        <div className="info-field">
+          <strong>Neurological Examination:</strong>
+          <p>{patient?.Neurological_Examination}</p>
+        </div>
+        
+        <div className="info-field">
+          <strong>Notes:</strong>
+          <p>{patient?.Notes}</p>
+        </div>
+        
+        <span className="datte"> <strong>Joined Date:</strong>{new Date(patient?.createdAt).toDateString()}</span>
+
+        {/* -------------------------------------------------------------------------------------- */}
+
+        {/* -----------------update patient icons---------------------------------- */}
+
+          <div className="update-patient-icons">
+            <div className="up-patient">
+              <i onClick={() => setUpdatePatient(true)} className="bi bi-pencil-square">Update</i>
+            </div>
+            <div className="del-patient">
+              <i onClick={deletePatientHandler} className="bi bi-trash-fill">Delete</i>
+            </div>
+          </div>
+
+        {/*------------------------------------------------------------------------- */}
+      </div>
+   
 
     {/*------------------- update patient component , add MRI component and MRI list for this patient included */}
-      {updatePatient && (
-        <UpdatePatientModel
-          patient={patient}
-          setUpdatePatient={setUpdatePatient}
-        />
-      )}
-
-      {mris && mris.length > 0 ? (
-        <MRIList mris={mris} />
-      ) : (
-        <div className="no-items-message">No MRI Scans available</div>
-      )}
       
-      <AddMRI />
+        {updatePatient && (
+          <UpdatePatientModel
+            patient={patient}
+            setUpdatePatient={setUpdatePatient}
+          />
+        )}
+      
+
+      <div className="mri-container">
+        {mris && mris.length > 0 ? (
+          <MRIList mris={mris} />
+        ) : (
+          <div className="no-items-message">No MRI Scans available</div>
+        )}
+        
+        <div className="mr">
+          <AddMRI />
+        </div>
+      </div>
     </div>
   );
 }

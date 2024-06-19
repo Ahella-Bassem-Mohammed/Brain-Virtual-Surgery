@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+.add-patient-page{
+    margin-top: 70px;
+    margin-left: 100px;
+}
+
+.components{
+    margin-top: 30px;
+    display: table;
+    width: 100%;
+    border-collapse: collapse; 
+    display: flex;
+    flex-wrap: wrap;
+}
+.add-patient{
+    color: #234ca4;
+}
+
+.in{
+    width: 250px;
+    height: 60px;
+    background: transparent;
+    outline: none;
+    border: 2px solid #234ca4;
+    border-radius: 40px;
+    font-size: 16px;
+    color: #234ca4;
+    margin: 10px 1rem;
+}
+
+.in::placeholder{
+    margin-left: 15px;
+    color: rgb(109, 109, 109);
+}
+
+.in input{
+    height:53px;
+    width: 200px;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:#234ca4;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.add-patient-button{
+    justify-content: center;
+    align-items:center;
+    width:245px;
+    height: 60px;
+    color: #fff;
+    background:#234ca4;
+    border-radius: 50px;
+    font-size:20px;
+    font-weight: 70px;
+    cursor: pointer;
+    border: 2px solid #234ca4;
+    border-radius: 50px;
+    margin-left: 20px;
+    margin-top: 10px;
+    
+}
+.add-patient-button:hover{
+    background: transparent;
+    color: #234ca4;
+}
+
+.underlne{
+    margin-left: 40px;
+    width:180px;
+    height: 6px;
+    background: #234ca4;
+    border-radius: 9px;
+}
+
+.heading{
+    margin-top: 80px;
+    margin-left: 440px;
+}
+
+
+
+  

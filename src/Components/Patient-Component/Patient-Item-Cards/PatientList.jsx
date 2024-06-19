@@ -3,7 +3,7 @@ import { PatientItem } from './PatientItem'
 
 export const PatientList = ({patients}) => {
   return (
-    <div>
+    <div className='patient-list'>
       {patients?.map((item) => 
         <PatientItem patient={item} key={item._id} />
       )}

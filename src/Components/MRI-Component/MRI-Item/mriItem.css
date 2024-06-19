@@ -1,13 +1,37 @@
 .main{
-    margin: 100px;
+    border: 1px solid #234ca4;
+    padding: 10px;
+    border-radius: 15px;
 }
+
+.mri-button{
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 300;
+    width: 200px;
+    color: white;
+    background-color: #234ca4;
+    border-radius: 50vw;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.mri-button:hover{
+    color: #234ca4;
+    font-weight: 450;
+    border: 1px solid #234ca4;
+    background-color: transparent;
+}
+
 .update-patient{
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background-color:rgba(0, 0, 0, 0.7);
+    background-color:#234ca4;
     z-index:999;
     display:flex;
     align-items:center;
@@ -35,4 +59,66 @@
 .mri-image{
     width:200px;
     height:200px;
+}
+
+.mri-list{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 25px;
+    column-gap: 20px;
+    margin-left: 10px;
+}
+
+.details{
+    color: #234ca4;
+    font-size: larger;
+}
+
+.patient-item-date{
+    padding-left: 30px;
+    color: #234ca4;
+}
+
+
+.update-patient-iconss{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 3px;
+}
+
+.up-mri{
+    width:100px;
+    height: 28px;
+    color: #fff;
+    padding-left: 10px;
+    background:#234ca4;
+    border-radius: 20px;
+    font-size:17px;
+    cursor: pointer;
+    font-style: normal;
+    border: 2px solid #234ca4;
+}
+
+.up-mri:hover{
+    color: #234ca4;
+    font-weight: 600;
+    background: transparent;
+}
+
+.del-mri{
+    width:100px;
+    height: 28px;
+    color: #fff;
+    padding-left: 10px;
+    background:red;
+    border-radius: 20px;
+    font-size:17px;
+    cursor: pointer;
+    border: 2px solid red;
+}
+
+.del-mri:hover{
+    color: red;
+    font-weight: 600;
+    background: transparent;
 }

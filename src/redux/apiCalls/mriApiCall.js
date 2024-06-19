@@ -36,7 +36,7 @@ export function getSingleMRI(mriId) {
     try {
       
       const { data } = await request.get(
-        `/api/files/${mriId}`,
+        `/api/files/file/${mriId}`,
         {
           headers: {
             token: getState().auth.user.token,

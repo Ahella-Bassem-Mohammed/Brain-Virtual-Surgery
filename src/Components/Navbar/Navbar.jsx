@@ -60,7 +60,7 @@ export const Navbar = () => {
         {user ? (
           <>
             <li>
-              <Link to="/addpatient"> Add Patient </Link>
+              <NavLink to="/addpatient"> Add Patient </NavLink>
             </li>
             <div className="user-info">
               <li>
@@ -83,9 +83,9 @@ export const Navbar = () => {
                     <i className="bi bi-file-person"></i>
                     <span>Profile</span>
                   </Link>
-                  <div className="dropdown-item">
+                  <div >
                     <i className="bi bi-box-arrow-in-left"></i>
-                    <Link onClick={logoutHandler}>Logout </Link>
+                    <Link className="dropdown-item" onClick={logoutHandler}>Logout </Link>
                   </div>
                 </div>
               )}

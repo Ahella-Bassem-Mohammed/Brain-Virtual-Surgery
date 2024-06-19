@@ -1,3 +1,127 @@
-.patient-details-body{
-    margin-top: 200px;
+.head-mri{
+    color: #234ca4;
+    margin-top: 70px;
+    margin-left: 500px;
+}
+
+.underln{
+    margin-left: 50px;
+    width:210px;
+    height: 6px;
+    background: #234ca4;
+    border-radius: 9px;
+}
+
+.patient_details{
+    margin-top: 20px;
+    width: 200px;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, .8);
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    color: #234ca4;
+    border-radius: 10px;
+    padding: 15px 30px;
+    margin-bottom: 10px;
+    margin-left: 320px;
+}
+
+.wrappin{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.patient_detailss{
+    margin-top: 20px;
+    width: 500px;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, .8);
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    color: #234ca4;
+    border-radius: 10px;
+    padding: 15px 30px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.patient_detailsss{
+    margin-top: 5px;
+    width: 710px;
+    background: transparent;
+    border:2px solid rgba(255, 255, 255, .8);
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    color: #234ca4;
+    border-radius: 10px;
+    padding: 15px 30px;
+    margin-bottom: 30px;
+    margin-left: 320px;
+}
+
+.datte{
+    color: #234ca4;
+}
+
+.mri-container{
+    margin-left: 70px;
+}
+
+.info-field p{
+    padding-left: 5px;
+}
+
+.no-items-message{
+    color: black;
+    font-weight: 500;
+    margin-left: 500px;
+}
+
+.mr{
+    margin-left: 407px;
+}
+
+.update-patient-icons{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    margin-top: 10px;
+}
+
+.up-patient{
+    width:100px;
+    height: 30px;
+    color: #fff;
+    padding-left: 10px;
+    background:#234ca4;
+    border-radius: 20px;
+    font-size:17px;
+    cursor: pointer;
+    font-style: normal;
+    border: 2px solid #234ca4;
+}
+
+.up-patient:hover{
+    color: #234ca4;
+    font-weight: 600;
+    background: transparent;
+}
+
+.del-patient{
+    width:100px;
+    height: 30px;
+    color: #fff;
+    padding-left: 10px;
+    background:red;
+    border-radius: 20px;
+    font-size:17px;
+    cursor: pointer;
+    border: 2px solid red;
+}
+
+.del-patient:hover{
+    color: red;
+    font-weight: 600;
+    background: transparent;
 }

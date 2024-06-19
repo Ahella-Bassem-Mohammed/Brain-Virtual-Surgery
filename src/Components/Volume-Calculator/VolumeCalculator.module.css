@@ -4,16 +4,20 @@
   border-radius: 10px;
   color: white;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  background-color: black;
+  background-color: #234ca4;
 }
 
 .closeContainerBtn {
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+  width: 15px;
   position: absolute;
   right: 10px;
 }
 
 .calcVolumeContainer {
-  top: 290px;
+  top: 350px;
 }
 
 .openedCalcVolumeContainer {
@@ -25,7 +29,7 @@
 .closedCalcVolumeContainer {
   writing-mode: vertical-lr;
   text-orientation: mixed;
-  padding: 50px 5px;
+  padding: 42px 5px;
   cursor: pointer;
 }
 
@@ -37,7 +41,7 @@
 }
 
 .input {
-  background-color: black;
+  background-color: white;
   color: white;
   border: 1px solid white;
   border-radius: 5px;
@@ -52,7 +56,7 @@
 .volumeResultHistoryList {
   height: 145px;
   overflow-y: auto;
-  scrollbar-color: white black;
+  scrollbar-color: white #234ca4;
   scrollbar-width: thin;
 }
 
