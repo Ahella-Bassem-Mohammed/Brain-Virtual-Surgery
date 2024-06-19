@@ -172,7 +172,7 @@ export const Signup = () => {
                 </center>
               </div>
               <div className="left">
-                <button class="btn transparent" id="sign-in-btn" onClick={() => window.location="/login"}>
+                <button className="btn transparent" id="sign-in-btn" onClick={() => window.location="/login"}>
                   Sign in
                 </button>
               </div>
