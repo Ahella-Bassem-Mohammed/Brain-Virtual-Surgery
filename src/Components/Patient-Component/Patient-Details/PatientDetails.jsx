@@ -96,30 +96,53 @@ export const PatientDetails = () => {
         
         <div className="patient_detailss">
           <div className="info-field">
-            <strong>Allergies:</strong>
-            <p>{patient?.Allergies}</p>
+          <strong>Notes:</strong>
+          <p>{patient?.Notes}</p>
+        </div>
+        
+        <span className="datte"> <strong>Joined Date:</strong>{new Date(patient?.createdAt).toDateString()}</span>
+
+        {/* -------------------------------------------------------------------------------------- */}
+
+        {/* -----------------update patient icons---------------------------------- */}
+
+          <div className="update-patient-icons">
+            <div className="up-patient">
+              <i onClick={() => setUpdatePatient(true)} className="bi bi-pencil-square">Update</i>
+            </div>
+            <div className="del-patient">
+              <i onClick={deletePatientHandler} className="bi bi-trash-fill">Delete</i>
+            </div>
           </div>
 
-          <div className="info-field">
-            <strong>Diagnosis:</strong>
-            <p>{patient?.Diagnosis}</p>
-          </div>
-
-          <div className="info-field">
-            <strong>Symptoms:</strong>
-            <p>{patient?.Symptoms} </p>
-          </div>
-
-          <div className="info-field">
-            <strong>Risk Factors:</strong>
-            <p>{patient?.Risk_Factors_And_Life_Style}</p>
-          </div>
+        {/*------------------------------------------------------------------------- */}
 
                  
         </div>
       </div>
 
       <div className="patient_detailsss">
+
+        <div className="info-field">
+          <strong>Allergies:</strong>
+          <p>{patient?.Allergies}</p>
+        </div>
+
+        <div className="info-field">
+          <strong>Diagnosis:</strong>
+          <p>{patient?.Diagnosis}</p>
+        </div>
+
+        <div className="info-field">
+          <strong>Symptoms:</strong>
+          <p>{patient?.Symptoms} </p>
+        </div>
+
+        <div className="info-field">
+          <strong>Risk Factors:</strong>
+          <p>{patient?.Risk_Factors_And_Life_Style}</p>
+        </div>
+
 
       <div className="info-field">
             <strong>Family History:</strong>
@@ -161,27 +184,7 @@ export const PatientDetails = () => {
           <p>{patient?.Neurological_Examination}</p>
         </div>
         
-        <div className="info-field">
-          <strong>Notes:</strong>
-          <p>{patient?.Notes}</p>
-        </div>
         
-        <span className="datte"> <strong>Joined Date:</strong>{new Date(patient?.createdAt).toDateString()}</span>
-
-        {/* -------------------------------------------------------------------------------------- */}
-
-        {/* -----------------update patient icons---------------------------------- */}
-
-          <div className="update-patient-icons">
-            <div className="up-patient">
-              <i onClick={() => setUpdatePatient(true)} className="bi bi-pencil-square">Update</i>
-            </div>
-            <div className="del-patient">
-              <i onClick={deletePatientHandler} className="bi bi-trash-fill">Delete</i>
-            </div>
-          </div>
-
-        {/*------------------------------------------------------------------------- */}
       </div>
    
 
