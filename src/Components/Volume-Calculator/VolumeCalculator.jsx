@@ -31,7 +31,7 @@ const VolumeCalculator = ({
             onClick={displaySection("calculateVolume", false)}
             className={classes.closeContainerBtn}
           >
-            close
+            X
           </button>
           <div>
             <h3 style={{ marginTop: "0" }}>Calculate Volume</h3>

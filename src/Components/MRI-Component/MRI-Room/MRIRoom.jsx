@@ -7,7 +7,7 @@ import BrainViewer from "../../Brain-Viewer/BrianViewer";
 
 
 // How the MRI is manipulated with our model
-
+const title=["Original Image Flair", "Ground Truth", "All Classes", "NECROTIC/CORE Predicted", "EDEMA Predicted", "ENHANCING Predicted"]
 export const MRIRoom = () => {
 
   const dispatch=useDispatch();
@@ -27,19 +27,21 @@ console.log(id)
 
   return (
     <div className="margin">
-      MRI-Room
+      <div className="room-header"><h1>MRI-Room</h1></div>
+      <div className="underl"></div>
       <div>
         {" "}
-        <div style={{display: "flex", rowGap: "10px", columnGap: "10px"}}>
-          {mri?.results?.map((result, index) => (
-            
-             
-              <img
+        <div className="images-container">
+          {mri?.results?.map((result, index) => (          
+            <div>
+                <span className="title">{title[index]}</span>
+                <img
                 style={{ width: "200px", height: "200px" }}
                 src={result.secure_url}
                 alt="mri"
                 key={index}
               />
+            </div>
             
           ))}{" "}
         </div>

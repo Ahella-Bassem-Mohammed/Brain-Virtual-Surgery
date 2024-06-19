@@ -1,3 +1,31 @@
 .margin{
-    margin-top: 50px;
+    margin-top: 80px;
+}
+
+.room-header{
+    margin-left: 580px;
+    color: #234ca4;
+}
+
+.underl{
+    margin-left: 610px;
+    margin-bottom: 20px;
+    width:110px;
+    height: 4px;
+    background: #234ca4;
+    border-radius: 15px;
+}
+
+.images-container{
+    display: flex;
+    row-gap: 50px;
+    column-gap: 25px;
+    margin-left: 20px;
+}
+
+.title{
+    text-align: center;
+    display: block;
+    color: #234ca4;
+    font-weight: 600;
 }

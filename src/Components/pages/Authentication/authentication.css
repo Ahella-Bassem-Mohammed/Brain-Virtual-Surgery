@@ -19,6 +19,8 @@ input {
   width: 100%;
 }
 
+
+
 .login-pic{
     margin: auto;
     width: 1365px;
@@ -36,7 +38,7 @@ input {
     height: 30vh;
     width:100%;
     max-width: 100%;
-    padding-top: 72px;
+    padding-top: 52px;
     position:absolute;
     background: white;
     background-size: 300% 300%;
@@ -109,7 +111,7 @@ input {
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
-  margin: 90px 80px;
+  margin: 110px 80px;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -126,12 +128,12 @@ input {
 
 
 .left{
-  margin-top: -380px;
-  padding-left: 300px;
+  margin-top: -410px;
+  padding-left: 280px;
 }
 
 .signup-container {
-  margin-top: 74px;
+  margin-top: 52px;
   height: 90vh;
   width:  100%;
   max-width: 100%;
@@ -179,7 +181,9 @@ input {
     margin-left: 15px;
     margin-top: 20px;
     flex-direction: column;
-}.signup-input{
+}
+
+.signup-input{
     width: 250px;
     height: 60px;
     background: transparent;

@@ -79,114 +79,166 @@ export const AddPatient = () => {
   }, [isPatientAdded,navigate,user]);
 
   return (
-    <div className="margin">
-      <h1>Add New Patient</h1>
-
-      <form onSubmit={formSubmitHandler}>
+    <div className="add-patient-page">
+      <div className="heading">
+      <h1 className="add-patient">Add New Patient</h1>
+      <div className="underlne"></div>
+      </div>
+      <form onSubmit={formSubmitHandler} className="components">
+        <div className="in">
         <input
           type="text"
           placeholder="First Name"
           value={fname}
           onChange={(e) => setFname(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Last Name"
           value={lname}
           onChange={(e) => setLname(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Gender "
           value={gender}
           onChange={(e) => setGender(e.target.value)}
         ></input>
-        <input
+        </div>
+        
+        <div className="in">
+        <input 
           type="text"
           placeholder="Age"
           value={age}
           onChange={(e) => setAge(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Risk Factors and Life Style"
           value={risk}
           onChange={(e) => setRisk(e.target.value)}
         ></input>
-        <input
+        </div>
+        
+        <div className="in">
+        <input 
           type="text"
           placeholder="Family History"
           value={familyhistory}
           onChange={(e) => setFamilyhistory(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Neurological_Examination"
           value={neuro}
           onChange={(e) => setNeuro(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Symptoms"
           value={symptoms}
           onChange={(e) => setSymptoms(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Treatment_History"
           value={treatmenthistory}
           onChange={(e) => setTreatmenthistory(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Allergies"
           value={allergies}
           onChange={(e) => setAllergies(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Duration_And_Progression_Of_Symptoms"
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
         ></input>
-        <input
+        </div>
+        
+        <div className="in">
+        <input 
           type="text"
           placeholder="Diagnosis"
           value={diagnosis}
           onChange={(e) => setDiagnosis(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Medical_History"
           value={medicalhistory}
           onChange={(e) => setMedicalhistory(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Biopsy_Or_Pathology_Results"
           value={biopsy}
           onChange={(e) => setBiopsy(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Lab_Test_Result"
           value={labtestresult}
           onChange={(e) => setLabtestresult(e.target.value)}
         ></input>
+        </div>
+        
+        <div className="in">
         <input
           type="text"
           placeholder="Current_Medications"
           value={currentmedications}
           onChange={(e) => setCurrentmedications(e.target.value)}
         ></input>
-        <input
+        </div>
+        
+        <div className="in">
+        <input 
           type="text"
           placeholder="Notes"
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
         ></input>
-
-        <button type="submit">
+        </div>
+        
+        <button type="submit" className="add-patient-button">
           {" "}
           {loading ? (
             <RotatingLines

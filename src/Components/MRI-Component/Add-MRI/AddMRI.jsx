@@ -59,28 +59,30 @@ export const AddMRI = () => {
     <div>
       <form onSubmit={formSubmitHandler}>
         
-        <input
-          type="file"
-          multiple
-          name="file"
-          id="file"
-          onChange={handleFileChange}
-        />{" "}
+        <div className="ch-file">
+          <input 
+            type="file"
+            multiple
+            name="file"
+            id="file"
+            onChange={handleFileChange}
+          />{" "}
         
-        <button type="submit">
-          {" "}
-          {loading ? (
-            <RotatingLines
-              strokeColor="grey"
-              strokeWidth="5"
-              animationDuration="0.75"
-              width="40"
-              visible={true}
-            />
-          ) : (
-            "Add MRI"
-          )}
-        </button>
+          <button type="submit" className="button-file">
+            {" "}
+            {loading ? (
+              <RotatingLines
+                strokeColor="grey"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="40"
+                visible={true}
+              />
+            ) : (
+              "Add MRI"
+            )}
+          </button>
+        </div>
       </form>
     </div>
   );

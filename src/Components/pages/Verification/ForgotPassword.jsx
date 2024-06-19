@@ -29,7 +29,7 @@ export const ForgotPassword = () => {
           <div className="underline"></div>
         </div>
         <form onSubmit={formSubmitHandler} method="post">
-          <div className="inputs">
+        <div className="inputs_forget">
             <div className="input">
               <input
                 type="text"
@@ -39,7 +39,6 @@ export const ForgotPassword = () => {
               />
               <FaUser className="icon" />
             </div>
-
             <div className="submit-container">
               <center>
                 {" "}

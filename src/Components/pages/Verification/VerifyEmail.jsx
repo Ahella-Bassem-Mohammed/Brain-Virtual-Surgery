@@ -32,4 +32,5 @@ export const VerifyEmail = () => {
       
     </section>
 
+
   )};

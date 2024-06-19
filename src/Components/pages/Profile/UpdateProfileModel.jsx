@@ -54,62 +54,64 @@ export const UpdateProfileModel = ({ setUpdateProfile, profile }) => {
           ></i>
         </abbr>
         <h1 className="update-profile-title">Update Profile</h1>
-        <input
+        <div className="undeln"></div>
+        <div className="elements">
+        <input className="put"
           type="text"
           placeholder="First Name"
           value={fname}
           onChange={(e) => setFname(e.target.value)}
         ></input>
-        <input
+        <input className="put"
           type="text"
           placeholder="Last Name"
           value={lname}
           onChange={(e) => setLname(e.target.value)}
         ></input>
-        <input
+        <input className="put"
           type="text"
           placeholder="User Name"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         ></input>
-        <input
+        <input className="put"
           type="text"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         ></input>
-        <input
+        <input className="put"
           type="text"
           placeholder="Age"
           value={age}
           onChange={(e) => setAge(e.target.value)}
         ></input>
-        <input
+        <input className="put"
           type="text"
           placeholder="Gender"
           value={gender}
           onChange={(e) => setGender(e.target.value)}
         ></input>
-        <input
+        <input className="put"
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         ></input>
-        <input
+        <input className="put"
           type="text"
           placeholder="Specialist"
           value={specialist}
           onChange={(e) => setSpecialist(e.target.value)}
         ></input>
-        <input
+        <input className="put"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         ></input>
-
-        <button type="submit"> Update Profile</button>
+        <button type="submit" className="submt"> Update Profile</button>
+        </div>
       </form>
     </div>
   );

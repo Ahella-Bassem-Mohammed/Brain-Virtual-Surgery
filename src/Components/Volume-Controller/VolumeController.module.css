@@ -1,10 +1,10 @@
 .container {
-  z-index: 2;
+  z-index: 1;
   position: absolute;
   border-radius: 10px;
   color: white;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  background-color: black;
+  background-color: #234ca4;
 }
 
 .volumeContainer {
@@ -18,6 +18,10 @@
 }
 
 .closeContainerBtn {
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+  width: 15px;
   position: absolute;
   right: 10px;
 }
@@ -33,5 +37,6 @@
     display: flex;
     flex-direction: column;
     margin: 5px 0;
-  }
+}
+
   

@@ -3,7 +3,6 @@ import React ,{useState } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import  {UpdateMRIModel}  from "../../MRI-Component/Update-MRI-Model/UpdateMRIModel";
 import { /*updateMriScanDetails,*/updateMriScanImage ,deleteMriScan } from "../../../redux/apiCalls/mriApiCall";
 import swal from "sweetalert";
 
@@ -67,79 +66,29 @@ export const MRIItem = ({mri}) => {
 
   return (
     <div className="main">
-      <div>
-        <strong>Image :</strong>
-      </div>
+      
       <img
-        src={file ? URL.createObjectURL(file) : mri?.Image?.url}
+        src={file ? URL.createObjectURL(file) : mri?.thumbnail?.secure_url}
         alt="MRI Scan"
         htmlFor="file"
         className="mri-image"
       />
-      <div>
+      <div className="details">
         <strong>Scan Details :</strong>
       </div>
       <p>{mri?.ScanDetalies}</p>
       <div className="patient-item-date">
-        {new Date(mri?.createdAt).toDateString()}
+        {new Date(mri?.name).toDateString()}
       </div>
-      <Link to={`/patientdetails/mriroom/${mri?._id}`}> MRI Room</Link>
-      <div>
-        <i
-          onClick={() => setUpdateMRI(true)}
-          className="bi bi-pencil-square"
-        ></i>
-        <i onClick={deleteMriHandler} className="bi bi-trash-fill"></i>
-
-        <form onSubmit={updateMriImageHandler}>
-          <input
-            type="file"
-            name="file"
-            id="file"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-          <button type="submit" >
-            Update
-          </button>
-        </form>
-
-        {/*<form onSubmit={updateMriImageHandler}>
-          <abbr title="choose MRI photo">
-            <label
-              htmlFor="file"
-              className="bi bi-camera-fill "
-            ></label>
-          </abbr>
-          <input
-            style={{ display: "none" }}
-            type="file"
-            name="file"
-            id="file"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-          <button /*className="upload-profile-photo-btn" type="submit">
-            Upload
-          </button>
-        </form>*/}
+      <Link className="mri-button" to={`/patientdetails/mriroom/${mri?._id}`}> MRI Room</Link>
+      <div className="update-patient-iconss">
+      <div className="up-mri">
+        <i onClick={() => setUpdateMRI(true)} className="bi bi-pencil-square">Update</i>
       </div>
-      {updateMRI && <UpdateMRIModel mri={mri} setUpdateMRI={setUpdateMRI} />}{" "}
-      {/*<form onSubmit={formSubmitHandler}>
-        <abbr title="close">
-          <i
-            onClick={() => setUpdateMRI(false)}
-            className="bi bi-x-circle-fill update-patient-form-close"
-          ></i>
-        </abbr>
-        <h1 className="update-patient-title">Update MRI Scan Details</h1>
-        <input
-          type="text"
-          placeholder="Scan Details"
-          value={details}
-          onChange={(e) => setDetails(e.target.value)}
-        ></input>
-
-        <button type="submit"> Update</button>
-  </form>*/}
+      <div className="del-mri">
+        <i onClick={deleteMriHandler} className="bi bi-trash-fill">Delete</i> 
+      </div>   
+      </div>
     </div>
   );
 }

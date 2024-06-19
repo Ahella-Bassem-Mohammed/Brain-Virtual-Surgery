@@ -45,7 +45,7 @@ export const Login = () => {
   return (
     <div className="login-container">
       <div className="login-pic">
-        <div className="header">
+        <div className="header_login">
           <div className="text">Login</div>
           <div className="underline"></div>
         </div>
@@ -96,8 +96,6 @@ export const Login = () => {
           </div>
         </form>
         <div className="add">
-          <h3>First Time ?</h3>
-          <p>Become a part of our community!</p>
           <button
             className="btn  transparent"
             id="sign-up-btn"
