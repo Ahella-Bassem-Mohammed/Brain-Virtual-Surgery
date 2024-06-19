@@ -13,10 +13,7 @@ export const AddMRI = () => {
   const dispatch = useDispatch();
   const navigate=useNavigate();
   
-  const { loading } = useSelector((state) => 
-  ({
-        loading: state.loading|| false, // Providing a default value if loadingg is undefined
-  }));
+  const { loading } = useSelector((state) => state.mri);
   const { isMriScanUploaded } = useSelector((state) =>
   ({
         isMriScanUploaded: state.isMriScanUploaded || false, // Providing a default value if loadingg is undefined
@@ -43,10 +40,8 @@ export const AddMRI = () => {
       formData.append(`file`, file);
     });
     formData.append("patientId",id)
-    dispatch(uploadMriScan(formData));
-    
+    dispatch(uploadMriScan(formData,id));
 
-   
   };
 
   useEffect(() => {

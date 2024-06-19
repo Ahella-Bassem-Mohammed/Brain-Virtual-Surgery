@@ -26,8 +26,8 @@ export const Navbar = () => {
   // Logout Function
   const logoutHandler = () => {
     setDropdown(false);
-    dispatch(logoutUser());
-    navigate("/");
+    dispatch(logoutUser(navigate));
+    //navigate("/");
   };
 
   window.addEventListener("scroll", changeBackgorund);

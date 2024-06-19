@@ -18,10 +18,11 @@ export function loginUser(user) {
 
 //Logout User
 
-export function logoutUser() {
+export function logoutUser(navigate) {
   return (dispatch) => {
     dispatch(authActions.logout());
     localStorage.removeItem("userInfo");
+    navigate("/",{replace:true})
   };
 }
 

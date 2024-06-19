@@ -88,7 +88,6 @@ const VolumeController = ({
               maxColorVolumePicker={maxColorVolumePicker}
             />
           </div>
-          <input type="file" onChange={handleFileUpload} />
         </div>
       )}
     </>

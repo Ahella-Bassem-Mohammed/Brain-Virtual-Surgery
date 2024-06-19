@@ -1,12 +1,16 @@
 //import { CircularProgress, Divider, Slider } from "@mui/material";
 import useBrainRender from "../../Hooks/useBrainRender";
-import { useState } from "react";
+import { useEffect, useState ,useCallback} from "react";
 import classes from "./BrainViewer.module.css";
 import VolumeController from "../Volume-Controller/VolumeController";
 import VolumeCalculator from "../Volume-Calculator/VolumeCalculator";
 import SlicesSection from "../Slices-Section/SlicesSection";
+import request from "../../utils/request";
+import { useSelector } from "react-redux";
 
-const BrainViewer = ({renderFile}) => {
+const BrainViewer = ({ renderFile, mriId, fileName }) => {
+
+  const { user } = useSelector((state) => state.auth);
   const {
     display3D,
     display2D,
@@ -27,45 +31,89 @@ const BrainViewer = ({renderFile}) => {
     minColorVolumePicker,
     maxColorVolumePicker,
     volumeColor,
-  } = useBrainRender({renderFile});
+  } = useBrainRender({ renderFile });
   const [thresholdVolume, setThresholdVolume] = useState({
     volume: null,
     threshold: null,
   });
   const [loadingEl, setLoadingEl] = useState(null);
-  const [volumeHistory, setVolumeHistory] = useState([
-    { volume: 20, threshold: 0.7, date: new Date() },
-    { volume: 20, threshold: 0.7, date: new Date() },
-    { volume: 20, threshold: 0.7, date: new Date() },
-  ]);
+  const [volumeHistory, setVolumeHistory] = useState([]);
   const [displayedSections, setDisplayedSections] = useState({
     volume: true,
     calculateVolume: false,
   });
+   const fetchVolumeHistory = useCallback(async () => {
+     try {
+       const res = await request.get(`/api/volume/${mriId}`);
 
-  const saveNewVolume = () => {
+       setVolumeHistory(res.data);
+     } catch (err) {
+       console.log(err);
+     }
+   }, []);
+
+   useEffect(() => {
+     fetchVolumeHistory();
+   }, [fetchVolumeHistory]);
+
+  const saveNewVolume = async() => {
     setLoadingEl("save-volume");
-    setTimeout(() => {
-      setLoadingEl(null);
-      // save new volume in database then when res.status is 200 then we update the volume history list
+    try {
+        const res = await request.post(
+          `/api/volume/save-volume`,
+          {
+            volume: thresholdVolume.volume,
+            threshold: thresholdVolume.threshold,
+            displayedNII: {
+              public_id: fileName,
+              secure_url: renderFile,
+            },
+            btSegmentationId: mriId,
+          },
+          {
+            headers: {
+              token: user.token,
+            },
+          }
+        );
+      console.log(res);
       setVolumeHistory((prev) => [
         {
           threshold: thresholdVolume.threshold,
           volume: thresholdVolume.volume,
-          date: new Date(),
+          createdAt: res.data.createdAt,
         },
         ...prev,
       ]);
-    }, [2000]);
+      setThresholdVolume({
+        volume: null,
+        threshold: null,
+      });
+      setLoadingEl(null);
+      
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const calculateVolume = () => {
+  const calculateVolume = async () => {
     setLoadingEl("calculate-volume");
-    setTimeout(() => {
+    try {
+      const res = await request.post(
+        `/api/volume`,
+        { threshold: thresholdVolume.threshold, id: mriId },
+        {
+          headers: {
+            token: user.token,
+          },
+        }
+      );
+      console.log(res);
+      setThresholdVolume((prev) => ({ ...prev, volume: res.data.volume }));
       setLoadingEl(null);
-      // send the threshold to the backend to calculate the volume when the backend sends the volume value we insert it in its state
-      setThresholdVolume((prev) => ({ ...prev, volume: 0.6 }));
-    }, [2000]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const insertThreshold = (e) => {

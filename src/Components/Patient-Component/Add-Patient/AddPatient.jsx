@@ -68,6 +68,9 @@ export const AddPatient = () => {
       Current_Medications:currentmedications,
       Notes:notes,
     };
+    Object.entries(newPatient).forEach(([key, value]) => {
+      if (!value) delete newPatient[key];
+    });
     dispatch(addPatient(newPatient))
 
   };

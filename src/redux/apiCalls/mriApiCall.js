@@ -57,7 +57,7 @@ export function getSingleMRI(mriId) {
 
 
 // Upload MRI Scan
-export function uploadMriScan(MRIScan) {
+export function uploadMriScan(MRIScan,id) {
   return async (dispatch, getState) => {
     try {
       dispatch(mriActions.setLoading());
@@ -70,7 +70,9 @@ export function uploadMriScan(MRIScan) {
       });
 
       dispatch(mriActions.setIsMriScanUploaded());
+      dispatch(getAllMRI(id));
       setTimeout(() => dispatch(mriActions.clearIsMriScanUploaded()), 2000);
+      toast.success("MRI uploaded successfully ");
     } catch (error) {
       toast.error(error.response.data.message);
       dispatch(mriActions.clearLoading());

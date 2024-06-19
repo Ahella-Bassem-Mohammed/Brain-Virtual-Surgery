@@ -57,7 +57,7 @@ const VolumeCalculator = ({
                 is{" "}
                 {loadingEl !== "calculate-volume" && (
                   <span style={{ fontWeight: "bold" }}>
-                    {thresholdVolume?.volume || "_"}
+                    {parseFloat(thresholdVolume?.volume).toFixed(4) || "_"}
                   </span>
                 )}
               </span>
@@ -91,18 +91,20 @@ const VolumeCalculator = ({
                 <br />
                 <label>Volume</label>
 
-                <span style={{ marginLeft: "10px" }}>{volumeObj.volume}</span>
+                <span style={{ marginLeft: "10px" }}>
+                  {parseFloat(volumeObj.volume).toFixed(4)}
+                </span>
                 <br />
                 <label>Date</label>
 
                 <span style={{ marginLeft: "10px" }}>
-                  {formatDate(volumeObj.date)}
+                  {formatDate(new Date(volumeObj.createdAt))}
                 </span>
                 <br />
                 <label>Time</label>
 
                 <span style={{ marginLeft: "10px" }}>
-                  {formatTime(volumeObj.date)}
+                  {formatTime(new Date(volumeObj.createdAt))}
                 </span>
                 {volumeHistory.length - 1 !== index && (
                   <Divider

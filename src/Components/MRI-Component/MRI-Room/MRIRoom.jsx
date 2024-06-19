@@ -46,7 +46,7 @@ console.log(id)
           ))}{" "}
         </div>
       </div>
-      <BrainViewer renderFile={mri.displayedNII.secure_url} />
+      <BrainViewer renderFile={mri.displayedNII.secure_url}  mriId={id} fileName={mri.displayedNII.public_id} />
     </div>
   );
 }
