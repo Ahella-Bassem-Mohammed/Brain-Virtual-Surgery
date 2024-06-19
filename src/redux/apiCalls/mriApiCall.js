@@ -36,7 +36,7 @@ export function getSingleMRI(mriId) {
     try {
       
       const { data } = await request.get(
-        `/api/files/${mriId}`,
+        `/api/files/file/${mriId}`,
         {
           headers: {
             token: getState().auth.user.token,
@@ -119,7 +119,7 @@ export function updateMriScanDetails(newDetails, mriId) {
 export function deleteMriScan( mriId) {
   return async (dispatch, getState) => {
     try {
-      const { data } = await request.delete(`/api/mriscan/${mriId}`, {
+      const { data } = await request.delete(`/api/mriscan/delete-files/${mriId}`, {
         headers: {
           token: getState().auth.user.token,
         },
