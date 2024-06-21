@@ -155,7 +155,7 @@ const BrainViewer = ({ renderFile, mriId, fileName }) => {
       />
 
       <div className={classes.viewerContainer}>
-        <div id="3D" style={{ width: "70%" }}></div>
+        <div id="3D" style={{ width: "70%" , backgroundColor: 'rgb(131, 130, 130)'}}></div>
         <SlicesSection
           volumeslicingX={volumeslicingX}
           volumeslicingY={volumeslicingY}

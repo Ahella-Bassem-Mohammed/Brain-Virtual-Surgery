@@ -40,10 +40,10 @@ const VolumeController = ({
           >
             X
           </button>
-          <button onClick={display3D} type="button" className="view">
+          <button onClick={display3D} type="button" style={{ color: '#234ca4', fontSize: '15px', fontWeight: 'bold', borderRadius: '15px', borderColor: 'white', padding: '2px', border: '1px solid', width: '80px', height: '25px'}}>
             view 3D
           </button>
-          <button onClick={display2D} type="button" className="view">
+          <button onClick={display2D} type="button" style={{ marginLeft: 5, color: '#234ca4', fontSize: '15px', fontWeight: 'bold', borderRadius: '15px', borderColor: 'white', padding: '2px', border: '1px solid', width: '80px', height: '25px'}}>
             view 2D
           </button>
           {volumeRender === "3D" && (
