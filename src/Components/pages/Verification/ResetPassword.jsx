@@ -40,7 +40,7 @@ export const ResetPassword = () => {
             <div className="underline"></div>
           </div>
           <form onSubmit={formSubmitHandler}>
-            <div className="inputs">
+            <div className="inpts">
               <div className="input">
                 <input
                   type="password"

@@ -43,6 +43,12 @@
     flex-direction: column;
 }
 
+.inpts{
+    margin-top: 50px;
+    margin-left: 70px;
+    flex-direction: column;
+}
+
 .inputs_forget{
     margin-top: 50px;
     margin-left: 60px;
@@ -162,7 +168,7 @@
 
 
 .verify-email{
-    height:calc(100vh-130px);
+    margin-top: 140px;
     width:100%;
     display:flex;
     align-items: center;
@@ -171,12 +177,12 @@
 }
 .verify-email-icon{
     font-size: 80px;
-    color:var(--green-color);
+    color: rgb(1, 155, 1);
 }
 .verify-email-title{
     font-size: 32px;
     margin-bottom: 20px;
-    color:var(--green-color);
+    color: #234ca4;
 }
 .verify-email-link{
     font-size: 24px;
@@ -184,7 +190,7 @@
     background-color: var(--primary-color);
     padding: 5px;
     border-radius: 5px;
-    color:var(--white-color);
+    color: #041f5a;
 
 }
 .verify-email-not-found{

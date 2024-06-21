@@ -118,7 +118,7 @@ export const AddPatient = () => {
         <div className="in">
         <input 
           type="text"
-          placeholder="Age"
+          placeholder="Birth-Date"
           value={age}
           onChange={(e) => setAge(e.target.value)}
         ></input>
