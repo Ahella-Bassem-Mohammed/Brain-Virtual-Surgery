@@ -14,8 +14,6 @@ import {PatientList} from "../../Patient-Component/Patient-Item-Cards/PatientLis
 import { UpdateProfileModel } from "../Profile/UpdateProfileModel";
 import swal from "sweetalert";
 import { Oval } from "react-loader-spinner";
-import { UserContext } from "../../UserContext";
-import { useContext } from "react";
 
 
 export const calculateAge = (birthdate) => {
@@ -38,8 +36,7 @@ export const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {userc} =useContext(UserContext);
-  //const {age}=calculateAge(userc?.birthdate);
+  
   
   const [file, setFile] = useState(null);
   const [updateProfile, setUpdateProfile] = useState(false);

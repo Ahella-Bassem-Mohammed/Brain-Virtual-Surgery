@@ -1,5 +1,5 @@
 import "./patientDetails.css"
-import React,{useEffect, useState,useContext} from 'react'
+import React,{useEffect, useState} from 'react'
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ import {
 } from "../../../redux/apiCalls/mriApiCall";
 import { getSinglePatient } from "../../../redux/apiCalls/patientApiCall";
 import { deletePatient } from "../../../redux/apiCalls/patientApiCall";
-import { UserContext } from "../../UserContext";
+
 import {calculateAge} from "../../pages/Profile/Profile";
 
 import swal from "sweetalert";
@@ -28,8 +28,6 @@ export const PatientDetails = () => {
 
   const { id } = useParams();
 
-   //const { userc } = useContext(UserContext);
-   //const age = calculateAge(userc.birthdate);
   
   const age = patient?.Birthdate ? calculateAge(patient.Birthdate) : "N/A";
   const [updatePatient, setUpdatePatient] = useState(false);
