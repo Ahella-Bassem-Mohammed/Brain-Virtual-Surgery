@@ -34,26 +34,10 @@
 }
 
 .thresholdContainer {
-    display: flex;
-    flex-direction: column;
-    margin: 5px 0;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
 }
 
-.view{
-    justify-content: center;
-    align-items:center;
-    width:245px;
-    height: 60px;
-    color: #fff;
-    background:#234ca4;
-    border-radius: 50px;
-    font-size:20px;
-    font-weight: 70px;
-    cursor: pointer;
-    border: 2px solid #234ca4;
-    border-radius: 50px;
-    margin-left: 20px;
-    margin-top: 10px;
-}
 
   
