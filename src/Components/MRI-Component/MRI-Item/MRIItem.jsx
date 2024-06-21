@@ -2,8 +2,8 @@ import "./mriItem.css";
 import React ,{useState } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import { /*updateMriScanDetails,*/updateMriScanImage ,deleteMriScan } from "../../../redux/apiCalls/mriApiCall";
+//import { toast } from "react-toastify";
+import { /*updateMriScanDetails,updateMriScanImage ,*/deleteMriScan } from "../../../redux/apiCalls/mriApiCall";
 import swal from "sweetalert";
 
 //import { deleteMRI } from "../../../redux/apiCalls/mriApiCall";
@@ -22,8 +22,8 @@ export const MRIItem = ({mri}) => {
   const navigate = useNavigate();
   const{id}=useParams();
 
-  const [file, setFile] = useState(null);
-  const [updateMRI, setUpdateMRI] = useState(false);
+  const [file/*, setFile*/] = useState(null);
+  const [/*updateMRI,*/ setUpdateMRI] = useState(false);
   //const [details, setDetails] = useState(mri?.ScanDetalies);
 
   // Update MRI Details Form Submit Handler
@@ -35,7 +35,7 @@ export const MRIItem = ({mri}) => {
   };*/
 
   // Update MRI Image Handler
-  const updateMriImageHandler = (e) => {
+  /*const updateMriImageHandler = (e) => {
     e.preventDefault();
     if(!file)return toast.warning("there is no file");
 
@@ -44,7 +44,7 @@ export const MRIItem = ({mri}) => {
     
 
     dispatch(updateMriScanImage(formData, mri?._id));
-  };
+  };*/
 
   // Delete MRI Handler
   const deleteMriHandler = () => {

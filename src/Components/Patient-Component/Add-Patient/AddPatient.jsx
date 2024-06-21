@@ -1,11 +1,11 @@
 import "./addPatient.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { addPatient } from "../../../redux/apiCalls/patientApiCall";
 import { RotatingLines } from "react-loader-spinner";
-//import { AddMRI } from "../../MRI-Component/Add-MRI/AddMRI";
+import {UserContext} from "../../UserContext";
 
 
 
@@ -19,11 +19,11 @@ export const AddPatient = () => {
    useEffect(() => {
      window.scrollTo(0, 0);
    }, []);
-
+  const {setUser}=useContext(UserContext);
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [gender, setGender] = useState("");
-  const [age, setAge] = useState("");
+  const [birthdate, setBirthDate] = useState("");
   const [risk, setRisk] = useState("");
   const [familyhistory, setFamilyhistory] = useState("");
   const [neuro, setNeuro] = useState("");
@@ -46,14 +46,15 @@ export const AddPatient = () => {
     if(fname.trim() === "") return toast.error("First name is required !!");
     if(lname.trim() === "") return toast.error("Last name is required !!");
     if(gender.trim() === "") return toast.error("Gender is required !!");
-    if(age.trim() === "") return toast.error("Age is required !!"); 
+    if(birthdate.trim() === "") return toast.error("BirthDate is required !!"); 
 
 
     const newPatient = {
       First_Name: fname,
       Last_Name: lname,
       Gender: gender,
-      Age: age,
+      Birthdate: birthdate,
+      /*setUser({birthdate}),*/
       Risk_Factors_And_Life_Style: risk,
       Family_History: familyhistory,
       Neurological_Examination: neuro,
@@ -68,6 +69,7 @@ export const AddPatient = () => {
       Current_Medications:currentmedications,
       Notes:notes,
     };
+    setUser({birthdate});
     Object.entries(newPatient).forEach(([key, value]) => {
       if (!value) delete newPatient[key];
     });
@@ -117,10 +119,10 @@ export const AddPatient = () => {
         
         <div className="in">
         <input 
-          type="text"
+          type="date"
           placeholder="Birth-Date"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
+          value={birthdate}
+          onChange={(e) => setBirthDate(e.target.value)}
         ></input>
         </div>
         

@@ -16,6 +16,7 @@ import {PatientDetails} from "./Components/Patient-Component/Patient-Details/Pat
 import { AddPatient } from "./Components/Patient-Component/Add-Patient/AddPatient";
 import {MRIRoom } from "./Components/MRI-Component/MRI-Room/MRIRoom";
 import {PrivateComponent} from "./Components/PrivateComponent";
+import { UserProvider } from "./Components/UserContext";
 
 
 
@@ -26,37 +27,37 @@ function App() {
   return (
     <>
       <div className="App">
-       
-        <Navbar />
-        <Routes>
-          <Route element={<PrivateComponent />}>
-            {/* -----------Routes user cannot access unless logging in --------------- */}
+        <UserProvider>
+          <Navbar />
+          <Routes>
+            <Route element={<PrivateComponent />}>
+              {/* -----------Routes user cannot access unless logging in --------------- */}
 
-            <Route path="/profile/:id" element={<Profile />} />
-            <Route path="/addpatient" element={<AddPatient />} />
-            <Route path="/patientdetails/:id" element={<PatientDetails />} />
-            <Route path="/patientdetails/mriroom/:id" element={<MRIRoom />} /> 
-          </Route>
-          {/* -------------Public Routes--------------------------------------- */}
-          
+              <Route path="/profile/:id" element={<Profile />} />
+              <Route path="/addpatient" element={<AddPatient />} />
+              <Route path="/patientdetails/:id" element={<PatientDetails />} />
+              <Route path="/patientdetails/mriroom/:id" element={<MRIRoom />} />
+            </Route>
+            {/* -------------Public Routes--------------------------------------- */}
 
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/verifyemail/:userId/verify/:token"
-            element={<VerifyEmail />}
-          />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route
-            path="/reset-password/:userId/:token"
-            element={<ResetPassword />}
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="/verifyemail/:userId/verify/:token"
+              element={<VerifyEmail />}
+            />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route
+              path="/reset-password/:userId/:token"
+              element={<ResetPassword />}
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </UserProvider>
       </div>
     </>
   );

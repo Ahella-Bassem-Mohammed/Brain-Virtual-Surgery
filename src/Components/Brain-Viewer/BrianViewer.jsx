@@ -50,7 +50,7 @@ const BrainViewer = ({ renderFile, mriId, fileName }) => {
      } catch (err) {
        console.log(err);
      }
-   }, []);
+   }, [mriId]);
 
    useEffect(() => {
      fetchVolumeHistory();

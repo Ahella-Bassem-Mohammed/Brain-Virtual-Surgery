@@ -14,13 +14,30 @@ import {PatientList} from "../../Patient-Component/Patient-Item-Cards/PatientLis
 import { UpdateProfileModel } from "../Profile/UpdateProfileModel";
 import swal from "sweetalert";
 import { Oval } from "react-loader-spinner";
+import { UserContext } from "../../UserContext";
+import { useContext } from "react";
 
 
+export const calculateAge = (birthdate) => {
+  const birthDate = new Date(birthdate);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDifference = today.getMonth() - birthDate.getMonth();
+  if (
+    monthDifference < 0 ||
+    (monthDifference === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+  return age;
+};
 
 export const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const {userc} =useContext(UserContext);
+  const {age}=calculateAge(userc?.birthdate);
   const [file, setFile] = useState(null);
   const [updateProfile, setUpdateProfile] = useState(false);
   
@@ -34,6 +51,7 @@ export const Profile = () => {
 
   const { id } = useParams();
 
+ 
   useEffect(() => {
     dispatch(getUserProfile(id));
     dispatch(getAllPatients())
@@ -131,39 +149,47 @@ export const Profile = () => {
         </div>
         <div className="patient-infoo">
           <div className="infoo-field">
-              <strong>First Name:</strong>
-              <p className="profile-username"> {profile?.FirstName}</p>
+            <strong>First Name:</strong>
+            <p className="profile-username"> {profile?.FirstName}</p>
           </div>
           <div className="infoo-field">
-              <strong>Last Name:</strong>
-              <p className="profile-bio">{profile?.LastName}</p>
+            <strong>Last Name:</strong>
+            <p className="profile-bio">{profile?.LastName}</p>
           </div>
           <div className="infoo-field">
-              <strong>User Name:</strong>
-              <p className="profile-bio">{profile?.UserName}</p>
+            <strong>User Name:</strong>
+            <p className="profile-bio">{profile?.UserName}</p>
           </div>
           <div className="infoo-field">
-              <strong>Age:</strong>
-              <p className="profile-bio">{profile?.Age}</p>
+            <strong>BirthDate:</strong>
+            <p className="profile-bio">
+              {new Date(profile?.Birthdate).toDateString()}
+            </p>
           </div>
           <div className="infoo-field">
-              <strong>Gender:</strong>
-              <p className="profile-bio">{profile?.Gender}</p>
+            <strong>Age:</strong>
+            <p className="profile-bio">{age}</p>
           </div>
           <div className="infoo-field">
-              <strong>Title:</strong>
-              <p className="profile-bio">{profile?.Title}</p>
+            <strong>Gender:</strong>
+            <p className="profile-bio">{profile?.Gender}</p>
           </div>
           <div className="infoo-field">
-              <strong>Specialist:</strong>
-              <p className="profile-bio">{profile?.Specialist}</p>
+            <strong>Title:</strong>
+            <p className="profile-bio">{profile?.Title}</p>
           </div>
           <div className="infoo-field">
-              <strong>Email:</strong>
-              <p className="profile-bio">{profile?.Email}</p>
+            <strong>Specialist:</strong>
+            <p className="profile-bio">{profile?.Specialist}</p>
+          </div>
+          <div className="infoo-field">
+            <strong>Email:</strong>
+            <p className="profile-bio">{profile?.Email}</p>
           </div>
         </div>
-        <span className="user-date-joined">{new Date(profile?.createdAt).toDateString()}</span>
+        <span className="user-date-joined">
+          {new Date(profile?.createdAt).toDateString()}
+        </span>
 
         <button
           onClick={() => setUpdateProfile(true)}
@@ -172,7 +198,10 @@ export const Profile = () => {
           <i className="bi bi-file-person-fill"></i>
           Update Profile
         </button>
-        <Link to={"/addpatient"} className="add_patient"> Add Patient</Link>
+        <Link to={"/addpatient"} className="add_patient">
+          {" "}
+          Add Patient
+        </Link>
         <button onClick={deleteProfileHandler} className="delete-account-btn">
           Delete Account
         </button>
@@ -188,7 +217,6 @@ export const Profile = () => {
         ) : (
           <div className="no-items-message">No patients available</div>
         )}
-
       </div>
 
       {updateProfile && (
@@ -197,7 +225,6 @@ export const Profile = () => {
           setUpdateProfile={setUpdateProfile}
         />
       )}
-      
     </section>
   );
 };

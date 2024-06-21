@@ -1,28 +1,31 @@
 import "./authentication.css";
 import "../Verification/verification.css";
-import React,{useState} from "react";
+import React,{useContext, useState} from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { registerUser } from "../../../redux/apiCalls/authApiCall";
 import { BiMessageRoundedDetail, BiMessageSquareDots } from "react-icons/bi";
 import { FaUser, FaLock, FaTransgender } from "react-icons/fa";
 import { MdEmail, MdSubtitles } from "react-icons/md";
+import { UserContext } from "../../UserContext";
 
 
 
 export const Signup = () => {
 
+  const { setUser } = useContext(UserContext);
   const dispatch = useDispatch();
 
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
   const [uname, setUName] = useState("");
   const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
+  const [birthdate, setBirthDate] = useState("");
   const [gender, setGender] = useState("");
   const [title, setTitle] = useState("");
   const [specialist, setSpecialist] = useState("");
   const [password, setPassword] = useState("");
+  
 
   // Sign up Form Submit Handler
   const formSubmitHandler = (e) => {
@@ -32,25 +35,29 @@ export const Signup = () => {
     if (lname.trim() === "") return toast.error("Last name is required");
     if (uname.trim() === "") return toast.error("User name is required");
     if (email.trim() === "") return toast.error("Email is required");
-    if (age.trim() === "") return toast.error("Age is required");
+    if (birthdate.trim() === "") return toast.error("BirthDate is required");
     if (gender.trim() === "") return toast.error("Gender is required");
     if (title.trim() === "") return toast.error("Title is required");
     if (specialist.trim() === "") return toast.error("Specialist is required");
     if (password.trim() === "") return toast.error("Password is required");
 
+    
     dispatch(
       registerUser({
         FirstName: fname,
         LastName: lname,
         UserName: uname,
         Email: email,
-        Age: age,
+        Birthdate: birthdate,
         Gender: gender,
         Title: title,
         Specialist: specialist,
         Password: password,
       })
+      
     );
+    setUser({ birthdate });
+    
   };
 
   return (
@@ -110,10 +117,10 @@ export const Signup = () => {
             <div className="rowflex">
               <div className="signup-input">
                 <input
-                  type="text"
-                  placeholder="Age"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
+                  type="date"
+                  placeholder="BirthDate"
+                  value={birthdate}
+                  onChange={(e) => setBirthDate(e.target.value)}
                 />
                 <BiMessageRoundedDetail className="icon" />
               </div>

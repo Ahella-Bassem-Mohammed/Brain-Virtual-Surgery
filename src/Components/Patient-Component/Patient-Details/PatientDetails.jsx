@@ -1,5 +1,5 @@
 import "./patientDetails.css"
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState,useContext} from 'react'
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,8 +12,8 @@ import {
 } from "../../../redux/apiCalls/mriApiCall";
 import { getSinglePatient } from "../../../redux/apiCalls/patientApiCall";
 import { deletePatient } from "../../../redux/apiCalls/patientApiCall";
-
-
+import { UserContext } from "../../UserContext";
+import {calculateAge} from "../../pages/Profile/Profile";
 
 import swal from "sweetalert";
 
@@ -29,10 +29,11 @@ export const PatientDetails = () => {
   const { patient } = useSelector(state => state.patient);
   const {user}=useSelector(state=>state.auth)
   const {mris} = useSelector((state) => state.mri || []);
-  /*const { mris } = useSelector((state) => ({
-    mris: state.mri.mris || [], // Providing a default value if loadingg is undefined
-  }));*/
+
   const { id } = useParams();
+
+   const { userc } = useContext(UserContext);
+   const age = calculateAge(user.birthdate);
   
 
   const [updatePatient, setUpdatePatient] = useState(false);
@@ -64,13 +65,12 @@ export const PatientDetails = () => {
   };
 
   return (
-    <div className="patient-details-body"> 
-
-    <div className="head-mri">
-    <h1>Patient Information</h1>
-    <div className="underln"></div>
-    </div>
-    {/* --------------------------------------patient details--------------------------------------- */}
+    <div className="patient-details-body">
+      <div className="head-mri">
+        <h1>Patient Information</h1>
+        <div className="underln"></div>
+      </div>
+      {/* --------------------------------------patient details--------------------------------------- */}
       <div className="wrappin">
         <div className="patient_details">
           <div className="info-field">
@@ -87,42 +87,53 @@ export const PatientDetails = () => {
             <strong>Gender:</strong>
             <p>{patient?.Gender}</p>
           </div>
-
+          <div className="info-field">
+            <strong>BirthDate:</strong>
+            <p>{new Date(patient?.Birthdate).toDateString()}</p>
+          </div>
           <div className="info-field">
             <strong>Age:</strong>
-            <p>{patient?.Age}</p>
+            <p>{age}</p>
           </div>
         </div>
-        
+
         <div className="patient_detailss">
           <div className="info-field">
-          <strong>Notes:</strong>
-          <p>{patient?.Notes}</p>
-        </div>
-        
-        <span className="datte"> <strong>Joined Date:</strong>{new Date(patient?.createdAt).toDateString()}</span>
+            <strong>Notes:</strong>
+            <p>{patient?.Notes}</p>
+          </div>
 
-        {/* -------------------------------------------------------------------------------------- */}
+          <span className="datte">
+            {" "}
+            <strong>Joined Date:</strong>
+            {new Date(patient?.createdAt).toDateString()}
+          </span>
 
-        {/* -----------------update patient icons---------------------------------- */}
+          {/* -------------------------------------------------------------------------------------- */}
+
+          {/* -----------------update patient icons---------------------------------- */}
 
           <div className="update-patient-icons">
             <div className="up-patient">
-              <i onClick={() => setUpdatePatient(true)} className="bi bi-pencil-square">Update</i>
+              <i
+                onClick={() => setUpdatePatient(true)}
+                className="bi bi-pencil-square"
+              >
+                Update
+              </i>
             </div>
             <div className="del-patient">
-              <i onClick={deletePatientHandler} className="bi bi-trash-fill">Delete</i>
+              <i onClick={deletePatientHandler} className="bi bi-trash-fill">
+                Delete
+              </i>
             </div>
           </div>
 
-        {/*------------------------------------------------------------------------- */}
-
-                 
+          {/*------------------------------------------------------------------------- */}
         </div>
       </div>
 
       <div className="patient_detailsss">
-
         <div className="info-field">
           <strong>Allergies:</strong>
           <p>{patient?.Allergies}</p>
@@ -143,13 +154,12 @@ export const PatientDetails = () => {
           <p>{patient?.Risk_Factors_And_Life_Style}</p>
         </div>
 
+        <div className="info-field">
+          <strong>Family History:</strong>
+          <p>{patient?.Family_History}</p>
+        </div>
 
-      <div className="info-field">
-            <strong>Family History:</strong>
-            <p>{patient?.Family_History}</p>
-      </div> 
-
-      <div className="info-field">
+        <div className="info-field">
           <strong>Lab Test Result:</strong>
           <p>{patient?.Lab_Test_Result} </p>
         </div>
@@ -173,7 +183,7 @@ export const PatientDetails = () => {
           <strong>Current Medications:</strong>
           <p>{patient?.Current_Medications}</p>
         </div>
-        
+
         <div className="info-field">
           <strong>Duration Of Symptoms:</strong>
           <p>{patient?.Duration_And_Progression_Of_Symptoms}</p>
@@ -183,20 +193,16 @@ export const PatientDetails = () => {
           <strong>Neurological Examination:</strong>
           <p>{patient?.Neurological_Examination}</p>
         </div>
-        
-        
       </div>
-   
 
-    {/*------------------- update patient component , add MRI component and MRI list for this patient included */}
-      
-        {updatePatient && (
-          <UpdatePatientModel
-            patient={patient}
-            setUpdatePatient={setUpdatePatient}
-          />
-        )}
-      
+      {/*------------------- update patient component , add MRI component and MRI list for this patient included */}
+
+      {updatePatient && (
+        <UpdatePatientModel
+          patient={patient}
+          setUpdatePatient={setUpdatePatient}
+        />
+      )}
 
       <div className="mri-container">
         {mris && mris.length > 0 ? (
@@ -204,7 +210,7 @@ export const PatientDetails = () => {
         ) : (
           <div className="no-items-message">No MRI Scans available</div>
         )}
-        
+
         <div className="mr">
           <AddMRI />
         </div>
