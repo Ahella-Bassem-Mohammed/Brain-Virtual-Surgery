@@ -19,13 +19,15 @@ import { useContext } from "react";
 
 
 export const calculateAge = (birthdate) => {
-  const birthDate = new Date(birthdate);
+  const birthDate = new Date(birthdate).toDateString();
   const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDifference = today.getMonth() - birthDate.getMonth();
+  let age =new Date(today).getFullYear() - new Date(birthDate).getFullYear();
+  const monthDifference =
+    new Date(today).getMonth() - new Date(birthDate).getMonth();
   if (
     monthDifference < 0 ||
-    (monthDifference === 0 && today.getDate() < birthDate.getDate())
+    (monthDifference === 0 &&
+      new Date(today).getDate() < new Date(birthDate).getDate())
   ) {
     age--;
   }
@@ -37,7 +39,8 @@ export const Profile = () => {
   const navigate = useNavigate();
 
   const {userc} =useContext(UserContext);
-  const {age}=calculateAge(userc?.birthdate);
+  //const {age}=calculateAge(userc?.birthdate);
+  
   const [file, setFile] = useState(null);
   const [updateProfile, setUpdateProfile] = useState(false);
   
@@ -50,7 +53,7 @@ export const Profile = () => {
   const { patientsCount } = useSelector((state) => state.patient);
 
   const { id } = useParams();
-
+  const age = profile?.Birthdate ? calculateAge(profile.Birthdate) : "N/A";
  
   useEffect(() => {
     dispatch(getUserProfile(id));
@@ -163,7 +166,9 @@ export const Profile = () => {
           <div className="infoo-field">
             <strong>BirthDate:</strong>
             <p className="profile-bio">
-              {new Date(profile?.Birthdate).toDateString()}
+              {profile?.Birthdate
+                ? new Date(profile.Birthdate).toDateString()
+                : "N/A"}
             </p>
           </div>
           <div className="infoo-field">

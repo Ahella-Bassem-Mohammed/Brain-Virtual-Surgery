@@ -10,7 +10,7 @@ export const UpdatePatientModel = ({ setUpdatePatient, patient }) => {
   const [fname, setFname] = useState(patient.First_Name);
   const [lname, setLname] = useState(patient.Last_Name);
   const [gender, setGender] = useState(patient.Gender);
-  const [age, setAge] = useState(patient.Age);
+  const [birthdate, setBirthDate] = useState(patient.Birthdate);
   const [risk, setRisk] = useState(patient.Risk_Factors_And_Life_Style);
   const [familyhistory, setFamilyhistory] = useState(patient.Family_History);
   const [neuro, setNeuro] = useState(patient.Neurological_Examination);
@@ -39,12 +39,12 @@ export const UpdatePatientModel = ({ setUpdatePatient, patient }) => {
     if (fname.trim() === "") return toast.error("First name is required !!");
     if (lname.trim() === "") return toast.error("Last name is required !!");
     if (gender.trim() === "") return toast.error("Gender is required !!");
-    if (age.trim() === "") return toast.error("Age is required !!");
+    if (birthdate.trim() === "") return toast.error("BirthDate is required !!");
 
     const updatedPatient = {
       First_Name: fname,
       Last_Name: lname,
-      Age: age,
+      Birthdate: birthdate,
       Gender: gender,
       Risk_Factors_And_Life_Style: risk,
       Family_History: familyhistory,
@@ -101,10 +101,10 @@ export const UpdatePatientModel = ({ setUpdatePatient, patient }) => {
           onChange={(e) => setGender(e.target.value)}
         ></input>
         <input className="pu"
-          type="text"
-          placeholder="Age"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
+          type="date"
+          placeholder="BirthDate"
+          value={birthdate}
+          onChange={(e) => setBirthDate(e.target.value)}
         ></input>
         <input className="pu"
           type="text"

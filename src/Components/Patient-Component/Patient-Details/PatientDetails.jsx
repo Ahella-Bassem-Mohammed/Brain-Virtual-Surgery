@@ -17,10 +17,6 @@ import {calculateAge} from "../../pages/Profile/Profile";
 
 import swal from "sweetalert";
 
- 
-
-
-
 
 export const PatientDetails = () => {
   const dispatch = useDispatch();
@@ -32,10 +28,10 @@ export const PatientDetails = () => {
 
   const { id } = useParams();
 
-   const { userc } = useContext(UserContext);
-   const age = calculateAge(user.birthdate);
+   //const { userc } = useContext(UserContext);
+   //const age = calculateAge(userc.birthdate);
   
-
+  const age = patient?.Birthdate ? calculateAge(patient.Birthdate) : "N/A";
   const [updatePatient, setUpdatePatient] = useState(false);
   
 
