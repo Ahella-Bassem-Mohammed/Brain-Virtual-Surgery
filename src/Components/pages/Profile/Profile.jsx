@@ -217,7 +217,7 @@ export const Profile = () => {
         {patients && patients.length > 0 ? (
           <PatientList patients={patients} />
         ) : (
-          <div className="no-items-message">No patients available</div>
+          <div className="no-message">No patients available</div>
         )}
       </div>
 
