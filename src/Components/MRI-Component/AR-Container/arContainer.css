@@ -1,0 +1,36 @@
+.ar-container {
+    display: flex;
+    border-radius: 8px;
+    border: 1px solid #234ca4;
+    position: absolute;
+    right: 50px;
+}
+
+.ar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    padding: 3px;
+}
+
+.ar-left {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-right: 2px solid #234ca4;
+}
+
+.ar-right {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.ar-btn img {
+    height: 100%;
+    width: 100%;
+}
+
+.ar-btn:hover {
+    background-color: #ADD8E6;
+}
