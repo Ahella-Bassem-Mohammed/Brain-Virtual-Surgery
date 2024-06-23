@@ -1,9 +1,9 @@
 import "./mriItem.css";
 import React ,{useState } from 'react';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { deleteMriScan } from "../../../redux/apiCalls/mriApiCall";
+import { deleteMriScan, getAllMRI } from "../../../redux/apiCalls/mriApiCall";
 import swal from "sweetalert";
 
 //import { deleteMRI } from "../../../redux/apiCalls/mriApiCall";
@@ -19,7 +19,6 @@ How the MRI is displyed in the Patient Details page
 
 export const MRIItem = ({mri}) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const{id}=useParams();
 
   const [file] = useState(null);
@@ -38,8 +37,7 @@ export const MRIItem = ({mri}) => {
     }).then((isOK) => {
       if (isOK) {
         dispatch(deleteMriScan(mri?._id));
-   
-        navigate(`/patientdetails/${id}`);
+        dispatch(getAllMRI(id));
         
       }
     });
