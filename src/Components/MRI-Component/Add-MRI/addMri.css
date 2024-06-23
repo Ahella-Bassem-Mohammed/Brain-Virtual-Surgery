@@ -1,6 +1,8 @@
 .ch-file{
-    margin-top: 20px;
-    margin-bottom: 70px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    column-gap: 10px;
 }
 
 .ch-file input{
@@ -34,6 +36,28 @@
 }
 
 .button-file:hover{
+    color: #234ca4;
+    font-weight: 600;
+    background: transparent;
+}
+
+#mri-file {
+    display: none;
+  }
+
+  .custom-file-upload {
+    display: inline-block;
+    height: 40px;
+    color: #fff;
+    padding: 4px 15px;
+    background:#234ca4;
+    border-radius: 20px;
+    font-size:17px;
+    cursor: pointer;
+    border: 2px solid #234ca4;
+  }
+
+  .custom-file-upload:hover{
     color: #234ca4;
     font-weight: 600;
     background: transparent;

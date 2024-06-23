@@ -204,10 +204,9 @@ export const PatientDetails = () => {
         ) : (
           <div className="no-items-message">No MRI Scans available</div>
         )}
-
-        <div className="mr">
-          <AddMRI />
-        </div>
+      </div>
+      <div className="mri">
+        <AddMRI />
       </div>
     </div>
   );
