@@ -14,27 +14,24 @@ export const Services = () => {
           <div className="compo">
             <h3>Segmantation</h3>
             <p>
-              First Import MRI Scan and Segment the Target Orgen from the Whole
-              Body using Deep Learning.
+            First, upload MRI files and segment the target organ using U-NET model and display the 6 outputs.
             </p>
           </div>
           <div className="compo">
-            <h3>3D Model</h3>
+            <h3>3D Viewer</h3>
             <p>
-              Then, We Convert Segmented Organ to 3D Model that contain of set
-              of Points.
+            Then, convert the segmented organ to a 3D model that contains a set of points and applies more features to it.
             </p>
           </div>
           <div className="compo">
-            <h3>Triangulation</h3>
+            <h3>Volume Size</h3>
             <p>
-              After that we can Convert Points of 3D Model of Organ to set of
-              Triangulation.
+            After that based on the identification of a specific threshold, we calculate the size of the tumor.
             </p>
           </div>
           <div className="compo">
-            <h3>Cutting</h3>
-            <p>Then, Cut any Part of 3D Model and Perform Basic Surgery.</p>
+            <h3>Augmented Reality</h3>
+            <p>Finally, By scanning the QR code using your mobile phone, you can see the brain 3D in your environment.</p>
           </div>
         </div>
       </div>
