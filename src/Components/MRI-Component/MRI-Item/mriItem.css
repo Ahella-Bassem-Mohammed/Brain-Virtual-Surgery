@@ -106,7 +106,7 @@
 }
 
 .del-mri{
-    width:100px;
+    width:200px;
     height: 28px;
     color: #fff;
     padding-left: 10px;
@@ -115,6 +115,7 @@
     font-size:17px;
     cursor: pointer;
     border: 2px solid red;
+    text-align: center;
 }
 
 .del-mri:hover{
