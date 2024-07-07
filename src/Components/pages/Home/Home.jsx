@@ -9,7 +9,7 @@ export const Home = () => {
           Brain <br></br>Virtual Surgery
         </h1>
         <p className="details">
-          When you see it is Difficult<br></br>
+          When you see it is Difficult..<br></br>
           We Decided to make it More Safe and Easier!<br></br>
         </p>
         <div className="header-btns">
